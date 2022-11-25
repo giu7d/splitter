@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "expo": "~47.0.8",
+    "expo-community-flipper": "^47.0.0",
+    "expo-dev-client": "~2.0.1",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
     "react-native": "0.70.5",
+    "react-native-flipper": "^0.174.0",
     "typescript": "^4.6.3"
   },
   "devDependencies": {

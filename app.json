@@ -15,6 +15,7 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
+    "plugins": ["expo-community-flipper"],
     "ios": {
       "supportsTablet": true
     },
