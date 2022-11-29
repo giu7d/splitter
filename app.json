@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "green-commerce",
-    "slug": "green-commerce",
+    "name": "commerce",
+    "slug": "commerce",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
