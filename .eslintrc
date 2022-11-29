@@ -24,12 +24,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "prettier",
-    "eslint-plugin-import-helpers",
-    "unused-imports"
-  ],
+  "plugins": ["react", "prettier", "unused-imports", "import"],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
@@ -52,13 +47,47 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    // Import Helpers
-    "import-helpers/order-imports": [
+    // Group & Sort Imports
+    "import/order": [
       "error",
       {
-        "newlinesBetween": "always",
-        "groups": ["module", "/^@//", ["parent", "sibling", "index"]],
-        "alphabetize": { "order": "asc", "ignoreCase": true }
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index"]
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin"
+          },
+          {
+            "pattern": "react-native",
+            "group": "builtin"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@assets/**",
+            "group": "internal"
+          }
+        ],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["builtin", "internal"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true, // handled by import/order
+        "ignoreMemberSort": false
       }
     ]
   }
