@@ -17,13 +17,15 @@
     "assetBundlePatterns": ["**/*"],
     "plugins": ["expo-community-flipper"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.prisma.commerce"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.prisma.commerce"
     },
     "web": {
       "favicon": "./assets/favicon.png"
