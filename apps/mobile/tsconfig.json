@@ -1,4 +1,5 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
     "jsx": "react-jsx",
@@ -7,6 +8,5 @@
       "@/*": ["./src/*"],
       "@assets/*": ["./assets/*"]
     }
-  },
-  "extends": "expo/tsconfig.base"
+  }
 }

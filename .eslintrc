@@ -29,10 +29,13 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
     "react/react-in-jsx-scope": "off",
+    // Prettier
     "prettier/prettier": "error",
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
+    // Unused Imports
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
@@ -45,6 +48,7 @@
         "argsIgnorePattern": "^_"
       }
     ],
+    // Group & Sort Imports
     "import/order": [
       "error",
       {
@@ -83,7 +87,7 @@
     "sort-imports": [
       "error",
       {
-        "ignoreDeclarationSort": true,
+        "ignoreDeclarationSort": true, // handled by import/order
         "ignoreMemberSort": false
       }
     ]
