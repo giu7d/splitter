@@ -8,6 +8,7 @@
   ],
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-config-turbo": "latest",
@@ -16,8 +17,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "eslint": "^8.0.1"
+    "eslint-plugin-unused-imports": "^2.0.0"
   },
   "devDependencies": {
     "typescript": "^4.7.4"
