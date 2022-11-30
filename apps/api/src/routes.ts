@@ -1,17 +1,18 @@
 import { z } from 'zod'
 
-import { procedure, router } from '@/src/config/trpc'
-
-const validateHelloQuery = z.object({
-  text: z.string()
-})
+import { procedure, router } from '@/config/trpc'
 
 const routes = router({
-  hello: procedure.input(validateHelloQuery).query(({ input }) => {
-    return [`hello ${input.text}`]
+  post: router({
+    byId: procedure
+      .input(z.string())
+      .query(() => ({ id: 1, title: 'tRPC is the best!' })),
+    create: procedure
+      .input(z.object({ title: z.string(), text: z.string() }))
+      .mutation(({ input }) => ({ id: 1, ...input }))
   })
 })
 
-export type Routes = typeof routes
+export type TRPCRoutes = typeof routes
 
 export default routes

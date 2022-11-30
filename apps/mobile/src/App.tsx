@@ -1,5 +1,10 @@
+import Provider from '@/providers'
 import Payment from '@/screens/Payment'
 
 export default function App() {
-  return <Payment />
+  return (
+    <Provider>
+      <Payment />
+    </Provider>
+  )
 }

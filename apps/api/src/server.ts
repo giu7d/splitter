@@ -1,7 +1,7 @@
 import fastify from 'fastify'
 
-import { createContext, withFastifyTRPC } from '@/src/config/trpc'
-import routes from '@/src/routes'
+import { createContext, withFastifyTRPC } from '@/config/trpc'
+import routes from '@/routes'
 
 const server = fastify({ logger: true })
 

@@ -1,5 +1,5 @@
-import server from '@/src/server'
-import { serverRunningTemplate } from '@/src/utils/console'
+import server from '@/server'
+import { serverRunningTemplate } from '@/utils/console'
 
 const { ENV = 'development' } = process.env
 

@@ -16,6 +16,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import colors from 'tailwindcss/colors'
 
+import { trpc } from '@/services/api'
 import BackgroundGradientImage from '@assets/background-gradient.png'
 import MastercardLogoImage from '@assets/mastercard-logo.png'
 
@@ -84,6 +85,12 @@ const Payment = gestureHandlerRootHOC(() => {
       ]
     }
   })
+
+  const data = trpc.post.byId.useQuery('hello-world')
+
+  if (!data.data) return <></>
+
+  console.log(data.data)
 
   return (
     <>

@@ -1,22 +1,24 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
     "outDir": "./build",
     "rootDir": "./src",
     "strict": true,
+    "strictNullChecks": true,
     "strictPropertyInitialization": false,
     "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
     "baseUrl": "./src",
     "allowJs": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@/src/*": ["*"]
-    }
+      "@/*": ["*"]
+    },
+    "composite": true
   }
 }

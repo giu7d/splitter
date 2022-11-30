@@ -8,5 +8,6 @@
       "@/*": ["./src/*"],
       "@assets/*": ["./assets/*"]
     }
-  }
+  },
+  "references": [{ "path": "../api" }]
 }

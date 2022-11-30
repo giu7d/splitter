@@ -3,7 +3,7 @@ import { CreateFastifyContextOptions } from '@trpc/server/adapters/fastify'
 
 export { fastifyTRPCPlugin as withFastifyTRPC } from '@trpc/server/adapters/fastify'
 
-const trpc = initTRPC.create()
+export const trpc = initTRPC.create()
 
 export const router = trpc.router
 
