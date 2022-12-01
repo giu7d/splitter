@@ -10,7 +10,7 @@ TODO:...
 
 TODO:...
 
-## Motivação
+## Motivation
 
 This study objective is not to create an application restricted in a stack. But to elaborate and test SOTA tools that enable a stable and productive stack.
 Or goals with the final product is to find a stack that:
