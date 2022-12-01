@@ -71,3 +71,31 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+# Commerce
+
+## 🖼 Screenshots
+
+TODO: Add screenshots
+
+## 💎 Reusable Components
+
+- [ ] Bottom Sheet
+- [ ] Alert
+
+## 📚 Stack
+
+**Frameworks:**
+
+- [x] React Native
+- [x] Expo
+
+**Style:**
+
+- [x] Nativewind (Tailwind support)
+
+**Animation:**
+
+- [x] Moti
+- [x] React Native Reanimated
+- [x] React Native Gesture Handler
