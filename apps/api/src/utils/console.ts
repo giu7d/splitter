@@ -20,13 +20,13 @@ export const useGreenColor = useColor('green')
 
 export const useBlueColor = useColor('blue')
 
-export const serverRunningTemplate = (port: number) => `
+export const serverRunningTemplate = (host: string, port: number) => `
     ░█▀█░█▀█░▀█▀
     ░█▀█░█▀▀░░█░
     ░▀░▀░▀░░░▀▀▀ v1.0.0
 
     --------------------------
     \tListening at:
-    \t${useBlueColor(`http://localhost:${port}`)}
+    \t${useBlueColor(`${host}:${port}`)}
     --------------------------
   `
