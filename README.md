@@ -45,7 +45,7 @@ Current stack been used in the challenge:
 
 **State Management**
 
-- [] [jotai](https://jotai.org/)
+- [ ] jotai - [docs](https://jotai.org/)
 
 **Network & API**
 
