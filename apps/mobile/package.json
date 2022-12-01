@@ -20,6 +20,7 @@
     "@trpc/server": "^10.4.2",
     "expo": "~47.0.8",
     "expo-community-flipper": "^47.0.0",
+    "expo-constants": "~14.0.2",
     "expo-dev-client": "~2.0.1",
     "expo-linear-gradient": "~12.0.1",
     "expo-splash-screen": "~0.17.5",

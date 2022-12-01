@@ -1,11 +1,11 @@
 import server from '@/server'
 import { serverRunningTemplate } from '@/utils/console'
 
-const { ENV = 'development' } = process.env
+const { API_PORT } = process.env
 
-const PORT = parseInt(process.env.PORT ?? '3333', 10)
+const port = parseInt(API_PORT ?? '5000', 10)
 
 server
-  .listen({ port: PORT })
-  .then(() => console.log(serverRunningTemplate(ENV, PORT)))
+  .listen({ port })
+  .then(() => console.log(serverRunningTemplate(port)))
   .catch((error) => console.error(error))

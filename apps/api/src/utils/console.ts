@@ -20,15 +20,12 @@ export const useGreenColor = useColor('green')
 
 export const useBlueColor = useColor('blue')
 
-export const serverRunningTemplate = (env: string, port: number) => `
+export const serverRunningTemplate = (port: number) => `
     ░█▀█░█▀█░▀█▀
     ░█▀█░█▀▀░░█░
     ░▀░▀░▀░░░▀▀▀ v1.0.0
 
     --------------------------
-    \tRunning in:
-    \t${useGreenColor(env.toUpperCase())}
-
     \tListening at:
     \t${useBlueColor(`http://localhost:${port}`)}
     --------------------------
