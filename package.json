@@ -24,7 +24,9 @@
       "**/expo-*",
       "**/expo-*/**",
       "**/metro-*",
-      "**/metro-*/**"
+      "**/metro-*/**",
+      "**/nativewind",
+      "**/tailwindcss"
     ]
   },
   "scripts": {
