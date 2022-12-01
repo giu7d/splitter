@@ -50,4 +50,5 @@ Current stack been used in the challenge:
 **Network & API**
 
 - [x] react query
-- [x] tRPC
+- [x] tRPC - [docs](https://trpc.io/)
+- [x] fastify - [docs](https://www.fastify.io/)
