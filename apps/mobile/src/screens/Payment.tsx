@@ -86,11 +86,11 @@ const Payment = gestureHandlerRootHOC(() => {
     }
   })
 
-  const data = trpc.post.byId.useQuery('hello-world')
+  const { data } = trpc.post.byId.useQuery('hello-world')
 
-  if (!data.data) return <></>
+  if (!data) return <></>
 
-  console.log(data.data)
+  console.log('data', data)
 
   return (
     <>

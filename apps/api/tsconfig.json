@@ -1,24 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "outDir": "./build",
-    "rootDir": "./src",
-    "strict": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": false,
-    "sourceMap": true,
+    "allowJs": true,
+    "baseUrl": "./src",
+    "composite": true,
     "declaration": true,
     "declarationMap": true,
-    "baseUrl": "./src",
-    "allowJs": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "outDir": "./build",
     "paths": {
       "@/*": ["*"]
     },
-    "composite": true
+    "rootDir": "./src",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "target": "es5"
   }
 }
