@@ -1,101 +1,53 @@
-# Turborepo starter
+# Mobile Modern Stack Study
 
-This is an official pnpm starter turborepo.
+> Expo + Turborepo + tRPC go brrrrrrr 🚀🔥
 
-## What's inside?
+## Usage
 
-This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
+TODO:...
 
-### Apps and Packages
+## Deploy
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+TODO:...
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## Motivação
 
-### Utilities
+This study objective is not to create an application restricted in a stack. But to elaborate and test SOTA tools that enable a stable and productive stack.
+Or goals with the final product is to find a stack that:
 
-This turborepo has some additional tools already setup for you:
+1. Improves developer experience;
+2. Allows fast deploy e development;
+3. Constructs an app with great performance;
+4. Defines an architecture to easily componentize and reuse animations;
+5. Implements code quality tools (e.g. test, static analysis, linting, etc.);
+6. Target the largest number of devices (e.g. ios, android, and web).
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## Stack
 
-### Build
+Current stack been used in the challenge:
 
-To build all apps and packages, run the following command:
+**Tools**
 
-```
-cd my-turborepo
-pnpm run build
-```
+- [x] flipper
+- [x] yarn
+- [x] turborepo
 
-### Develop
+**Framework**
 
-To develop all apps and packages, run the following command:
+- [x] react native
+- [x] expo
+- [ ] jest
 
-```
-cd my-turborepo
-pnpm run dev
-```
+**Animation & Style**
 
-### Remote Caching
+- [x] nativewind (Tailwind)
+- [x] moti (Framer/Motion)
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+**State Management**
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+- [] [jotai](https://jotai.org/)
 
-```
-cd my-turborepo
-pnpm dlx turbo login
-```
+**Network & API**
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-pnpm dlx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Pipelines](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
-
-# Commerce
-
-## 🖼 Screenshots
-
-TODO: Add screenshots
-
-## 💎 Reusable Components
-
-- [ ] Bottom Sheet
-- [ ] Alert
-
-## 📚 Stack
-
-**Frameworks:**
-
-- [x] React Native
-- [x] Expo
-
-**Style:**
-
-- [x] Nativewind (Tailwind support)
-
-**Animation:**
-
-- [x] Moti
-- [x] React Native Reanimated
-- [x] React Native Gesture Handler
+- [x] react query
+- [x] tRPC
