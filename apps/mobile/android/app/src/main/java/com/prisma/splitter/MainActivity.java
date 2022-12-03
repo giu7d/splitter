@@ -1,4 +1,4 @@
-package com.prisma.commerce;
+package com.prisma.splitter;
 
 import android.os.Build;
 import android.os.Bundle;

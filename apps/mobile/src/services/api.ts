@@ -1,6 +1,6 @@
 import { createTRPCReact, httpBatchLink } from '@trpc/react-query'
-import type { TRPCRoutes } from 'commerce-api/src/routes'
 import Constants from 'expo-constants'
+import type { TRPCRoutes } from 'splitter-api/src/routes'
 
 const API_URL = Constants?.manifest?.extra?.API_URL ?? ''
 

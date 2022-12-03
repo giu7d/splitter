@@ -1,4 +1,4 @@
-# Mobile Modern Stack Study
+# Splitter - Mobile Modern Stack Study
 
 > Expo + Turborepo + tRPC go brrrrrrr 🚀🔥
 
@@ -7,6 +7,10 @@
 TODO:...
 
 ## Deploy
+
+TODO:...
+
+## Screen Shots
 
 TODO:...
 

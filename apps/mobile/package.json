@@ -1,9 +1,9 @@
 {
-  "name": "commerce-mobile",
+  "name": "splitter-mobile",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --dev-client",
     "dev": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
@@ -39,7 +39,7 @@
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
     "babel-plugin-module-resolver": "^4.1.0",
-    "commerce-api": "*",
+    "splitter-api": "*",
     "expo-yarn-workspaces": "^2.0.4",
     "tailwindcss": "^3.2.4"
   },

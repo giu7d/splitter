@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "commerce.app"
-               BlueprintName = "commerce"
-               ReferencedContainer = "container:commerce.xcodeproj">
+               BuildableName = "splitter.app"
+               BlueprintName = "splitter"
+               ReferencedContainer = "container:splitter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "commerceTests.xctest"
-               BlueprintName = "commerceTests"
-               ReferencedContainer = "container:commerce.xcodeproj">
+               BuildableName = "splitterTests.xctest"
+               BlueprintName = "splitterTests"
+               ReferencedContainer = "container:splitter.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "commerce.app"
-            BlueprintName = "commerce"
-            ReferencedContainer = "container:commerce.xcodeproj">
+            BuildableName = "splitter.app"
+            BlueprintName = "splitter"
+            ReferencedContainer = "container:splitter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "commerce.app"
-            BlueprintName = "commerce"
-            ReferencedContainer = "container:commerce.xcodeproj">
+            BuildableName = "splitter.app"
+            BlueprintName = "splitter"
+            ReferencedContainer = "container:splitter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

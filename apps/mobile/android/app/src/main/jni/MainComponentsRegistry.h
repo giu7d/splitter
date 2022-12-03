@@ -13,7 +13,7 @@ class MainComponentsRegistry
  public:
   // Adapt it to the package you used for your Java class.
   constexpr static auto kJavaDescriptor =
-      "Lcom/prisma/commerce/newarchitecture/components/MainComponentsRegistry;";
+      "Lcom/prisma/splitter/newarchitecture/components/MainComponentsRegistry;";
 
   static void registerNatives();
 

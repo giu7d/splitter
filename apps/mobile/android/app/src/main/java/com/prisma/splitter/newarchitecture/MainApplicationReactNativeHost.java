@@ -1,4 +1,4 @@
-package com.prisma.commerce.newarchitecture;
+package com.prisma.splitter.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -20,9 +20,9 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.prisma.commerce.BuildConfig;
-import com.prisma.commerce.newarchitecture.components.MainComponentsRegistry;
-import com.prisma.commerce.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.prisma.splitter.BuildConfig;
+import com.prisma.splitter.newarchitecture.components.MainComponentsRegistry;
+import com.prisma.splitter.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
