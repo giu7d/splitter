@@ -5,31 +5,34 @@ import colors from 'tailwindcss/colors'
 
 import Button from '@/components/fragments/Button'
 
+import { Card, CardActions, CardHeader } from '.'
+import NumberOfSplitBadge from '../Badges/NumberOfSplit'
+import RoundedIcons from '../Icons/Rounded'
+
 interface Props {
   bill: Bill
 }
 
 function PaidBillCard({ bill }: Props) {
   return (
-    <View className="bg-white h-56 rounded-3xl p-6 justify-between shadow-md opacity-90">
-      <View className="flex-row justify-between items-start">
-        <Text className="text-neutral-900 font-semibold text-4xl">
+    <Card className="bg-white h-52">
+      <CardHeader>
+        <Text className="text-neutral-900 font-semibold text-xl">
           {bill.name}
         </Text>
-        <View className="flex-row gap-1 items-center">
-          <Feather name="users" color={colors.neutral[900]} size={14} />
-          <Text className="text-neutral-900 font-semibold text-lg">
-            {bill.numberOfSplit}
-          </Text>
-        </View>
-      </View>
+        <NumberOfSplitBadge
+          numberOfSplit={bill.numberOfSplit}
+          iconColor={colors.neutral[900]}
+          textClassName="text-neutral-900"
+        />
+      </CardHeader>
       <View>
-        <Text className="text-neutral-900 text-base opacity-50 font-semibold">
+        <Text className="text-neutral-900 text-sm opacity-50 font-semibold">
           Your split
         </Text>
         <View>
           <View className="flex-row items-end gap-1">
-            <Text className="text-neutral-900 text-base opacity-50 font-semibold pb-1">
+            <Text className="text-neutral-900 text-sm opacity-50 font-semibold pb-1">
               R$
             </Text>
             <Text className="text-neutral-900 text-3xl font-bold">
@@ -38,34 +41,33 @@ function PaidBillCard({ bill }: Props) {
           </View>
         </View>
       </View>
-      <View className="flex-row justify-end">
-        <View className="h-10 w-10 rounded-full bg-green-500 justify-center items-center">
+      <CardActions>
+        <RoundedIcons className="bg-green-500 h-10 w-10 ">
           <Feather name="check" color={colors.white} size={24} />
-        </View>
-      </View>
-    </View>
+        </RoundedIcons>
+      </CardActions>
+    </Card>
   )
 }
 
-function UnpaidBillCard({ bill }: Props) {
+function PendingBillCard({ bill }: Props) {
   return (
-    <View className="bg-neutral-900 h-56 rounded-3xl p-6 justify-between shadow-md">
-      <View className="flex-row justify-between items-start">
-        <Text className="text-white font-semibold text-4xl">{bill.name}</Text>
-        <View className="flex-row gap-1 items-center">
-          <Feather name="users" color={colors.white} size={14} />
-          <Text className="text-white font-semibold text-lg">
-            {bill.numberOfSplit}
-          </Text>
-        </View>
-      </View>
+    <Card className="bg-neutral-900 h-52">
+      <CardHeader>
+        <Text className="text-white font-semibold text-xl">{bill.name}</Text>
+        <NumberOfSplitBadge
+          numberOfSplit={bill.numberOfSplit}
+          iconColor={colors.white}
+          textClassName="text-white"
+        />
+      </CardHeader>
       <View>
-        <Text className="text-white text-base opacity-50 font-semibold">
+        <Text className="text-white text-sm opacity-50 font-semibold">
           Your split
         </Text>
         <View>
           <View className="flex-row items-end gap-1">
-            <Text className="text-white text-base opacity-50 font-semibold pb-1">
+            <Text className="text-white text-sm opacity-50 font-semibold pb-1">
               R$
             </Text>
             <Text className="text-white text-3xl font-bold">
@@ -74,15 +76,14 @@ function UnpaidBillCard({ bill }: Props) {
           </View>
         </View>
       </View>
-      <View className="flex-row justify-end">
+      <CardActions>
         <Button>Pay</Button>
-      </View>
-    </View>
+      </CardActions>
+    </Card>
   )
 }
 
 export default function Bill(props: Props) {
   if (props.bill.isPayed) return <PaidBillCard {...props} />
-
-  return <UnpaidBillCard {...props} />
+  return <PendingBillCard {...props} />
 }
