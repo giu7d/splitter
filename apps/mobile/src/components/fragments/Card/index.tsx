@@ -18,7 +18,7 @@ export function CardActions({ children, className, ...props }: ViewProps) {
   return (
     <StyledComponent
       component={View}
-      className={`flex-row justify-end ${className}`}
+      className={`flex-row justify-end items-end ${className}`}
       {...props}
     >
       {children}
@@ -30,7 +30,7 @@ export function Card({ children, className, ...props }: ViewProps) {
   return (
     <StyledComponent
       component={View}
-      className={`bg-white rounded-3xl p-6 justify-between shadow-md opacity-90 ${className}`}
+      className={`bg-white h-56 rounded-3xl p-6 justify-between shadow-md opacity-90 ${className}`}
       {...props}
     >
       {children}

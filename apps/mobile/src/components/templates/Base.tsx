@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {
+  ActivityIndicator,
   NativeScrollEvent,
   NativeSyntheticEvent,
   SafeAreaView,
@@ -8,6 +9,8 @@ import {
 } from 'react-native'
 
 import { StatusBar } from 'expo-status-bar'
+
+import CreateBill from '../container/CreateBill'
 
 interface Props {
   header: (isCompact: boolean) => JSX.Element
@@ -27,18 +30,22 @@ export default function BaseTemplate({
 
   return (
     <>
+      <CreateBill />
       <StatusBar style="dark" />
       <SafeAreaView className="flex-grow">
-        {header(isCompactedHeader)}
         <ScrollView
+          stickyHeaderIndices={[0, 1]}
           scrollEventThrottle={1000}
           onScroll={handleScroll}
           contentContainerStyle={{
             flexGrow: 1,
-            paddingBottom: 200
+            paddingBottom: 25
           }}
           {...scrollViewProps}
         >
+          {/* TODO: scroll to refresh  */}
+          <ActivityIndicator className="absolute w-full p-6 bottom-0" />
+          {header(isCompactedHeader)}
           {children}
         </ScrollView>
       </SafeAreaView>
