@@ -40,7 +40,7 @@ export default function Header({
   if (!data) return <></>
 
   return (
-    <View className="flex-row items-center p-6 justify-between">
+    <View className="flex-row items-center p-6 py-4 justify-between">
       <View className="flex-row items-center justify-start">
         <TouchableOpacity onPress={onOpenProfile}>
           <ProfileImage
