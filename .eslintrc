@@ -30,6 +30,7 @@
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/triple-slash-reference": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/no-extraneous-class": "off",
     "react/react-in-jsx-scope": "off",
     // Prettier
     "prettier/prettier": "error",
