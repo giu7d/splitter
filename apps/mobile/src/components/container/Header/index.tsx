@@ -4,30 +4,12 @@ import Animated from 'react-native-reanimated'
 
 import CashbackBadge from '@/components/fragments/Badges/Cashback'
 import ProfileImage from '@/components/fragments/ProfileImage'
-import {
-  useFontSizeAnimation,
-  useMarginRightAnimation,
-  useSizeAnimation,
-  useTopAnimation,
-  useVisibilityAnimation
-} from '@/hooks/utils/useAnimation'
 import { trpc } from '@/services/api'
 
-interface Props {
+import { createAnimation } from './animation'
+type Props = {
   isCompact?: boolean
   onOpenProfile?: () => void
-}
-
-function useHeaderAnimations(condition: boolean) {
-  return {
-    image: [useSizeAnimation(condition), useMarginRightAnimation(condition)],
-    text: useFontSizeAnimation(condition),
-    hiddenWhenCompacted: useVisibilityAnimation(condition),
-    visibleWhenCompacted: [
-      useVisibilityAnimation(!condition),
-      useTopAnimation(!condition)
-    ]
-  }
 }
 
 export default function Header({
@@ -35,7 +17,7 @@ export default function Header({
   onOpenProfile = () => {}
 }: Props) {
   const { data } = trpc.user.useQuery()
-  const animations = useHeaderAnimations(isCompact)
+  const animations = createAnimation(isCompact)
 
   if (!data) return <></>
 
@@ -54,7 +36,7 @@ export default function Header({
             <View>
               <Animated.Text
                 className="text-base text-neutral-500"
-                style={animations.hiddenWhenCompacted}
+                style={animations.hidden}
               >
                 Hello
               </Animated.Text>
@@ -68,7 +50,7 @@ export default function Header({
             <CashbackBadge
               cashbackTotal={data.cashbackTotal}
               component={Animated.View}
-              style={animations.hiddenWhenCompacted}
+              style={animations.hidden}
             />
           </View>
         </View>

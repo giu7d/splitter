@@ -1,18 +1,17 @@
 import { useState } from 'react'
 import {
-  ActivityIndicator,
   NativeScrollEvent,
   NativeSyntheticEvent,
   SafeAreaView,
   ScrollView,
-  ScrollViewProps
+  ScrollViewProps,
+  View
 } from 'react-native'
 
 import { StatusBar } from 'expo-status-bar'
+import { RefreshControl } from 'react-native-gesture-handler'
 
-import CreateBill from '../container/CreateBill'
-
-interface Props {
+type Props = {
   header: (isCompact: boolean) => JSX.Element
   children: JSX.Element | JSX.Element[]
   scrollViewProps?: ScrollViewProps
@@ -24,17 +23,26 @@ export default function BaseTemplate({
   scrollViewProps = {}
 }: Props) {
   const [isCompactedHeader, setIsCompactedHeader] = useState(false)
+  const [isRefreshing, setIsRefreshing] = useState(false)
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) =>
     setIsCompactedHeader(event.nativeEvent.contentOffset.y > 5)
 
   return (
-    <>
-      <CreateBill />
+    <View className="bg-white">
       <StatusBar style="dark" />
       <SafeAreaView className="flex-grow">
         <ScrollView
-          stickyHeaderIndices={[0, 1]}
+          refreshControl={
+            <RefreshControl
+              refreshing={isRefreshing}
+              onRefresh={() => {
+                setIsRefreshing(true)
+                setTimeout(() => setIsRefreshing(false), 1000)
+              }}
+            />
+          }
+          stickyHeaderIndices={[0]}
           scrollEventThrottle={1000}
           onScroll={handleScroll}
           contentContainerStyle={{
@@ -43,12 +51,10 @@ export default function BaseTemplate({
           }}
           {...scrollViewProps}
         >
-          {/* TODO: scroll to refresh  */}
-          <ActivityIndicator className="absolute w-full p-6 bottom-0" />
           {header(isCompactedHeader)}
           {children}
         </ScrollView>
       </SafeAreaView>
-    </>
+    </View>
   )
 }

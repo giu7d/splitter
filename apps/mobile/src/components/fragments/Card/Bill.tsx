@@ -9,7 +9,7 @@ import { Card, CardActions, CardHeader } from '.'
 import NumberOfSplitBadge from '../Badges/NumberOfSplit'
 import RoundedIcons from '../Icons/Rounded'
 
-interface Props {
+type Props = {
   bill: Bill
 }
 

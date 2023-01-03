@@ -2,7 +2,7 @@
 
 declare module '*.png'
 
-interface Bill {
+type Bill = {
   name: string
   totalValue: string
   splitValue: string
