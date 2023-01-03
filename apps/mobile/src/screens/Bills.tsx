@@ -1,9 +1,9 @@
 import { View } from 'react-native'
 
-import CreateBill from '@/components/container/CreateBill'
-import FilterBills from '@/components/container/FilterBills'
+import CreateBill from '@/components/container/Bills/CreateBill'
+import FilterBills from '@/components/container/Bills/FilterBills'
+import ListBills from '@/components/container/Bills/ListBills'
 import Header from '@/components/container/Header'
-import ListBills from '@/components/container/ListBills'
 import PrimaryButton from '@/components/fragments/Button/Primary'
 import {
   LinearOpacityBottomContainer,
