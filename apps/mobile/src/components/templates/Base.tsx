@@ -12,14 +12,16 @@ import { StatusBar } from 'expo-status-bar'
 import { RefreshControl } from 'react-native-gesture-handler'
 
 type Props = {
-  header: (isCompact: boolean) => JSX.Element
   children: JSX.Element | JSX.Element[]
+  renderHeader?: (isCompact: boolean) => JSX.Element
+  renderFooter?: (isCompact: boolean) => JSX.Element
   scrollViewProps?: ScrollViewProps
 }
 
 export default function BaseTemplate({
-  header,
   children,
+  renderHeader = () => <></>,
+  renderFooter = () => <></>,
   scrollViewProps = {}
 }: Props) {
   const [isCompactedHeader, setIsCompactedHeader] = useState(false)
@@ -27,6 +29,11 @@ export default function BaseTemplate({
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) =>
     setIsCompactedHeader(event.nativeEvent.contentOffset.y > 5)
+
+  const handlePageRefresh = () => {
+    setIsRefreshing(true)
+    setTimeout(() => setIsRefreshing(false), 1000)
+  }
 
   return (
     <View className="bg-white">
@@ -36,10 +43,7 @@ export default function BaseTemplate({
           refreshControl={
             <RefreshControl
               refreshing={isRefreshing}
-              onRefresh={() => {
-                setIsRefreshing(true)
-                setTimeout(() => setIsRefreshing(false), 1000)
-              }}
+              onRefresh={handlePageRefresh}
             />
           }
           stickyHeaderIndices={[0]}
@@ -51,10 +55,11 @@ export default function BaseTemplate({
           }}
           {...scrollViewProps}
         >
-          {header(isCompactedHeader)}
+          {renderHeader(isCompactedHeader)}
           {children}
         </ScrollView>
       </SafeAreaView>
+      {renderFooter(isCompactedHeader)}
     </View>
   )
 }

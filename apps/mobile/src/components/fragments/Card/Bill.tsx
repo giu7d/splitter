@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import colors from 'tailwindcss/colors'
 
-import Button from '@/components/fragments/Button'
+import PillButton from '@/components/fragments/Button/Pill'
 
 import { Card, CardActions, CardHeader } from '.'
 import NumberOfSplitBadge from '../Badges/NumberOfSplit'
@@ -77,7 +77,7 @@ function PendingBillCard({ bill }: Props) {
         </View>
       </View>
       <CardActions>
-        <Button>Pay</Button>
+        <PillButton>Pay</PillButton>
       </CardActions>
     </Card>
   )

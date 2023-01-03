@@ -9,7 +9,7 @@ import { StyledComponent } from 'nativewind'
 
 type Props = TouchableOpacityProps & { children: string; textProps?: TextProps }
 
-export default function Button({
+export default function PrimaryButton({
   children,
   textProps = {},
   ...touchableOpacityProps
@@ -18,12 +18,12 @@ export default function Button({
     <StyledComponent
       {...touchableOpacityProps}
       component={TouchableOpacity}
-      className={`bg-white h-10 w-24 rounded-full justify-center items-center ${touchableOpacityProps.className}`}
+      className={`bg-neutral-900 justify-center items-center p-5 rounded-2xl ${touchableOpacityProps.className}`}
     >
       <StyledComponent
         {...textProps}
         component={Text}
-        className={`text-neutral-900 text-sm font-semibold ${textProps.className}`}
+        className={`text-lg font-semibold text-white ${textProps.className}`}
       >
         {children}
       </StyledComponent>
