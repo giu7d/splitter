@@ -7,6 +7,7 @@ import ProfileImage from '@/components/fragments/ProfileImage'
 import { trpc } from '@/services/api'
 
 import { createAnimation } from './animation'
+
 type Props = {
   isCompact?: boolean
   onOpenProfile?: () => void
