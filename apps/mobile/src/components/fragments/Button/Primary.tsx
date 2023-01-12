@@ -18,12 +18,12 @@ export default function PrimaryButton({
     <StyledComponent
       {...touchableOpacityProps}
       component={TouchableOpacity}
-      className={`bg-neutral-900 justify-center items-center p-5 rounded-2xl ${touchableOpacityProps.className}`}
+      className={`bg-neutral-900 justify-center items-center h-16 rounded-2xl ${touchableOpacityProps.className}`}
     >
       <StyledComponent
         {...textProps}
         component={Text}
-        className={`text-lg font-semibold text-white ${textProps.className}`}
+        className={`text-md font-semibold text-white ${textProps.className}`}
       >
         {children}
       </StyledComponent>

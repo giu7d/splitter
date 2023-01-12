@@ -5,7 +5,8 @@ import Tab from '@/components/fragments/Tab'
 const FILTER_ITEMS = [
   { name: 'all', label: 'All' },
   { name: 'unpaid', label: 'Unpaid' },
-  { name: 'paid', label: 'Paid' }
+  { name: 'paid', label: 'Paid' },
+  { name: 'deleted', label: 'Deleted' }
 ]
 
 export default function FilterBills() {

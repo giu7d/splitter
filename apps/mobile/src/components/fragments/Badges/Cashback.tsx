@@ -17,8 +17,8 @@ export default function CashbackBadge({ cashbackTotal, ...props }: Props) {
       component={View}
       {...props}
     >
-      <Feather name="refresh-cw" color={colors.green[500]} size={14} />
-      <Text className="text-green-500 font-semibold text-base">
+      <Feather name="refresh-cw" color={colors.green[500]} size={12} />
+      <Text className="text-green-500 font-semibold text-sm">
         {cashbackTotal}
       </Text>
     </StyledComponent>

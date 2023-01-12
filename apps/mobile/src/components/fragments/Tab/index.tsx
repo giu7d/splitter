@@ -35,14 +35,14 @@ export default function Tab({
 
   const animatedTabStyles = useAnimatedStyle(() => ({
     left: withSpring(tabSelectedX.value, {
-      damping: 15
+      damping: 20
     })
   }))
 
   return (
     <View className="flex-row bg-neutral-100 p-1 justify-between items-center rounded-full">
       <Animated.View
-        className="absolute bg-neutral-900 h-10 w-24 rounded-full justify-center items-center"
+        className="absolute bg-neutral-900 h-8 w-20 rounded-full justify-center items-center"
         style={animatedTabStyles}
       />
       {items.map((item) => (

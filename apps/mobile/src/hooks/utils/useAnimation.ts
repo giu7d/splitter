@@ -55,8 +55,8 @@ export const useVisibilityAnimation = (
 
 export const useFontSizeAnimation = (
   condition: boolean,
-  from = 24,
-  to = 16,
+  from = 18,
+  to = 14,
   withTransition = withTiming
 ) =>
   useAnimatedStyle(() => {

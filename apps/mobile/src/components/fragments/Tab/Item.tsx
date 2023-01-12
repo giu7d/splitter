@@ -11,11 +11,11 @@ type Props = TouchableOpacityProps & {
 export default function TabItem({ children, name, selected, ...props }: Props) {
   return (
     <TouchableOpacity
-      className="h-10 w-24 rounded-full justify-center items-center"
+      className="h-8 w-20 rounded-full justify-center items-center"
       {...props}
     >
       <Text
-        className="text-sm font-semibold"
+        className="text-xs font-semibold"
         style={{
           color: name === selected ? colors.white : colors.neutral[400]
         }}

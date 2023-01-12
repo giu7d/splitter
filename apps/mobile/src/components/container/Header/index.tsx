@@ -32,22 +32,22 @@ export default function Header({
             style={animations.image}
           />
         </TouchableOpacity>
-        <View>
-          <View className="gap-1">
-            <View>
-              <Animated.Text
-                className="text-base text-neutral-500"
-                style={animations.hidden}
-              >
-                Hello
-              </Animated.Text>
-              <Animated.Text
-                className="text-2xl capitalize text-neutral-900 font-semibold"
-                style={animations.text}
-              >
-                {data.firstName} {data.lastName}
-              </Animated.Text>
-            </View>
+        <View className="gap-1">
+          <View>
+            <Animated.Text
+              className="text-sm text-neutral-500"
+              style={animations.hidden}
+            >
+              Hello
+            </Animated.Text>
+            <Animated.Text
+              className="text-lg capitalize text-neutral-900 font-semibold"
+              style={animations.text}
+            >
+              {data.firstName} {data.lastName}
+            </Animated.Text>
+          </View>
+          <View>
             <CashbackBadge
               cashbackTotal={data.cashbackTotal}
               component={Animated.View}
