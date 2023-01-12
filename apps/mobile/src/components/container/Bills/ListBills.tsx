@@ -1,10 +1,10 @@
 import { View } from 'react-native'
 
-import Bill from '@/components/fragments/Card/Bill'
+import BillCard from '@/components/fragments/Card/Bill'
 import { trpc } from '@/services/api'
 
 export default function ListBills() {
-  const { data } = trpc.bills.useQuery()
+  const { data } = trpc.bills.list.useQuery()
 
   if (!data) return <></>
 
@@ -12,7 +12,7 @@ export default function ListBills() {
     <View className="gap-4">
       {data.map((bill) => (
         <View key={`bill-${bill.name}`}>
-          <Bill bill={bill} />
+          <BillCard bill={bill} />
         </View>
       ))}
     </View>

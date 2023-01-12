@@ -17,7 +17,7 @@ export default function Header({
   isCompact = false,
   onOpenProfile = () => {}
 }: Props) {
-  const { data } = trpc.user.useQuery()
+  const { data } = trpc.users.find.useQuery({ id: 'my-id' })
   const animations = createAnimation(isCompact)
 
   if (!data) return <></>
@@ -49,7 +49,7 @@ export default function Header({
           </View>
           <View>
             <CashbackBadge
-              cashbackTotal={data.cashbackTotal}
+              cashbackTotal={data.cashback.total}
               component={Animated.View}
               style={animations.hidden}
             />
@@ -57,7 +57,7 @@ export default function Header({
         </View>
       </View>
       <CashbackBadge
-        cashbackTotal={data.cashbackTotal}
+        cashbackTotal={data.cashback.total}
         component={Animated.View}
         style={[animations.visibleWhenCompacted]}
       />

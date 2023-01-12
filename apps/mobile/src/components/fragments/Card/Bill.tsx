@@ -1,6 +1,7 @@
 import { Text, View } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
+import type { Bill } from 'splitter-api/src/entities/bill'
 import colors from 'tailwindcss/colors'
 
 import PillButton from '@/components/fragments/Button/Pill'
@@ -21,7 +22,7 @@ function PaidBillCard({ bill }: Props) {
           {bill.name}
         </Text>
         <NumberOfSplitBadge
-          numberOfSplit={bill.numberOfSplit}
+          numberOfSplit={bill.participants.length}
           iconColor={colors.neutral[900]}
           textClassName="text-neutral-900"
         />
@@ -54,7 +55,7 @@ function PendingBillCard({ bill }: Props) {
       <CardHeader>
         <Text className="text-white font-semibold text-lg">{bill.name}</Text>
         <NumberOfSplitBadge
-          numberOfSplit={bill.numberOfSplit}
+          numberOfSplit={bill.participants.length}
           iconColor={colors.white}
           textClassName="text-white"
         />
@@ -81,7 +82,7 @@ function PendingBillCard({ bill }: Props) {
   )
 }
 
-export default function Bill(props: Props) {
-  if (props.bill.isPayed) return <PaidBillCard {...props} />
+export default function BillCard(props: Props) {
+  if (props.bill.status === 'payed') return <PaidBillCard {...props} />
   return <PendingBillCard {...props} />
 }

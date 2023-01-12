@@ -5,11 +5,11 @@ export { fastifyTRPCPlugin as withFastifyTRPC } from '@trpc/server/adapters/fast
 
 export const trpc = initTRPC.create()
 
-export const router = trpc.router
+export const useRouter = trpc.router
 
-export const middleware = trpc.middleware
+export const useMiddleware = trpc.middleware
 
-export const procedure = trpc.procedure
+export const useProcedure = () => trpc.procedure
 
 export function createContext({ req, res }: CreateFastifyContextOptions) {
   return { req, res }
