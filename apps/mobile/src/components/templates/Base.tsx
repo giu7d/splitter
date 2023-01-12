@@ -13,6 +13,7 @@ import { RefreshControl } from 'react-native-gesture-handler'
 
 type Props = {
   children: JSX.Element | JSX.Element[]
+  onRefresh?: () => Promise<void>
   renderHeader?: (isCompact: boolean) => JSX.Element
   renderFooter?: (isCompact: boolean) => JSX.Element
   scrollViewProps?: ScrollViewProps
@@ -22,6 +23,7 @@ export default function BaseTemplate({
   children,
   renderHeader = () => <></>,
   renderFooter = () => <></>,
+  onRefresh = async () => {},
   scrollViewProps = {}
 }: Props) {
   const [isCompactedHeader, setIsCompactedHeader] = useState(false)
@@ -32,7 +34,7 @@ export default function BaseTemplate({
 
   const handlePageRefresh = () => {
     setIsRefreshing(true)
-    setTimeout(() => setIsRefreshing(false), 1000)
+    onRefresh().finally(() => setIsRefreshing(false))
   }
 
   return (

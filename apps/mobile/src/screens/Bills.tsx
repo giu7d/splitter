@@ -12,13 +12,23 @@ import {
 import BaseTemplate from '@/components/templates/Base'
 import DrawerTemplate from '@/components/templates/Drawer'
 import useDrawer from '@/hooks/useDrawer'
+import { trpc } from '@/services/api'
 
 export default function Bills() {
   const drawer = useDrawer()
+  const billsQuery = trpc.bills.list.useQuery()
+
+  // TODO: Refactor this
+  const handleRefresh = async () => {
+    await new Promise((resolve) =>
+      setTimeout(() => billsQuery.refetch().finally(() => resolve('')), 1000)
+    )
+  }
 
   return (
     <DrawerTemplate drawerComponent={<CreateBill />}>
       <BaseTemplate
+        onRefresh={handleRefresh}
         renderHeader={(isCompact) => (
           <LinearOpacityTopContainer>
             <Header isCompact={isCompact} />
