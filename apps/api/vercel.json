@@ -1,4 +1,8 @@
 {
+  "name": "splitter-api",
+  "version": 2,
+  "public": true,
+  "builds": [{ "src": "*.ts", "use": "@vercel/node" }],
   "rewrites": [
     {
       "source": "/(.*)",
