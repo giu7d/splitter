@@ -45,7 +45,7 @@ Current stack been used in the challenge:
 **Animation & Style**
 
 - [x] nativewind (Tailwind)
-- [x] moti (Framer/Motion)
+- [x] reanimated
 
 **State Management**
 

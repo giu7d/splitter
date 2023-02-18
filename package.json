@@ -29,8 +29,6 @@
       "**/expo-*/**",
       "**/metro-*",
       "**/metro-*/**",
-      "**/moti",
-      "**/moti/**",
       "**/nativewind",
       "**/tailwindcss"
     ]
