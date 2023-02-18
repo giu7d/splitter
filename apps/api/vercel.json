@@ -2,10 +2,13 @@
   "name": "splitter-api",
   "version": 2,
   "public": true,
+  "installCommand": "yarn install",
+  "buildCommand": "yarn build",
+  "outputDirectory": "build",
   "rewrites": [
     {
-      "source": "build/(.*)",
-      "destination": "build/serverless.js"
+      "source": "/(.*)",
+      "destination": "/build/serverless.js"
     }
   ]
 }
