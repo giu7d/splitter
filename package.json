@@ -10,6 +10,8 @@
       "**/@tanstack*",
       "**/@tanstack*/**",
       "**/@babel/**/*",
+      "**/babel-plugin-*",
+      "**/babel-plugin-*/**",
       "**/@tanstack/**/*",
       "**/@trpc",
       "**/@trpc/**/*",
