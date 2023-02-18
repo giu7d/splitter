@@ -1,13 +1,15 @@
-import fastify from 'fastify'
+import { URL } from 'url'
 
-import { createContext, withFastifyTRPC } from '@/config/trpc'
-import routes from '@/routes'
+import app from '@/app'
+import { serverRunningTemplate } from '@/utils/console'
 
-const server = fastify({ logger: true })
+const { API_URL = '' } = process.env
 
-void server.register(withFastifyTRPC, {
-  prefix: '/trpc',
-  trpcOptions: { router: routes, createContext }
-})
+const url = new URL(API_URL)
+const host = url.hostname
+const port = parseInt(url.port, 10)
 
-export default server
+app
+  .listen({ host, port })
+  .then(() => console.log(serverRunningTemplate(host, port)))
+  .catch((error) => console.error(error))

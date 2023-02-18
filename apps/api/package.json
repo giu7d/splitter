@@ -1,10 +1,10 @@
 {
   "name": "splitter-api",
   "version": "1.0.0",
-  "main": "build/index.js",
+  "main": "build/server.js",
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register src/index.ts",
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --inspect=0.0.0.0:9991 src/index.ts"
+    "start": "ts-node -r tsconfig-paths/register src/server.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --inspect=0.0.0.0:9991 src/server.ts"
   },
   "dependencies": {
     "@trpc/server": "^10.4.2",
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
+    "@vercel/node": "^2.9.6",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.1.0",
