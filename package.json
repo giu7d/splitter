@@ -34,8 +34,12 @@
     ]
   },
   "scripts": {
-    "build": "turbo run build",
     "dev": "dotenv -- turbo run dev --parallel",
+    "dev:mobile": "dotenv -- turbo dev --filter=\"{./apps/mobile}...\"",
+    "dev:api": "dotenv -- turbo dev --filter=\"{./apps/api}...\"",
+    "build": "turbo run build",
+    "build:mobile": "turbo build --filter=\"...{./apps/mobile}\"",
+    "build:api": "turbo build --filter=\"...{./apps/api}\"",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

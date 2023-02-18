@@ -5,9 +5,10 @@
   "scripts": {
     "start": "expo start --dev-client",
     "dev": "expo start --lan",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web",
+    "build": "expo export --output-dir ./build --platform all",
+    "run:android": "expo run:android",
+    "run:ios": "expo run:ios",
+    "run:web": "expo start --web",
     "lint": "eslint . --ext [.ts,.tsx,.js]",
     "lint:fix": "eslint . --ext [.ts,.tsx,.js] --fix"
   },
