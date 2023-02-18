@@ -6,6 +6,7 @@ export default {
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
+    jsEngine: 'hermes',
     splash: {
       image: './assets/splash.png',
       resizeMode: 'contain',
