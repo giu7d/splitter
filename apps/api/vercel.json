@@ -2,11 +2,6 @@
   "name": "splitter-api",
   "version": 2,
   "public": true,
-  "functions": {
-    "build/*.js": {
-      "runtime": "@vercel/node"
-    }
-  },
   "rewrites": [
     {
       "source": "build/(.*)",
