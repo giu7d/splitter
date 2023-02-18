@@ -3,6 +3,7 @@ export default {
     name: 'splitter',
     slug: 'splitter',
     version: '1.0.0',
+    owner: 'giu7d',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
@@ -32,7 +33,10 @@ export default {
       favicon: './assets/favicon.png'
     },
     extra: {
-      ...process.env
+      ...process.env,
+      eas: {
+        projectId: '916828f4-940a-42fa-a42d-a662c47baf27'
+      }
     }
   }
 }
