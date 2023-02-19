@@ -4,11 +4,5 @@
   "public": true,
   "installCommand": "yarn install",
   "buildCommand": "yarn build",
-  "outputDirectory": "build",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/serverless.js"
-    }
-  ]
+  "outputDirectory": "build"
 }

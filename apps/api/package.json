@@ -1,9 +1,9 @@
 {
   "name": "splitter-api",
   "version": "1.0.0",
-  "main": "build/serverless.js",
+  "main": "build/server.js",
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register src/server.ts",
+    "start": "node build/server.js",
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --inspect=0.0.0.0:9991 src/server.ts",
     "build": "babel src --extensions \".js,.ts\" --out-dir build --copy-files"
   },

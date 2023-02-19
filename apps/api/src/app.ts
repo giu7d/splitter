@@ -1,9 +1,16 @@
-import fastify from 'fastify'
+import fastify, { FastifyReply, FastifyRequest } from 'fastify'
 
 import { createContext, withFastifyTRPC } from '@/config/trpc'
 import routes from '@/routes'
 
 const app = fastify({ logger: true })
+
+void app.get('/', async (req: FastifyRequest, res: FastifyReply) => {
+  void res.status(200).send({
+    code: 'OK',
+    status: 200
+  })
+})
 
 void app.register(withFastifyTRPC, {
   prefix: '/trpc',
