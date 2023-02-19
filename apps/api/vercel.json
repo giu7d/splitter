@@ -6,7 +6,7 @@
   "buildCommand": "yarn build",
   "outputDirectory": "build",
   "functions": {
-    "src/server.ts": {
+    "api/serverless.js": {
       "memory": 1024,
       "maxDuration": 10
     }
