@@ -7,7 +7,7 @@
   "outputDirectory": "build",
   "functions": {
     "*.js": {
-      "memory": 3008,
+      "memory": 1024,
       "maxDuration": 10
     }
   }
