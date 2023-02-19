@@ -1,7 +1,7 @@
 {
   "name": "splitter-api",
   "version": "1.0.0",
-  "main": "build/server.js",
+  "main": "build/serverless.js",
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register src/server.ts",
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --inspect=0.0.0.0:9991 src/server.ts",
