@@ -1,14 +1,15 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "name": "splitter-api",
   "version": 2,
   "public": true,
   "installCommand": "yarn install",
   "buildCommand": "yarn build",
   "outputDirectory": "build",
-  "functions": {
-    "api/serverless.js": {
-      "memory": 1024,
-      "maxDuration": 10
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "serverless.js"
     }
-  }
+  ]
 }
