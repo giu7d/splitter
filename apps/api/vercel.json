@@ -6,7 +6,7 @@
   "buildCommand": "yarn build",
   "outputDirectory": "build",
   "functions": {
-    "build/server.js": {
+    "src/server.ts": {
       "memory": 1024,
       "maxDuration": 10
     }
