@@ -1,8 +1,20 @@
-import app from '@/app'
+import fastify, { FastifyReply, FastifyRequest } from 'fastify'
 
-app
-  .listen()
-  .then(() => console.log('Running...'))
-  .catch((error) => console.error(error))
+import { createContext, withFastifyTRPC } from '@/config/trpc'
+import routes from '@/routes'
+
+const app = fastify({ logger: true })
+
+void app.get('/', async (req: FastifyRequest, res: FastifyReply) => {
+  void res.status(200).send({
+    code: 'OK',
+    status: 200
+  })
+})
+
+void app.register(withFastifyTRPC, {
+  prefix: '/trpc',
+  trpcOptions: { router: routes, createContext }
+})
 
 export default app
