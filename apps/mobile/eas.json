@@ -3,14 +3,7 @@
     "promptToConfigurePushNotifications": false
   },
   "build": {
-    "monorepo": {
-      "cache": {
-        "key": "turbo",
-        "customPaths": ["../../node_modules/.cache/turbo"]
-      }
-    },
     "development": {
-      "extends": "monorepo",
       "distribution": "internal",
       "android": {
         "buildType": "apk"
@@ -20,7 +13,6 @@
       }
     },
     "production": {
-      "extends": "monorepo",
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
