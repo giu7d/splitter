@@ -8,7 +8,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/build/serverless.js"
+      "destination": "/serverless.js"
     }
   ]
 }
