@@ -17,7 +17,9 @@ export default {
       fallbackToCacheTimeout: 0,
       url: 'https://u.expo.dev/916828f4-940a-42fa-a42d-a662c47baf27'
     },
-    runtimeVersion: '1.0.0',
+    runtimeVersion: {
+      policy: 'sdkVersion'
+    },
     assetBundlePatterns: ['**/*'],
     plugins: ['expo-community-flipper'],
     ios: {
