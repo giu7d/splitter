@@ -23,12 +23,12 @@ jobs:
       - name: 📦 Build packages
         run: yarn build
 
-      - name: 🚀 Publish preview
+      - name: 🚀 Publish update
         working-directory: apps/mobile
-        run: expo publish --release-channel=pr-${{ github.event.number }}
+        run: eas update --non-interactive --channel=development --message=pr-${{ github.event.number }}
 
-      - name: 💬 Comment preview
+      - name: 💬 Comment update
         uses: expo/expo-github-action/preview-comment@v7
         with:
           project: apps/mobile
-          channel: pr-${{ github.event.number }}
+          channel: development
