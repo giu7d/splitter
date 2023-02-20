@@ -4,6 +4,7 @@
   },
   "build": {
     "development": {
+      "channel": "development",
       "distribution": "internal",
       "android": {
         "buildType": "apk"
@@ -13,6 +14,7 @@
       }
     },
     "production": {
+      "channel": "production",
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
