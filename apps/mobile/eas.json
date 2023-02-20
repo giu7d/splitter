@@ -11,6 +11,9 @@
       },
       "ios": {
         "resourceClass": "m1-medium"
+      },
+      "env": {
+        "API_URL": "https://splitter-production.up.railway.app"
       }
     },
     "production": {
@@ -21,6 +24,9 @@
       },
       "ios": {
         "resourceClass": "m1-medium"
+      },
+      "env": {
+        "API_URL": "https://splitter-production.up.railway.app"
       }
     }
   }
