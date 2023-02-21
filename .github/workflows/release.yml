@@ -26,4 +26,4 @@ jobs:
 
       - name: 🚀 Publish update
         working-directory: apps/mobile
-        run: eas update --non-interactive --channel=production --message=release-${{ github.event.number }}
+        run: eas update --non-interactive --channel=production --message=release-${{ github.sha }}
