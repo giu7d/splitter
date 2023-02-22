@@ -4,7 +4,7 @@ import type { Routes } from 'splitter-api/src/routes'
 
 const API_URL = Constants?.manifest?.extra?.API_URL ?? ''
 
-export const API_TRPC_URL = new URL('/trpc', API_URL)
+export const API_TRPC_URL = `${API_URL}/trpc`
 
 export const trpc = createTRPCReact<Routes>()
 
