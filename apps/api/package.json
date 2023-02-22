@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node build/index.js",
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --inspect=0.0.0.0:9991 src/index.ts",
-    "build": "babel src --extensions \".js,.ts\" --out-dir build --copy-files",
+    "build": "babel src --extensions \".ts\" --out-dir build --copy-files",
     "test": "jest",
     "test:dev": "jest --watch --coverage=false --changedSince=origin/main",
     "test:debug": "jest -o --watch --coverage=false",
