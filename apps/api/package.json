@@ -9,7 +9,9 @@
     "test": "jest",
     "test:dev": "jest --watch --coverage=false --changedSince=origin/main",
     "test:debug": "jest -o --watch --coverage=false",
-    "test:update-snapshots": "jest -u --coverage=false"
+    "test:update-snapshots": "jest -u --coverage=false",
+    "lint": "eslint . --ext [.ts]",
+    "lint:fix": "eslint . --ext [.ts] --fix"
   },
   "dependencies": {
     "@trpc/server": "^10.4.2",
