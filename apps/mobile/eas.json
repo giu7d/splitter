@@ -3,6 +3,19 @@
     "promptToConfigurePushNotifications": false
   },
   "build": {
+    "test": {
+      "channel": "test",
+      "android": {
+        "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release",
+        "withoutCredentials": true
+      },
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "API_URL": "https://splitter-production.up.railway.app"
+      }
+    },
     "development": {
       "channel": "development",
       "distribution": "internal",

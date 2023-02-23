@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   expo: {
     name: 'splitter',
     slug: 'splitter',
@@ -21,7 +21,7 @@ export default {
       policy: 'sdkVersion'
     },
     assetBundlePatterns: ['**/*'],
-    plugins: ['expo-community-flipper'],
+    plugins: ['expo-community-flipper', '@config-plugins/detox'],
     ios: {
       supportsTablet: true,
       bundleIdentifier: 'com.prisma.splitter'
