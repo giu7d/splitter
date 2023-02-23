@@ -27,6 +27,7 @@ jobs:
         run: yarn build:mobile
 
       - name: 📦 Build app locally
+        working-directory: apps/mobile
         run: eas build \
           --local \
           --non-interactive \
