@@ -53,9 +53,6 @@ jobs:
 
   e2e-android:
     runs-on: macos-latest
-    env:
-      DETOX_CONFIGURATION: android.emu.release
-
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
