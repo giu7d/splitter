@@ -22,10 +22,10 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 📦 Build packages
-        run: yarn build
+      - name: 📦 Build packages for mobile
+        run: yarn build:mobile
 
-      - name: 🚀 Publish update
+      - name: 🚀 Publish production update for mobile
         working-directory: apps/mobile
         run: eas update --non-interactive --channel=production --message=release-${{ github.sha }}
 
@@ -38,13 +38,13 @@ jobs:
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 📦 Build packages
-        run: yarn build
-
       - name: 🏗 Setup Railway
         run: yarn global add @railway/cli
 
-      - name: 🚀 Publish
+      - name: 📦 Build packages for api
+        run: yarn build:api
+
+      - name: 🚀 Publish production update for api
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

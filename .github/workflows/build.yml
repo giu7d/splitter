@@ -36,6 +36,6 @@ jobs:
       - name: 📦 Build packages for mobile
         run: yarn build:mobile
 
-      - name: 🚀 Build mobile
+      - name: 🚀 Build for mobile
         working-directory: apps/mobile
         run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
