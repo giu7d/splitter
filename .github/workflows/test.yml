@@ -84,7 +84,6 @@ jobs:
         run: yarn e2e:android:build
 
       - name: 🧪 E2E for android
-        working-directory: apps/mobile
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
@@ -92,6 +91,7 @@ jobs:
           avd-name: pixel_4
           profile: pixel
           script: yarn e2e:android:test
+          working-directory: apps/mobile
 
       - name: 💿 Upload artifacts
         if: failure()
