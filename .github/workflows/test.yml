@@ -20,8 +20,6 @@ jobs:
 
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
-        with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 🏗 Find current PR Number
         uses: jwalton/gh-find-current-pr@v1
@@ -52,3 +50,50 @@ jobs:
           prnumber: ${{ steps.find-current-pr-number.outputs.number }}
           package-manager: yarn
           annotations: none
+
+  e2e-android:
+    runs-on: macos-latest
+    env:
+      DETOX_CONFIGURATION: android.emu.release
+
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🏗 Setup Java
+        uses: actions/setup-java@v3
+        with:
+          cache: gradle
+          distribution: temurin
+          java-version: 17
+
+      - name: 🏗 Setup detox cache
+        id: cache-detox-build
+        uses: actions/cache@v3
+        with:
+          path: android/app/build
+          key: ${{ runner.os }}-detox-build
+          restore-keys: |
+            ${{ runner.os }}-detox-build
+
+      - name: 📦 Build detox for android
+        run: yarn e2e:android:build
+
+      - name: 🧪 E2E for android
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          avd-name: pixel_4
+          profile: pixel
+          script: yarn e2e:android:test
+
+      - name: 💿 Upload artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: detox-artifacts
+          path: artifacts
