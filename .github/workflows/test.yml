@@ -39,6 +39,7 @@ jobs:
       - name: 💬 Comment mobile coverage report
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
+          skip-step: all
           working-directory: apps/mobile
           prnumber: ${{ steps.find-current-pr-number.outputs.number }}
           package-manager: yarn
@@ -48,6 +49,7 @@ jobs:
       - name: 💬 Comment api coverage report
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
+          skip-step: all
           working-directory: apps/api
           prnumber: ${{ steps.find-current-pr-number.outputs.number }}
           package-manager: yarn
