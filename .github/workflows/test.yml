@@ -33,25 +33,22 @@ jobs:
       - name: 📦 Build packages
         run: yarn build
 
-      - name: 🧪 Test packages
-        run: yarn test
-
-      - name: 💬 Comment mobile coverage report
+      - name: 🧪 Test and coverage mobile
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          skip-step: all
+          skip-step: install
+          test-script: yarn test
           working-directory: apps/mobile
           prnumber: ${{ steps.find-current-pr-number.outputs.number }}
           package-manager: yarn
           annotations: none
-          coverage-file: report.json
 
-      - name: 💬 Comment api coverage report
+      - name: 🧪 Test and coverage api
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          skip-step: all
+          skip-step: install
+          test-script: yarn test
           working-directory: apps/api
           prnumber: ${{ steps.find-current-pr-number.outputs.number }}
           package-manager: yarn
           annotations: none
-          coverage-file: report.json
