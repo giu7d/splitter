@@ -20,14 +20,14 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 📦 Build packages
-        run: yarn build
+      - name: 📦 Build packages for mobile
+        run: yarn build:mobile
 
-      - name: 🚀 Publish update
+      - name: 🚀 Publish update for mobile
         working-directory: apps/mobile
         run: eas update --non-interactive --channel=development --message=pr-${{ github.event.number }}
 
-      - name: 💬 Comment update
+      - name: 💬 Comment update for mobile
         uses: expo/expo-github-action/preview-comment@v7
         with:
           project: apps/mobile
