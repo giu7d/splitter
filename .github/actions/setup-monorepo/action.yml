@@ -34,6 +34,9 @@ runs:
         expo-version: ${{ inputs.expo-version }}
         token: ${{ inputs.expo-token }}
 
+    - name: 🏗 Setup Railway
+      run: yarn global add @railway/cli
+
     - name: 📦 Install dependencies
       run: yarn install
       shell: bash

@@ -27,3 +27,20 @@ jobs:
       - name: 🚀 Publish update
         working-directory: apps/mobile
         run: eas update --non-interactive --channel=production --message=release-${{ github.sha }}
+
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 📦 Build packages
+        run: yarn build
+
+      - name: 🚀 Publish
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
