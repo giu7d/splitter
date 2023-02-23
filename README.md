@@ -86,11 +86,33 @@ eas build -p android --profile development
 
 ### Test
 
+#### Lint
+
+```bash
+yarn lint
+```
+
+This lints stuff...
+
+If you want to test specifics run _inside each app folder_.
+
+#### Unit and Integration
+
+To run unit and integration tests just run this shit locally:
+
+```bash
+yarn test
+```
+
+It will test every repo, if you want to test specifics run _inside each app folder_.
+
+#### End To End
+
 TODO:...
 
 ## Deploy
 
-TODO:...
+We are using **railway.app** to deploy the backend app, and **EAS** to build, update, and release the mobile app.
 
 ## Screen Shots
 
@@ -126,16 +148,15 @@ Current stack been used in the challenge:
 
 - [x] flipper
 - [ ] detox
-- [ ] jest
+- [x] jest
 
 **Animation & Style**
 
 - [x] nativewind (Tailwind)
 - [x] reanimated
 
-**State Management**
-
-- [ ] jotai - [docs](https://jotai.org/)
+<!-- **State Management**
+- [ ] jotai - [docs](https://jotai.org/) -->
 
 **Network & API**
 

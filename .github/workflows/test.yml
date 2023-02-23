@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  mobile:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repository
@@ -23,6 +23,10 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: 🏗 Find current PR Number
+        uses: jwalton/gh-find-current-pr@v1
+        id: find-current-pr-number
+
       - name: ✅ Lint packages
         run: yarn lint
 
@@ -31,3 +35,23 @@ jobs:
 
       - name: 🧪 Test packages
         run: yarn test
+
+      - name: 💬 Comment mobile coverage report
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          skip-step: all
+          working-directory: apps/mobile
+          prnumber: ${{ steps.find-current-pr-number.outputs.number }}
+          package-manager: yarn
+          annotations: none
+          coverage-file: report.json
+
+      - name: 💬 Comment api coverage report
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          skip-step: all
+          working-directory: apps/api
+          prnumber: ${{ steps.find-current-pr-number.outputs.number }}
+          package-manager: yarn
+          annotations: none
+          coverage-file: report.json

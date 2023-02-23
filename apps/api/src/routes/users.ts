@@ -11,10 +11,10 @@ const createUser = new CreateUser()
 const usersRoutes = useRouter({
   find: useProcedure()
     .input(z.object({ id: z.string() }))
-    .query(({ input }) => findUser.call(input.id)),
+    .query(async ({ input }) => await findUser.call(input.id)),
   create: useProcedure()
     .input(useValidUser())
-    .mutation(({ input }) => createUser.call(input))
+    .mutation(async ({ input }) => await createUser.call(input))
 })
 
 export default usersRoutes
