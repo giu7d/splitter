@@ -42,7 +42,6 @@ jobs:
           prnumber: ${{ steps.find-current-pr-number.outputs.number }}
           package-manager: yarn
           annotations: none
-          coverage-file: report.json
 
       - name: 🧪 Test and coverage api
         uses: ArtiomTr/jest-coverage-report-action@v2
@@ -53,4 +52,3 @@ jobs:
           prnumber: ${{ steps.find-current-pr-number.outputs.number }}
           package-manager: yarn
           annotations: none
-          coverage-file: report.json
