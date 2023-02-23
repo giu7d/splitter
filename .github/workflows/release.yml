@@ -1,6 +1,7 @@
 name: Release
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - 'main'
@@ -39,6 +40,9 @@ jobs:
 
       - name: 📦 Build packages
         run: yarn build
+
+      - name: 🏗 Setup Railway
+        run: yarn global add @railway/cli
 
       - name: 🚀 Publish
         run: railway up
