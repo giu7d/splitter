@@ -11,7 +11,7 @@
     "run:web": "expo start --web",
     "lint": "eslint . --ext [.ts,.tsx]",
     "lint:fix": "eslint . --ext [.ts,.tsx] --fix",
-    "test": "jest",
+    "test": "jest --silent --ci --coverage --testLocationInResults --json --outputFile=\"report.json\"",
     "test:dev": "jest --watch --coverage=false --changedSince=origin/main",
     "test:debug": "jest -o --watch --coverage=false",
     "test:update-snapshots": "jest -u --coverage=false"
