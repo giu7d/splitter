@@ -80,9 +80,11 @@ jobs:
             ${{ runner.os }}-detox-build
 
       - name: 📦 Build detox for android
+        working-directory: apps/mobile
         run: yarn e2e:android:build
 
       - name: 🧪 E2E for android
+        working-directory: apps/mobile
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
@@ -96,4 +98,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: detox-artifacts
-          path: artifacts
+          path: apps/mobile/artifacts
