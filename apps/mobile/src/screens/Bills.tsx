@@ -26,30 +26,34 @@ export default function Bills() {
   }
 
   return (
-    <DrawerTemplate drawerComponent={<CreateBill />}>
-      <BaseTemplate
-        onRefresh={handleRefresh}
-        renderHeader={(isCompact) => (
-          <LinearOpacityTopContainer>
-            <Header isCompact={isCompact} />
-            <View className="p-6 pt-4">
-              <FilterBills />
-            </View>
-          </LinearOpacityTopContainer>
-        )}
-        renderFooter={() => (
-          <LinearOpacityBottomContainer className="absolute w-full p-6 pt-9 bottom-0">
-            <PrimaryButton onPress={drawer.show}>Create new bill</PrimaryButton>
-          </LinearOpacityBottomContainer>
-        )}
-        scrollViewProps={{
-          className: 'gap-6'
-        }}
-      >
-        <View className="px-6 pb-12">
-          <ListBills />
-        </View>
-      </BaseTemplate>
-    </DrawerTemplate>
+    <View testID="bill-screen">
+      <DrawerTemplate drawerComponent={<CreateBill />}>
+        <BaseTemplate
+          onRefresh={handleRefresh}
+          renderHeader={(isCompact) => (
+            <LinearOpacityTopContainer>
+              <Header isCompact={isCompact} />
+              <View className="p-6 pt-4">
+                <FilterBills />
+              </View>
+            </LinearOpacityTopContainer>
+          )}
+          renderFooter={() => (
+            <LinearOpacityBottomContainer className="absolute w-full p-6 pt-9 bottom-0">
+              <PrimaryButton onPress={drawer.show}>
+                Create new bill
+              </PrimaryButton>
+            </LinearOpacityBottomContainer>
+          )}
+          scrollViewProps={{
+            className: 'gap-6'
+          }}
+        >
+          <View className="px-6 pb-12">
+            <ListBills />
+          </View>
+        </BaseTemplate>
+      </DrawerTemplate>
+    </View>
   )
 }
