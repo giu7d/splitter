@@ -37,18 +37,18 @@ jobs:
         run: yarn test
 
       - name: 💬 Comment mobile coverage report
-        working-directory: apps/mobile
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
+          working-directory: apps/mobile
           prnumber: ${{ steps.find-current-pr-number.outputs.number }}
           package-manager: yarn
           annotations: none
           coverage-file: coverage/coverage-final.json
 
       - name: 💬 Comment api coverage report
-        working-directory: apps/mobile
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
+          working-directory: apps/api
           prnumber: ${{ steps.find-current-pr-number.outputs.number }}
           package-manager: yarn
           annotations: none
