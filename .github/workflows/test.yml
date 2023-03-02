@@ -53,6 +53,8 @@ jobs:
 
   e2e-android:
     runs-on: macos-latest
+    env:
+      ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL: 160
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
