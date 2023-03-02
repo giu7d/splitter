@@ -78,16 +78,39 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-detox-build
 
+      - name: 🏗 Setup AVD cache
+        uses: actions/cache@v3
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-cache-30
+
+      - name: 🏗 Create AVD and generate snapshot for caching
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          avd-name: pixel_4
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          force-avd-creation: false
+          script: echo "Generated AVD snapshot for caching."
+
       - name: 📦 Build detox for android
         working-directory: apps/mobile
         run: yarn e2e:android:build
 
       - name: 🧪 E2E for android
-        uses: ReactiveCircus/android-emulator-runner@v2.27.0
+        uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
           arch: x86_64
           avd-name: pixel_4
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
           script: yarn e2e:android:test
           working-directory: apps/mobile
 
