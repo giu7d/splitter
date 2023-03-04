@@ -19,10 +19,20 @@ module.exports = {
     },
     runtimeVersion: 'exposdk:47.0.0',
     assetBundlePatterns: ['**/*'],
-    plugins: ['expo-community-flipper', '@config-plugins/detox'],
+    plugins: [
+      'expo-community-flipper',
+      '@config-plugins/detox',
+      [
+        'expo-updates',
+        {
+          username: 'giu7d'
+        }
+      ]
+    ],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.prisma.splitter'
+      bundleIdentifier: 'com.prisma.splitter',
+      jsEngine: 'jsc'
     },
     android: {
       adaptiveIcon: {
