@@ -31,27 +31,10 @@ jobs:
       - name: 📦 Build packages
         run: yarn build
 
-      - name: 🧪 Test and coverage for mobile
-        uses: ArtiomTr/jest-coverage-report-action@v2
-        with:
-          skip-step: install
-          test-script: yarn test
-          working-directory: apps/mobile
-          prnumber: ${{ steps.find-current-pr-number.outputs.number }}
-          package-manager: yarn
-          annotations: none
+      - name: 🧪 Test repo
+        run: yarn test
 
-      - name: 🧪 Test and coverage for api
-        uses: ArtiomTr/jest-coverage-report-action@v2
-        with:
-          skip-step: install
-          test-script: yarn test
-          working-directory: apps/api
-          prnumber: ${{ steps.find-current-pr-number.outputs.number }}
-          package-manager: yarn
-          annotations: none
-
-  e2e-ios:
+  e2e:
     runs-on: macos-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode.app
@@ -78,22 +61,20 @@ jobs:
           path: apps/mobile/ios/Pods
           key: cache-pod-${{ hashFiles('**/Podfile.lock') }}
 
-      - name: 📦 Update pods
-        working-directory: apps/mobile
+      - name: 🏗 Setup cocoapods, xcode, and homebrew
         run: |
           gem update cocoapods xcodeproj
-          cd ios
-          pod install
-          cd ..
-
-      - name: 🏗 Setup homebrew
-        working-directory: apps/mobile
-        run: |
           brew tap wix/brew
           brew install applesimutils
 
+      - name: 📦 Install dependencies
+        working-directory: apps/mobile/ios
+        run: pod install
+
+      - name: 📦 Build app for iOS
+        working-directory: apps/mobile
+        run: EXPO_USE_UPDATES=0 yarn e2e:ios:build
+
       - name: 🧪 E2E for iOS
         working-directory: apps/mobile
-        run: |
-          EXPO_USE_UPDATES=0 yarn e2e:ios:build
-          yarn e2e:ios:test
+        run: yarn e2e:ios:test
