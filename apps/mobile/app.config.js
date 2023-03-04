@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   expo: {
     name: 'splitter',
     slug: 'splitter',
@@ -17,14 +17,22 @@ export default {
       fallbackToCacheTimeout: 0,
       url: 'https://u.expo.dev/916828f4-940a-42fa-a42d-a662c47baf27'
     },
-    runtimeVersion: {
-      policy: 'sdkVersion'
-    },
+    runtimeVersion: 'exposdk:47.0.0',
     assetBundlePatterns: ['**/*'],
-    plugins: ['expo-community-flipper'],
+    plugins: [
+      'expo-community-flipper',
+      '@config-plugins/detox',
+      [
+        'expo-updates',
+        {
+          username: 'giu7d'
+        }
+      ]
+    ],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.prisma.splitter'
+      bundleIdentifier: 'com.prisma.splitter',
+      jsEngine: 'jsc'
     },
     android: {
       adaptiveIcon: {

@@ -1,6 +1,5 @@
 import { View } from 'react-native'
 
-import CreateBill from '@/components/container/Bills/CreateBill'
 import FilterBills from '@/components/container/Bills/FilterBills'
 import ListBills from '@/components/container/Bills/ListBills'
 import Header from '@/components/container/Header'
@@ -10,7 +9,6 @@ import {
   LinearOpacityTopContainer
 } from '@/components/fragments/Containers/LinearOpacity'
 import BaseTemplate from '@/components/templates/Base'
-import DrawerTemplate from '@/components/templates/Drawer'
 import useDrawer from '@/hooks/useDrawer'
 import { trpc } from '@/services/api'
 
@@ -18,7 +16,6 @@ export default function Bills() {
   const drawer = useDrawer()
   const billsQuery = trpc.bills.list.useQuery()
 
-  // TODO: Refactor this
   const handleRefresh = async () => {
     await new Promise((resolve) =>
       setTimeout(() => billsQuery.refetch().finally(() => resolve('')), 1000)
@@ -26,7 +23,8 @@ export default function Bills() {
   }
 
   return (
-    <DrawerTemplate drawerComponent={<CreateBill />}>
+    <View testID="bill-screen">
+      {/* <DrawerTemplate drawerComponent={<CreateBill />}> */}
       <BaseTemplate
         onRefresh={handleRefresh}
         renderHeader={(isCompact) => (
@@ -50,6 +48,7 @@ export default function Bills() {
           <ListBills />
         </View>
       </BaseTemplate>
-    </DrawerTemplate>
+      {/* </DrawerTemplate> */}
+    </View>
   )
 }

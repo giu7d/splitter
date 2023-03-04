@@ -2,7 +2,9 @@ import { createTRPCReact, httpBatchLink } from '@trpc/react-query'
 import Constants from 'expo-constants'
 import type { Routes } from 'splitter-api/src/routes'
 
-const API_URL = Constants?.manifest?.extra?.API_URL ?? ''
+const API_URL =
+  Constants?.expoConfig?.extra?.API_URL ??
+  'https://splitter-production.up.railway.app'
 
 export const API_TRPC_URL = `${API_URL}/trpc`
 

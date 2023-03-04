@@ -20,8 +20,6 @@ jobs:
 
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
-        with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 🏗 Find current PR Number
         uses: jwalton/gh-find-current-pr@v1
@@ -33,22 +31,50 @@ jobs:
       - name: 📦 Build packages
         run: yarn build
 
-      - name: 🧪 Test and coverage for mobile
-        uses: ArtiomTr/jest-coverage-report-action@v2
-        with:
-          skip-step: install
-          test-script: yarn test
-          working-directory: apps/mobile
-          prnumber: ${{ steps.find-current-pr-number.outputs.number }}
-          package-manager: yarn
-          annotations: none
+      - name: 🧪 Test repo
+        run: yarn test
 
-      - name: 🧪 Test and coverage for api
-        uses: ArtiomTr/jest-coverage-report-action@v2
+  e2e:
+    runs-on: macos-latest
+    env:
+      DEVELOPER_DIR: /Applications/Xcode.app
+    steps:
+      - name: 🏗 Setup repository
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🏗 Setup detox cache
+        id: cache-detox-build
+        uses: actions/cache@v3
         with:
-          skip-step: install
-          test-script: yarn test
-          working-directory: apps/api
-          prnumber: ${{ steps.find-current-pr-number.outputs.number }}
-          package-manager: yarn
-          annotations: none
+          path: apps/mobile/ios/build
+          key: ${{ runner.os }}-detox-ios-build
+          restore-keys: |
+            ${{ runner.os }}-detox-ios-build
+
+      - name: 🏗 Setup pods cache
+        uses: actions/cache@v3
+        id: cache-pod
+        with:
+          path: apps/mobile/ios/Pods
+          key: cache-pod-${{ hashFiles('**/Podfile.lock') }}
+
+      - name: 🏗 Setup cocoapods, xcode, and homebrew
+        run: |
+          gem update cocoapods xcodeproj
+          brew tap wix/brew
+          brew install applesimutils
+
+      - name: 📦 Install dependencies
+        working-directory: apps/mobile/ios
+        run: pod install
+
+      - name: 📦 Build app for iOS
+        working-directory: apps/mobile
+        run: EXPO_USE_UPDATES=0 yarn e2e:ios:build
+
+      - name: 🧪 E2E for iOS
+        working-directory: apps/mobile
+        run: yarn e2e:ios:test

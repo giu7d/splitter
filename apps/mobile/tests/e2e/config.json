@@ -1,0 +1,10 @@
+{
+  "rootDir": "../..",
+  "testMatch": ["<rootDir>/tests/e2e/**/*.e2e.ts"],
+  "maxWorkers": 1,
+  "testTimeout": 120000,
+  "verbose": true,
+  "reporters": ["detox/runners/jest/reporter"],
+  "globalSetup": "detox/runners/jest/globalSetup",
+  "testEnvironment": "detox/runners/jest/testEnvironment"
+}
