@@ -16,7 +16,7 @@
     "test:debug": "jest -o --watch --coverage=false",
     "test:update-snapshots": "jest -u --coverage=false",
     "e2e:ios:build": "detox build -c ios.release",
-    "e2e:ios:test": "detox test -c ios.release --forceExit --cleanup",
+    "e2e:ios:test": "detox test -c ios.release --forceExit --cleanup --headless",
     "e2e:android:build": "detox build -c android.release",
     "e2e:android:test": "detox test -c android.release --forceExit --cleanup --headless"
   },
