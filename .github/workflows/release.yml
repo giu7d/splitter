@@ -39,7 +39,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🏗 Setup Railway
-        run: yarn global add @railway/cli
+        run: yarn global add @railway/cli@2.1.0
 
       - name: 📦 Build packages for api
         run: yarn build:api
