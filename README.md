@@ -108,7 +108,29 @@ It will test every repo, if you want to test specifics run _inside each app fold
 
 #### End To End
 
-TODO:...
+End to end test is handled by **detox**, to run the test first we need to build an release app.
+
+Inside `apps/mobile` folder run:
+
+```bash
+# ios
+yarn e2e:ios:build
+# or
+# android
+yarn e2e:android:build
+```
+
+Next, run the detox test script:
+
+```bash
+# ios
+yarn e2e:ios:test
+# or
+# android
+yarn e2e:android:test
+```
+
+Both tests will be run in `headless` mode, so don't expect the emulator to pop-up.
 
 ## Deploy
 
@@ -147,7 +169,7 @@ Current stack been used in the challenge:
 **Test & Debug**
 
 - [x] flipper
-- [ ] detox
+- [x] detox
 - [x] jest
 
 **Animation & Style**
