@@ -2,43 +2,6 @@
   "name": "splitter",
   "version": "0.0.0",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "apps/*"
-    ],
-    "nohoist": [
-      "**/@babel/**/*",
-      "**/@expo",
-      "**/@expo/**",
-      "**/@react-native-*",
-      "**/@react-native-*/**",
-      "**/@tanstack*",
-      "**/@tanstack*/**",
-      "**/@tanstack/**/*",
-      "**/@trpc",
-      "**/@trpc/**/*",
-      "**/*react-navigation/**",
-      "**/babel-plugin-*",
-      "**/babel-plugin-*/**",
-      "**/expo-*",
-      "**/expo-*/**",
-      "**/expo",
-      "**/expo/**",
-      "**/jest",
-      "**/jest/**",
-      "**/jest-*",
-      "**/jest-*/**",
-      "**/metro-*",
-      "**/metro-*/**",
-      "**/nativewind",
-      "**/react-native-*",
-      "**/react-native-*/**",
-      "**/react-native",
-      "**/react-native/**",
-      "**/react-query",
-      "**/tailwindcss"
-    ]
-  },
   "scripts": {
     "dev": "dotenv -- turbo dev --parallel",
     "dev:mobile": "dotenv -- turbo dev --filter=\"{./apps/mobile}...\"",
@@ -69,7 +32,47 @@
     "turbo": "latest",
     "typescript": "^4.6.3"
   },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@babel/*",
+        "expo-modules-*",
+        "typescript",
+        "**/@babel/**/*",
+        "**/@expo",
+        "**/@expo/**",
+        "**/@react-native-*",
+        "**/@react-native-*/**",
+        "**/@tanstack*",
+        "**/@tanstack*/**",
+        "**/@tanstack/**/*",
+        "**/@trpc",
+        "**/@trpc/**/*",
+        "**/*react-navigation/**",
+        "**/babel-plugin-*",
+        "**/babel-plugin-*/**",
+        "**/expo-*",
+        "**/expo-*/**",
+        "**/expo",
+        "**/expo/**",
+        "**/jest",
+        "**/jest/**",
+        "**/jest-*",
+        "**/jest-*/**",
+        "**/metro-*",
+        "**/metro-*/**",
+        "**/nativewind",
+        "**/react-native-*",
+        "**/react-native-*/**",
+        "**/react-native",
+        "**/react-native/**",
+        "**/react-query",
+        "**/tailwindcss"
+      ]
+    }
+  },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.15.0",
+    "pnpm": ">=8.1.0"
   }
 }
