@@ -22,7 +22,7 @@ on:
           - production
 
 jobs:
-  mobile:
+  build-mobile:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repository
@@ -34,7 +34,7 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Build packages for mobile
-        run: yarn build:mobile
+        run: pnpm run build:mobile
 
       - name: 🚀 Build for mobile
         working-directory: apps/mobile

@@ -26,13 +26,13 @@ jobs:
         id: find-current-pr-number
 
       - name: ✅ Lint packages
-        run: yarn lint
+        run: pnpm run lint
 
       - name: 📦 Build packages
-        run: yarn build
+        run: pnpm run build
 
       - name: 🧪 Test repo
-        run: yarn test
+        run: pnpm run test
 
   e2e:
     runs-on: macos-latest
@@ -73,8 +73,8 @@ jobs:
 
       - name: 📦 Build app for iOS
         working-directory: apps/mobile
-        run: EXPO_USE_UPDATES=0 yarn e2e:ios:build
+        run: EXPO_USE_UPDATES=0 pnpm run e2e:ios:build
 
       - name: 🧪 E2E for iOS
         working-directory: apps/mobile
-        run: yarn e2e:ios:test
+        run: pnpm run e2e:ios:test

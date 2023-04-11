@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  mobile:
+  release-mobile:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repository
@@ -23,13 +23,13 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Build packages for mobile
-        run: yarn build:mobile
+        run: pnpm run build:mobile
 
       - name: 🚀 Publish production update for mobile
         working-directory: apps/mobile
         run: eas update --non-interactive --channel=production --message=release-${{ github.sha }}
 
-  api:
+  release-api:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repository
@@ -39,10 +39,10 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🏗 Setup Railway
-        run: yarn global add @railway/cli@2.1.0
+        run: pnpm install --global @railway/cli@2.1.0
 
       - name: 📦 Build packages for api
-        run: yarn build:api
+        run: pnpm run build:api
 
       - name: 🚀 Publish production update for api
         run: railway up

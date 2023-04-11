@@ -2,6 +2,7 @@
 
 # Visual Studio Code
 .vscode
+.expo
 
 # dependencies
 node_modules

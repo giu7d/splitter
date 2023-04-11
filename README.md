@@ -37,13 +37,13 @@ cp .env.example .env
 2. 📦 Install dependencies, _inside the root folder run_:
 
 ```bash
-yarn install
+pnpm install
 ```
 
 3. 🚀 Run in development mode, _inside the root folder run_:
 
 ```bash
-yarn dev
+pnpm run dev
 ```
 
 ### Production
@@ -59,19 +59,19 @@ cp .env.example .env
 2. 📦 Install dependencies, _inside the root folder run_:
 
 ```bash
-yarn install
+pnpm install
 ```
 
 3.  📦 Build all apps packages, _inside the root folder run_:
 
 ```bash
-yarn build
+pnpm run build
 ```
 
 3. 🚀 Run the production builds, _inside the root folder run_:
 
 ```bash
-yarn start
+pnpm run start
 ```
 
 #### Mobile (.APK, .IPA)
@@ -89,7 +89,7 @@ eas build -p android --profile development
 #### Lint
 
 ```bash
-yarn lint
+pnpm run lint
 ```
 
 This lints stuff...
@@ -101,7 +101,7 @@ If you want to test specifics run _inside each app folder_.
 To run unit and integration tests just run this shit locally:
 
 ```bash
-yarn test
+pnpm run test
 ```
 
 It will test every repo, if you want to test specifics run _inside each app folder_.
@@ -114,20 +114,20 @@ Inside `apps/mobile` folder run:
 
 ```bash
 # ios
-yarn e2e:ios:build
+pnpm run e2e:ios:build
 # or
 # android
-yarn e2e:android:build
+pnpm run e2e:android:build
 ```
 
 Next, run the detox test script:
 
 ```bash
 # ios
-yarn e2e:ios:test
+pnpm run e2e:ios:test
 # or
 # android
-yarn e2e:android:test
+pnpm run e2e:android:test
 ```
 
 Both tests will be run in `headless` mode, so don't expect the emulator to pop-up.
@@ -158,7 +158,7 @@ Current stack been used in the challenge:
 
 **Workspace**
 
-- [x] yarn
+- [x] pnpm
 - [x] turborepo
 
 **Framework**

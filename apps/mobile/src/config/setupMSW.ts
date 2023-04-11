@@ -1,5 +1,5 @@
-import { setupServer } from 'msw/node'
 import { createTRPCMsw } from 'msw-trpc'
+import { setupServer } from 'msw/node'
 import type { Routes } from 'splitter-api/src/routes'
 
 export const trpcMSW = createTRPCMsw<Routes>()
