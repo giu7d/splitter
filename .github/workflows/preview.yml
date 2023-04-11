@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  mobile:
+  preview-mobile:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repository

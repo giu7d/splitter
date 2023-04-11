@@ -22,7 +22,7 @@ on:
           - production
 
 jobs:
-  mobile:
+  build-mobile:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repository
