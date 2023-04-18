@@ -8,6 +8,8 @@ module.exports = {
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
     jsEngine: 'hermes',
+    runtimeVersion: 'exposdk:48.0.0',
+    assetBundlePatterns: ['**/*'],
     splash: {
       image: './assets/splash.png',
       resizeMode: 'contain',
@@ -17,22 +19,26 @@ module.exports = {
       fallbackToCacheTimeout: 0,
       url: 'https://u.expo.dev/916828f4-940a-42fa-a42d-a662c47baf27'
     },
-    runtimeVersion: 'exposdk:47.0.0',
-    assetBundlePatterns: ['**/*'],
     plugins: [
-      'expo-community-flipper',
       '@config-plugins/detox',
       [
         'expo-updates',
         {
           username: 'giu7d'
         }
+      ],
+      [
+        'expo-build-properties',
+        {
+          ios: {
+            flipper: true
+          }
+        }
       ]
     ],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.prisma.splitter',
-      jsEngine: 'jsc'
+      bundleIdentifier: 'com.prisma.splitter'
     },
     android: {
       adaptiveIcon: {
