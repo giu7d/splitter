@@ -1,9 +1,14 @@
+import cors from '@fastify/cors'
 import fastify, { FastifyReply, FastifyRequest } from 'fastify'
 
 import { createContext, withFastifyTRPC } from '@/config/trpc'
 import routes from '@/routes'
 
 const app = fastify({ logger: true })
+
+void app.register(cors, {
+  origin: '*'
+})
 
 void app.get('/', async (req: FastifyRequest, res: FastifyReply) => {
   void res.status(200).send({
