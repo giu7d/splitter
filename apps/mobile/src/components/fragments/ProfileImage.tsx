@@ -1,18 +1,7 @@
-import { ComponentType } from 'react'
-import { Image, ImageProps } from 'react-native'
+import { ImageProps } from 'react-native'
 
-import { StyledComponent } from 'nativewind'
+import Animated from 'react-native-reanimated'
 
-type Props = ImageProps & {
-  component?: ComponentType<any>
-}
-
-export default function ProfileImageDefault({ className, ...props }: Props) {
-  return (
-    <StyledComponent
-      className={`w-16 h-16 rounded-full shadow-md border-white border-2 ${className}`}
-      component={Image}
-      {...props}
-    />
-  )
+export default function ProfileImageDefault(props: ImageProps) {
+  return <Animated.Image className="w-16 h-16 rounded-full" {...props} />
 }
