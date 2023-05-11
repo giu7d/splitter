@@ -1,9 +1,9 @@
-import { useRouter } from '@/config/trpc'
+import { withRouter } from '@/config/trpc'
 
 import billsRoutes from './bills'
 import usersRoutes from './users'
 
-const routes = useRouter({
+const routes = withRouter({
   users: usersRoutes,
   bills: billsRoutes
 })
