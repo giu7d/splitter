@@ -44,13 +44,13 @@ export default function Bills() {
               <TouchableOpacity className="h-12 w-12 justify-center items-center">
                 <Feather name="inbox" color={colors.neutral[800]} size={24} />
               </TouchableOpacity>
-              <TouchableOpacity className="h-12 w-12 justify-center items-center opacity-25">
-                <Feather name="user" color={colors.neutral[800]} size={24} />
+              <TouchableOpacity className="h-12 w-12 justify-center items-center">
+                <Feather name="user" color={colors.neutral[400]} size={24} />
               </TouchableOpacity>
-              <TouchableOpacity className="h-12 w-12 justify-center items-center opacity-25">
+              <TouchableOpacity className="h-12 w-12 justify-center items-center">
                 <Feather
                   name="settings"
-                  color={colors.neutral[800]}
+                  color={colors.neutral[400]}
                   size={24}
                 />
               </TouchableOpacity>
