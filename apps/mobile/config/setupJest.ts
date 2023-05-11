@@ -1,6 +1,5 @@
+import { server } from '@config/setupMSW'
 import SetupJestFetch from 'jest-fetch-mock'
-
-import { server } from '@/config/setupMSW'
 
 jest.setTimeout(30000)
 

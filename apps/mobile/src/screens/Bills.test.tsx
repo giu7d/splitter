@@ -1,9 +1,10 @@
-import renderWithProvider from '@/config/render'
+import render from '@config/render'
+
 import Bills from '@/screens/Bills'
 
 describe('<Bills />', () => {
   it('renders correctly', () => {
-    const component = renderWithProvider(<Bills />)
+    const component = render(<Bills />)
 
     expect(component.toJSON()).toMatchSnapshot()
   })
