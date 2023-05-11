@@ -1,6 +1,5 @@
 import Provider from '@/providers'
-
-import Bills from './screens/Bills'
+import Bills from '@/screens/Bills'
 
 export default function App() {
   return (
