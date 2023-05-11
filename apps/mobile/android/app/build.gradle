@@ -197,6 +197,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     androidTestImplementation('com.wix:detox:+')
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
