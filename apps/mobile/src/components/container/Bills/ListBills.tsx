@@ -1,6 +1,6 @@
-import { View } from 'react-native'
+import { FlatList, View } from 'react-native'
 
-import BillCard from '@/components/fragments/Card/Bill'
+import BillCard from '@/components/fragments/Card/BillCard'
 import { trpc } from '@/services/api'
 
 export default function ListBills() {
@@ -9,12 +9,17 @@ export default function ListBills() {
   if (!data) return <></>
 
   return (
-    <View className="gap-4">
-      {data.map((bill) => (
-        <View key={`bill-${bill.name}`}>
-          <BillCard bill={bill} />
+    <FlatList
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      data={data}
+      contentContainerStyle={{ padding: 24 }}
+      ItemSeparatorComponent={() => <View className="w-4" />}
+      renderItem={({ item }) => (
+        <View key={`bill-${item.name}`}>
+          <BillCard bill={item} />
         </View>
-      ))}
-    </View>
+      )}
+    />
   )
 }
