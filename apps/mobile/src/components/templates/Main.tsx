@@ -44,7 +44,7 @@ export default function MainTemplate({
   return (
     <View className="bg-white">
       <StatusBar style="dark" />
-      <SafeAreaView className="flex-grow h-full">
+      <SafeAreaView className="flex-grow h-full pt-6">
         <ScrollView
           refreshControl={
             <RefreshControl
