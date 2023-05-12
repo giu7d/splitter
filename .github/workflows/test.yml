@@ -69,7 +69,7 @@ jobs:
 
       - name: 📦 Install dependencies
         working-directory: apps/mobile/ios
-        run: pod install
+        run: pod install --no-repo-update
 
       - name: 📦 Build app for iOS
         working-directory: apps/mobile
