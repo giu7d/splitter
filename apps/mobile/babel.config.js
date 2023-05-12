@@ -4,13 +4,15 @@ module.exports = function (api) {
     presets: ['babel-preset-expo'],
     plugins: [
       'nativewind/babel',
+      '@babel/plugin-proposal-export-namespace-from',
       'react-native-reanimated/plugin',
       [
         'module-resolver',
         {
           alias: {
             '@': './src',
-            '@assets': './assets'
+            '@assets': './assets',
+            '@config': './config'
           }
         }
       ]

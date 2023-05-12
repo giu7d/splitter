@@ -1,6 +1,6 @@
 {
-  "rootDir": "../..",
-  "testMatch": ["<rootDir>/tests/e2e/**/*.e2e.ts"],
+  "rootDir": "../",
+  "testMatch": ["<rootDir>/e2e/**/*.e2e.ts"],
   "maxWorkers": 1,
   "testTimeout": 120000,
   "verbose": true,

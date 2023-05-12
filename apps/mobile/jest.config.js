@@ -9,7 +9,7 @@ module.exports = {
     'src/**/*.{js,jsx,ts,tsx}',
     '!**/*.test.{js,jsx,ts,tsx}'
   ],
-  setupFilesAfterEnv: ['<rootDir>/src/config/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/config/setupJest.ts'],
   roots: ['<rootDir>/src'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'

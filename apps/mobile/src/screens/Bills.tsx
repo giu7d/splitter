@@ -1,4 +1,7 @@
-import { View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
+
+import { Feather } from '@expo/vector-icons'
+import colors from 'tailwindcss/colors'
 
 import FilterBills from '@/components/container/Bills/FilterBills'
 import ListBills from '@/components/container/Bills/ListBills'
@@ -36,15 +39,32 @@ export default function Bills() {
           </LinearOpacityTopContainer>
         )}
         renderFooter={() => (
-          <LinearOpacityBottomContainer className="absolute w-full p-6 pt-9 bottom-0">
-            <PrimaryButton onPress={drawer.show}>Create new bill</PrimaryButton>
+          <LinearOpacityBottomContainer className="absolute w-full p-6 px-4 bottom-3">
+            <View className="items-center justify-between flex-row gap-6">
+              <TouchableOpacity className="h-12 w-12 justify-center items-center">
+                <Feather name="inbox" color={colors.neutral[800]} size={24} />
+              </TouchableOpacity>
+              <TouchableOpacity className="h-12 w-12 justify-center items-center">
+                <Feather name="user" color={colors.neutral[400]} size={24} />
+              </TouchableOpacity>
+              <TouchableOpacity className="h-12 w-12 justify-center items-center">
+                <Feather
+                  name="settings"
+                  color={colors.neutral[400]}
+                  size={24}
+                />
+              </TouchableOpacity>
+              <PrimaryButton onPress={drawer.show} className="h-12 flex-grow">
+                New
+              </PrimaryButton>
+            </View>
           </LinearOpacityBottomContainer>
         )}
         scrollViewProps={{
           className: 'gap-6'
         }}
       >
-        <View className="px-6 pb-12">
+        <View className="flex-grow h-full pb-20">
           <ListBills />
         </View>
       </BaseTemplate>

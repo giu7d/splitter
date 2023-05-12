@@ -26,11 +26,7 @@ export default function Header({
     <View className="flex-row items-center p-6 py-4 justify-between">
       <View className="flex-row items-center justify-start">
         <TouchableOpacity onPress={onOpenProfile}>
-          <ProfileImage
-            source={{ uri: data.photo }}
-            component={Animated.Image}
-            style={animations.image}
-          />
+          <ProfileImage source={{ uri: data.photo }} style={animations.image} />
         </TouchableOpacity>
         <View className="gap-1">
           <View>

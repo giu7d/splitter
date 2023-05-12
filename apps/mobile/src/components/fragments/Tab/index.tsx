@@ -40,9 +40,9 @@ export default function Tab({
   }))
 
   return (
-    <View className="flex-row bg-neutral-100 p-1 justify-between items-center rounded-full">
+    <View className="flex-row bg-neutral-100 p-1 justify-between items-center rounded-2xl">
       <Animated.View
-        className="absolute bg-neutral-900 h-8 w-20 rounded-full justify-center items-center"
+        className="absolute bg-neutral-800 h-8 w-20 rounded-full justify-center items-center"
         style={animatedTabStyles}
       />
       {items.map((item) => (
