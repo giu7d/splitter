@@ -1,10 +1,7 @@
 import { useEffect } from 'react'
 import { Dimensions, ScrollView, View } from 'react-native'
 
-import {
-  PanGestureHandler,
-  gestureHandlerRootHOC
-} from 'react-native-gesture-handler'
+import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
@@ -22,7 +19,7 @@ type Props = {
   drawerComponent: JSX.Element
 }
 
-function DrawerTemplate({ children, drawerComponent }: Props) {
+export default function DrawerTemplate({ children, drawerComponent }: Props) {
   const drawer = useDrawer()
 
   const drawerAbsoluteY = useSharedValue(screen.height)
@@ -145,5 +142,3 @@ function DrawerTemplate({ children, drawerComponent }: Props) {
     </View>
   )
 }
-
-export default gestureHandlerRootHOC(DrawerTemplate)
