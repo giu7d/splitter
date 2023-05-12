@@ -1,27 +1,28 @@
 import { TouchableOpacity, View } from 'react-native'
 
+import { useAtomValue } from 'jotai'
 import Animated from 'react-native-reanimated'
 
 import CashbackBadge from '@/components/fragments/Badges/Cashback'
 import { LinearOpacityTopContainer } from '@/components/fragments/Containers/LinearOpacity'
 import ProfileImage from '@/components/fragments/ProfileImage'
 import { trpc } from '@/services/api'
+import { isMainTemplateScrolledAtom } from '@/services/states'
 
 import { createAnimation } from './animation'
 
 type Props = {
-  isCompact?: boolean
-  onOpenProfile?: () => void
   children?: JSX.Element
+  onOpenProfile?: () => void
 }
 
 export default function MainHeader({
-  isCompact = false,
-  onOpenProfile = () => {},
-  children
+  children,
+  onOpenProfile = () => {}
 }: Props) {
+  const isMainTemplateScrolled = useAtomValue(isMainTemplateScrolledAtom)
   const { data } = trpc.users.find.useQuery({ id: 'my-id' })
-  const animations = createAnimation(isCompact)
+  const animations = createAnimation(isMainTemplateScrolled)
 
   if (!data) return <></>
 

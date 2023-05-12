@@ -9,28 +9,32 @@ import {
 } from 'react-native'
 
 import { StatusBar } from 'expo-status-bar'
+import { useSetAtom } from 'jotai'
 import { RefreshControl } from 'react-native-gesture-handler'
+
+import { isMainTemplateScrolledAtom } from '@/services/states'
 
 type Props = {
   children: JSX.Element | JSX.Element[]
   onRefresh?: () => Promise<void>
-  renderHeader?: (isCompact: boolean) => JSX.Element
-  renderFooter?: (isCompact: boolean) => JSX.Element
+  renderHeader?: JSX.Element
+  renderFooter?: JSX.Element
   scrollViewProps?: ScrollViewProps
 }
 
-export default function BaseTemplate({
+export default function MainTemplate({
   children,
-  renderHeader = () => <></>,
-  renderFooter = () => <></>,
+  renderHeader,
+  renderFooter,
   onRefresh = async () => {},
   scrollViewProps = {}
 }: Props) {
-  const [isCompactedHeader, setIsCompactedHeader] = useState(false)
+  const setIsMainTemplateScrolled = useSetAtom(isMainTemplateScrolledAtom)
+
   const [isRefreshing, setIsRefreshing] = useState(false)
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) =>
-    setIsCompactedHeader(event.nativeEvent.contentOffset.y > 5)
+    setIsMainTemplateScrolled(event.nativeEvent.contentOffset.y > 5)
 
   const handlePageRefresh = () => {
     setIsRefreshing(true)
@@ -57,11 +61,11 @@ export default function BaseTemplate({
           }}
           {...scrollViewProps}
         >
-          {renderHeader(isCompactedHeader)}
+          {renderHeader}
           {children}
         </ScrollView>
       </SafeAreaView>
-      {renderFooter(isCompactedHeader)}
+      {renderFooter}
     </View>
   )
 }

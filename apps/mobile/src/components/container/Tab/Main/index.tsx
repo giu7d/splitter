@@ -2,38 +2,12 @@ import { useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
-import colors from 'tailwindcss/colors'
 
 import PrimaryButton from '@/components/fragments/Button/Primary'
 import { LinearOpacityBottomContainer } from '@/components/fragments/Containers/LinearOpacity'
 
-const TABS = [
-  {
-    name: 'home',
-    icon: 'inbox'
-  },
-  {
-    name: 'profile',
-    icon: 'user'
-  },
-  {
-    name: 'settings',
-    icon: 'settings'
-  }
-]
-
-function getSelectedTabProps(tab: string, currentTab: string) {
-  if (tab === currentTab)
-    return {
-      className: 'border-t-2 border-t-neutral-800',
-      color: colors.neutral[800]
-    }
-
-  return {
-    className: '',
-    color: colors.neutral[400]
-  }
-}
+import { TABS } from './constants'
+import { getSelectedTabProps } from './utils'
 
 type Props = {
   onChangeTab?: (tab: string) => void
@@ -55,19 +29,14 @@ export default function MainTab({
     <LinearOpacityBottomContainer className="absolute w-full p-6 px-4 bottom-0">
       <View className="items-center justify-between flex-row gap-6">
         {TABS.map((item) => {
-          const selectedProps = getSelectedTabProps(item.name, tab)
-
+          const props = getSelectedTabProps(item.name, tab)
           return (
             <TouchableOpacity
               key={`tab-${item.name}`}
-              className={`h-12 w-12 justify-center items-center ${selectedProps.className}`}
+              className={`h-12 w-12 justify-center items-center ${props.className}`}
               onPress={() => handleChangeTap(item.name)}
             >
-              <Feather
-                name={item.icon as any}
-                color={selectedProps.color}
-                size={24}
-              />
+              <Feather name={item.icon as any} color={props.color} size={24} />
             </TouchableOpacity>
           )
         })}
