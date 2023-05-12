@@ -13,6 +13,9 @@ concurrency:
 jobs:
   release-mobile:
     runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
@@ -31,6 +34,9 @@ jobs:
 
   release-api:
     runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
