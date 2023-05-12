@@ -1,6 +1,8 @@
-import { Text, View } from 'react-native'
+import { Platform, Text, View } from 'react-native'
 
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import type { Bill } from 'splitter-api/src/entities/bill'
+import colors from 'tailwindcss/colors'
 
 type Props = {
   bill: Bill
@@ -8,7 +10,14 @@ type Props = {
 
 export default function BillCard({ bill }: Props) {
   return (
-    <View className="bg-white rounded-3xl shadow-md opacity-90 w-52">
+    <TouchableOpacity
+      className="bg-white rounded-3xl shadow-md opacity-90 w-52"
+      style={
+        Platform.OS === 'android' && {
+          shadowColor: colors.neutral[400]
+        }
+      }
+    >
       <View className="items-center p-6 pb-0">
         <View className="gap-2">
           <View className="h-16 w-16 border border-red-50 bg-red-100 rounded-full items-center justify-center">
@@ -47,6 +56,6 @@ export default function BillCard({ bill }: Props) {
         <View className="h-2 w-2 rounded-full bg-orange-500 mr-2" />
         <Text className="text-xs">Your split is unpaid</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
