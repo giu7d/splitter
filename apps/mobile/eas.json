@@ -5,6 +5,7 @@
   "build": {
     "test": {
       "channel": "test",
+      "node": "18.15.0",
       "android": {
         "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release",
         "withoutCredentials": true
@@ -19,6 +20,7 @@
     "development": {
       "channel": "development",
       "distribution": "internal",
+      "node": "18.15.0",
       "android": {
         "buildType": "apk"
       },
@@ -32,6 +34,7 @@
     "production": {
       "channel": "production",
       "distribution": "store",
+      "node": "18.15.0",
       "android": {
         "buildType": "app-bundle"
       },
