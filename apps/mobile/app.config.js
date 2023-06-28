@@ -1,3 +1,4 @@
+/** @type {import('expo/config').ExpoConfig} */
 module.exports = {
   expo: {
     name: 'splitter',
