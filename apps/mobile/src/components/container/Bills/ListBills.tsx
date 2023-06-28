@@ -1,6 +1,7 @@
-import { FlatList, View } from 'react-native'
+import { View } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
+import { FlashList } from '@shopify/flash-list'
 import { HoldItem } from 'react-native-hold-menu'
 import colors from 'tailwindcss/colors'
 
@@ -34,10 +35,11 @@ export default function ListBills() {
   if (!data) return <></>
 
   return (
-    <FlatList
+    <FlashList
       horizontal
-      showsHorizontalScrollIndicator={false}
       data={data}
+      estimatedItemSize={25}
+      showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ padding: 24 }}
       ItemSeparatorComponent={() => <View className="w-4" />}
       renderItem={({ item }) => (
