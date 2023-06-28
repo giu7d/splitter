@@ -17,6 +17,8 @@ const atomWithMMKV = <T>(key: string, initialValue: T) =>
 
 export const isMainTemplateScrolledAtom = atom(false)
 
+export const isDrawerVisibleAtom = atom(false)
+
 export const authenticationAtom = atomWithMMKV('auth', {
   firstName: '',
   lastName: '',
