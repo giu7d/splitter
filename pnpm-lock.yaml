@@ -123,6 +123,9 @@ importers:
       '@expo/vector-icons':
         specifier: ^13.0.0
         version: 13.0.0
+      '@shopify/flash-list':
+        specifier: 1.4.0
+        version: 1.4.0(react-native@0.71.8)(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.18.0
         version: 4.18.0(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
@@ -3025,6 +3028,22 @@ packages:
     dependencies:
       component-type: 1.2.1
       join-component: 1.1.0
+
+  /@shopify/flash-list@1.4.0(react-native@0.71.8)(react@18.2.0):
+    resolution: {integrity: sha512-PvPOyk353LuETFnNA038+QaJsAFlCQ2TYC7DHP3YnYqTX72g2BM6qLoLsPaptXKuoXX+dinOo0MbEm7HDjTy1g==}
+    peerDependencies:
+      '@babel/runtime': '*'
+      react: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      '@babel/runtime':
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-native: 0.71.8(@babel/core@7.20.12)(react@18.2.0)
+      recyclerlistview: 4.2.0(react-native@0.71.8)(react@18.2.0)
+      tslib: 2.4.0
+    dev: false
 
   /@sideway/address@4.1.4:
     resolution: {integrity: sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==}
@@ -11686,6 +11705,19 @@ packages:
       source-map: 0.6.1
       tslib: 2.5.2
 
+  /recyclerlistview@4.2.0(react-native@0.71.8)(react@18.2.0):
+    resolution: {integrity: sha512-uuBCi0c+ggqHKwrzPX4Z/mJOzsBbjZEAwGGmlwpD/sD7raXixdAbdJ6BTcAmuWG50Cg4ru9p12M94Njwhr/27A==}
+    peerDependencies:
+      react: '>= 15.2.1'
+      react-native: '>= 0.30.0'
+    dependencies:
+      lodash.debounce: 4.0.8
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-native: 0.71.8(@babel/core@7.20.12)(react@18.2.0)
+      ts-object-utils: 0.0.5
+    dev: false
+
   /regenerate-unicode-properties@10.1.0:
     resolution: {integrity: sha512-d1VudCLoIGitcU/hEg2QqvyGZQmdC0Lf8BqdOMXGFSvJP4bNV1+XqbPQeHHLD51Jh4QJJ225dlIFvY4Ly6MXmQ==}
     engines: {node: '>=4'}
@@ -13093,6 +13125,10 @@ packages:
       yn: 3.1.1
     dev: true
 
+  /ts-object-utils@0.0.5:
+    resolution: {integrity: sha512-iV0GvHqOmilbIKJsfyfJY9/dNHCs969z3so90dQWsO1eMMozvTpnB1MEaUbb3FYtZTGjv5sIy/xmslEz0Rg2TA==}
+    dev: false
+
   /ts-toolbelt@6.15.5:
     resolution: {integrity: sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==}
     dev: true
@@ -13127,6 +13163,10 @@ packages:
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
+
+  /tslib@2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+    dev: false
 
   /tslib@2.5.2:
     resolution: {integrity: sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==}
