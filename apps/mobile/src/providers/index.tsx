@@ -2,7 +2,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Provider as JotaiProvider } from 'jotai'
 import { HoldMenuProvider } from 'react-native-hold-menu'
 
-import { DrawerProvider } from '@/hooks/useDrawer'
 import { createTRPCClient, trpc } from '@/services/api'
 
 type Props = {
@@ -27,7 +26,7 @@ export default function Provider({ children }: Props) {
               left: 0
             }}
           >
-            <DrawerProvider>{children}</DrawerProvider>
+            {children}
           </HoldMenuProvider>
         </QueryClientProvider>
       </trpc.Provider>
