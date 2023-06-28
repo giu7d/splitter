@@ -172,13 +172,16 @@ Current stack been used in the challenge:
 - [x] detox
 - [x] jest
 
-**Animation & Style**
+**Components, Animation & Styling**
 
 - [x] nativewind (Tailwind)
 - [x] reanimated
+- [x] flash list - [docs](https://github.com/shopify/flash-list)
 
-<!-- **State Management**
-- [ ] jotai - [docs](https://jotai.org/) -->
+**State Management & Storage**
+
+- [x] jotai - [docs](https://jotai.org/)
+- [x] MMKV - [docs](https://github.com/mrousavy/react-native-mmkv)
 
 **Network & API**
 
