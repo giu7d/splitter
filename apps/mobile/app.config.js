@@ -32,7 +32,11 @@ module.exports = {
         'expo-build-properties',
         {
           ios: {
-            flipper: true
+            flipper: true,
+            newArchEnabled: true
+          },
+          android: {
+            newArchEnabled: true
           }
         }
       ]
