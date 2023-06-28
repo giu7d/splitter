@@ -186,6 +186,9 @@ importers:
       react-native-hold-menu:
         specifier: ^0.1.6
         version: 0.1.6(expo-blur@12.2.2)(expo-haptics@12.2.1)(react-native-gesture-handler@2.9.0)(react-native-reanimated@2.14.4)(react-native@0.71.8)(react@18.2.0)
+      react-native-mmkv:
+        specifier: ^2.10.0
+        version: 2.10.0(react-native@0.71.8)(react@18.2.0)
       react-native-reanimated:
         specifier: ~2.14.4
         version: 2.14.4(@babel/core@7.20.12)(react-native@0.71.8)(react@18.2.0)
@@ -11470,6 +11473,16 @@ packages:
       react-native: 0.71.8(@babel/core@7.20.12)(react@18.2.0)
       react-native-gesture-handler: 2.9.0(react-native@0.71.8)(react@18.2.0)
       react-native-reanimated: 2.14.4(@babel/core@7.20.12)(react-native@0.71.8)(react@18.2.0)
+    dev: false
+
+  /react-native-mmkv@2.10.0(react-native@0.71.8)(react@18.2.0):
+    resolution: {integrity: sha512-q8WYRjHKIWQMJW1qGJHBMWKOVJkMrl9ggK9uY2QMF18KSC98Bj+HxvO3ztjguE0Z4GWUOzpyyULxSCHJ9p+t2w==}
+    peerDependencies:
+      react: '*'
+      react-native: '>=0.71.0'
+    dependencies:
+      react: 18.2.0
+      react-native: 0.71.8(@babel/core@7.20.12)(react@18.2.0)
     dev: false
 
   /react-native-reanimated@2.14.4(@babel/core@7.20.12)(react-native@0.71.8)(react@18.2.0):
