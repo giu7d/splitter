@@ -25,6 +25,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
+          <string>splitter</string>
           <string>com.prisma.splitter</string>
         </array>
       </dict>
