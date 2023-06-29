@@ -1,4 +1,4 @@
-import Bills from '../src/screens/Bills'
+import Bills from '@/screens/Bills'
 
 export default function App() {
   return <Bills />
