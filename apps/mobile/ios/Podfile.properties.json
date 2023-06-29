@@ -1,5 +1,5 @@
 {
   "expo.jsEngine": "hermes",
   "ios.flipper": "true",
-  "newArchEnabled": "true"
+  "newArchEnabled": "false"
 }
