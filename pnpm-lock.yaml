@@ -193,6 +193,9 @@ importers:
       react-native:
         specifier: 0.71.8
         version: 0.71.8(@babel/core@7.20.12)(react@18.2.0)
+      react-native-dotenv:
+        specifier: ^3.4.9
+        version: 3.4.9
       react-native-gesture-handler:
         specifier: ~2.9.0
         version: 2.9.0(react-native@0.71.8)(react@18.2.0)
@@ -6039,6 +6042,11 @@ packages:
 
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
     dev: false
 
@@ -12334,6 +12342,17 @@ packages:
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
+
+  /react-native-dotenv@3.4.9:
+    resolution: {integrity: sha512-dbyd+mcy7SUzxEgmt33TRf1FGcNe6swJhXmB0unKkI49F7+pidog9kPtjxMLTAfmKA8gcN2XHQSKltGfGbGCLQ==}
+    peerDependencies:
+      '@babel/runtime': ^7.20.6
+    peerDependenciesMeta:
+      '@babel/runtime':
+        optional: true
+    dependencies:
+      dotenv: 16.3.1
+    dev: false
 
   /react-native-gesture-handler@2.9.0(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-a0BcH3Qb1tgVqUutc6d3VuWQkI1AM3+fJx8dkxzZs9t06qA27QgURYFoklpabuWpsUTzuKRpxleykp25E8m7tg==}

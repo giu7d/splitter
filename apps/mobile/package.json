@@ -1,7 +1,7 @@
 {
   "name": "splitter-mobile",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "start": "expo start --dev-client",
     "dev": "expo start",
@@ -44,6 +44,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.8",
+    "react-native-dotenv": "^3.4.9",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-hold-menu": "^0.1.6",
     "react-native-mmkv": "^2.10.0",
