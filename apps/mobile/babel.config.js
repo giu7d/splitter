@@ -1,6 +1,4 @@
-const path = require('path')
-
-process.env.EXPO_ROUTER_APP_ROOT = path(__dirname, '/src/app')
+process.env.EXPO_ROUTER_APP_ROOT = __dirname + '/src/app'
 
 module.exports = function (api) {
   api.cache(true)
