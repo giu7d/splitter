@@ -3,6 +3,7 @@ module.exports = {
   expo: {
     name: 'splitter',
     slug: 'splitter',
+    scheme: 'splitter',
     version: '1.0.0',
     owner: 'giu7d',
     orientation: 'portrait',
@@ -32,7 +33,11 @@ module.exports = {
         'expo-build-properties',
         {
           ios: {
-            flipper: true
+            flipper: true,
+            newArchEnabled: false
+          },
+          android: {
+            newArchEnabled: false
           }
         }
       ]
@@ -49,7 +54,8 @@ module.exports = {
       package: 'com.prisma.splitter'
     },
     web: {
-      favicon: './assets/favicon.png'
+      favicon: './assets/favicon.png',
+      bundler: 'metro'
     },
     extra: {
       ...process.env,

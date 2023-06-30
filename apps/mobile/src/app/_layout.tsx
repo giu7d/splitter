@@ -1,12 +1,13 @@
 import 'react-native-gesture-handler'
 
-import Provider from '@/providers'
-import Bills from '@/screens/Bills'
+import { Slot } from 'expo-router'
 
-export default function App() {
+import Provider from '@/providers'
+
+export default function HomeLayout() {
   return (
     <Provider>
-      <Bills />
+      <Slot />
     </Provider>
   )
 }

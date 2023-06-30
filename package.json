@@ -69,6 +69,10 @@
         "**/react-query",
         "**/tailwindcss"
       ]
+    },
+    "overrides": {
+      "metro": "0.76.0",
+      "metro-resolver": "0.76.0"
     }
   },
   "engines": {
