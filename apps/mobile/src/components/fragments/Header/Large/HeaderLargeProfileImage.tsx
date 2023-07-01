@@ -1,10 +1,11 @@
 import { TouchableOpacity } from 'react-native'
 
-import ProfileImage from '@/components/fragments/ProfileImage'
 import {
   useMarginRightAnimation,
   useSizeAnimation
 } from '@/hooks/utils/useAnimation'
+
+import Image from '../../Image'
 
 type Props = {
   uri?: string
@@ -17,14 +18,14 @@ export default function HeaderLargeProfileImage({
   controlValue = false,
   onPress = () => {}
 }: Props) {
-  const animatedProfileImageSize = useSizeAnimation(controlValue)
-  const animatedProfileImageMargin = useMarginRightAnimation(controlValue)
+  const animatedImageSize = useSizeAnimation(controlValue)
+  const animatedImageMargin = useMarginRightAnimation(controlValue)
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <ProfileImage
+      <Image.Profile
         source={{ uri }}
-        style={[animatedProfileImageSize, animatedProfileImageMargin]}
+        style={[animatedImageSize, animatedImageMargin]}
       />
     </TouchableOpacity>
   )
