@@ -22,7 +22,7 @@ export default function Bills() {
 
   return (
     <View testID="bill-screen">
-      <DrawerTemplate drawerComponent={<CreateBill />}>
+      <DrawerTemplate renderDrawer={<CreateBill />}>
         <MainTemplate
           onRefresh={handleRefresh}
           renderHeader={
