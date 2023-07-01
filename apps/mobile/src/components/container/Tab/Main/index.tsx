@@ -4,7 +4,7 @@ import { TouchableOpacity, View } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 
 import PrimaryButton from '@/components/fragments/Button/Primary'
-import { LinearOpacityBottomContainer } from '@/components/fragments/Containers/LinearOpacity'
+import Container from '@/components/fragments/Container'
 
 import { TABS } from './constants'
 import { getSelectedTabProps } from './utils'
@@ -26,7 +26,7 @@ export default function MainTab({
   }
 
   return (
-    <LinearOpacityBottomContainer className="absolute w-full p-6 px-4 bottom-0">
+    <Container.LinearOpacity.Bottom className="absolute w-full p-6 px-4 bottom-0">
       <View className="items-center justify-between flex-row gap-6">
         {TABS.map((item) => {
           const props = getSelectedTabProps(item.name, tab)
@@ -44,6 +44,6 @@ export default function MainTab({
           New
         </PrimaryButton>
       </View>
-    </LinearOpacityBottomContainer>
+    </Container.LinearOpacity.Bottom>
   )
 }

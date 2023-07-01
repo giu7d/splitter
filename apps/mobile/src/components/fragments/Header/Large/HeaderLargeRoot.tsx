@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 
-import { LinearOpacityTopContainer } from '@/components/fragments/Containers/LinearOpacity'
+import Container from '@/components/fragments/Container'
 
 type Props = {
   children?: JSX.Element
@@ -9,11 +9,11 @@ type Props = {
 
 export default function HeaderLargeRoot({ children, renderExtension }: Props) {
   return (
-    <LinearOpacityTopContainer>
+    <Container.LinearOpacity.Top>
       <View className="flex-row items-center p-6 py-4 justify-between">
         {children}
       </View>
       {renderExtension}
-    </LinearOpacityTopContainer>
+    </Container.LinearOpacity.Top>
   )
 }
