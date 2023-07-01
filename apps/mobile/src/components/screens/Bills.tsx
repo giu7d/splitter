@@ -3,10 +3,10 @@ import { View } from 'react-native'
 import CreateBill from '@/components/container/Bills/CreateBill'
 import FilterBills from '@/components/container/Bills/FilterBills'
 import ListBills from '@/components/container/Bills/ListBills'
-import MainTab from '@/components/container/Tab/Main'
+import BaseTab from '@/components/container/Tab/Main'
 import Header from '@/components/fragments/Header'
+import BaseTemplate from '@/components/templates/Base'
 import DrawerTemplate from '@/components/templates/Drawer'
-import MainTemplate from '@/components/templates/Main'
 import useDrawer from '@/hooks/useDrawer'
 import useScreenScroll from '@/hooks/useScreenScroll'
 import { trpc } from '@/services/api'
@@ -28,7 +28,7 @@ export default function Bills() {
   return (
     <View testID="bill-screen">
       <DrawerTemplate renderDrawer={<CreateBill />}>
-        <MainTemplate
+        <BaseTemplate
           onRefresh={handleRefetchBills}
           renderHeader={
             <Header.Large.Root
@@ -63,12 +63,12 @@ export default function Bills() {
               </Header.Large.Cashback>
             </Header.Large.Root>
           }
-          renderFooter={<MainTab onPressNew={drawer.show} />}
+          renderFooter={<BaseTab onPressNew={drawer.show} />}
         >
           <View className="flex-grow h-full pb-20">
             <ListBills />
           </View>
-        </MainTemplate>
+        </BaseTemplate>
       </DrawerTemplate>
     </View>
   )

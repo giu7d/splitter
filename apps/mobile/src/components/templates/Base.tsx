@@ -1,18 +1,10 @@
-import {
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  SafeAreaView,
-  ScrollView,
-  ScrollViewProps,
-  View
-} from 'react-native'
+import { SafeAreaView, ScrollView, ScrollViewProps, View } from 'react-native'
 
 import { StatusBar } from 'expo-status-bar'
-import { useSetAtom } from 'jotai'
 import { RefreshControl } from 'react-native-gesture-handler'
 
 import usePullToRefresh from '@/hooks/usePullToRefresh'
-import { isMainTemplateScrolledAtom } from '@/services/states'
+import useScreenScroll from '@/hooks/useScreenScroll'
 
 type Props = {
   children: JSX.Element | JSX.Element[]
@@ -22,7 +14,7 @@ type Props = {
   scrollViewProps?: ScrollViewProps
 }
 
-export default function MainTemplate({
+export default function BaseTemplate({
   children,
   renderHeader,
   renderFooter,
@@ -30,11 +22,7 @@ export default function MainTemplate({
   scrollViewProps = {}
 }: Props) {
   const { isRefreshing, handleRefresh } = usePullToRefresh(onRefresh)
-  const setIsMainTemplateScrolled = useSetAtom(isMainTemplateScrolledAtom)
-
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    setIsMainTemplateScrolled(event.nativeEvent.contentOffset.y > 5)
-  }
+  const { handleScroll } = useScreenScroll()
 
   return (
     <View className="bg-white">
