@@ -23,7 +23,7 @@ export default function HeaderLargeCashback({
   const animatedCashbackSmallVisibility = useVisibilityAnimation(!controlValue)
   const animatedCashbackLargeVisibility = useVisibilityAnimation(controlValue)
 
-  const renderMainCashbackText = () => (
+  const renderCashbackLargeText = () => (
     <CashbackBadge
       cashbackTotal={cashbackTotal}
       component={Animated.View}
@@ -34,7 +34,7 @@ export default function HeaderLargeCashback({
   return (
     <>
       <View className="flex-row items-center justify-start">
-        {children(renderMainCashbackText)}
+        {children(renderCashbackLargeText)}
       </View>
       <CashbackBadge
         cashbackTotal={cashbackTotal}

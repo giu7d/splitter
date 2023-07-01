@@ -14,7 +14,7 @@ type Props = {
   onPressNew?: () => void
 }
 
-export default function MainTab({
+export default function BaseTab({
   onPressNew = () => {},
   onChangeTab = () => {}
 }: Props) {
