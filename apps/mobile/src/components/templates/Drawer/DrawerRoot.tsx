@@ -8,11 +8,6 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated'
 
-type Props = {
-  children: JSX.Element
-  drawerRootHeightSharedValue: SharedValue<number>
-}
-
 const screen = Dimensions.get('screen')
 
 const SCALE_MIN = 0.92
@@ -24,14 +19,15 @@ const FINAL_TOP_DIST = Constants.statusBarHeight
 const INITIAL_BORDER_RADIUS = 0
 const FINAL_BORDER_RADIUS = 24
 
-export default function DrawerRoot({
-  children,
-  drawerRootHeightSharedValue
-}: Props) {
-  const animatedDrawerRootScale = useAnimatedStyle(() => {
+type Props = {
+  children: JSX.Element
+  controlledSharedValue: SharedValue<number>
+}
+
+export default function DrawerRoot({ children, controlledSharedValue }: Props) {
+  const animatedDrawerRoot = useAnimatedStyle(() => {
     const currentScale =
-      drawerRootHeightSharedValue.value /
-      (screen.height - Constants.statusBarHeight)
+      controlledSharedValue.value / (screen.height - Constants.statusBarHeight)
 
     const isSmallerThanScale = currentScale <= SCALE_MIN
 
@@ -75,7 +71,7 @@ export default function DrawerRoot({
   })
 
   return (
-    <Animated.View className="overflow-hidden" style={animatedDrawerRootScale}>
+    <Animated.View className="overflow-hidden" style={animatedDrawerRoot}>
       {children}
     </Animated.View>
   )
