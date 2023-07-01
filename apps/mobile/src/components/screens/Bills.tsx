@@ -14,7 +14,7 @@ export default function Bills() {
   const drawer = useDrawer()
   const billsQuery = trpc.bills.list.useQuery()
 
-  const handleRefresh = async () => {
+  const handleRefetchBills = async () => {
     await new Promise((resolve) =>
       setTimeout(() => billsQuery.refetch().finally(() => resolve('')), 1000)
     )
@@ -24,7 +24,7 @@ export default function Bills() {
     <View testID="bill-screen">
       <DrawerTemplate renderDrawer={<CreateBill />}>
         <MainTemplate
-          onRefresh={handleRefresh}
+          onRefresh={handleRefetchBills}
           renderHeader={
             <MainHeader>
               <View className="p-6 pt-4">

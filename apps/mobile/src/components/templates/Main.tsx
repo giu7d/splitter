@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -12,6 +11,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useSetAtom } from 'jotai'
 import { RefreshControl } from 'react-native-gesture-handler'
 
+import usePullToRefresh from '@/hooks/usePullToRefresh'
 import { isMainTemplateScrolledAtom } from '@/services/states'
 
 type Props = {
@@ -29,16 +29,11 @@ export default function MainTemplate({
   onRefresh = async () => {},
   scrollViewProps = {}
 }: Props) {
+  const { isRefreshing, handleRefresh } = usePullToRefresh(onRefresh)
   const setIsMainTemplateScrolled = useSetAtom(isMainTemplateScrolledAtom)
 
-  const [isRefreshing, setIsRefreshing] = useState(false)
-
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) =>
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     setIsMainTemplateScrolled(event.nativeEvent.contentOffset.y > 5)
-
-  const handlePageRefresh = () => {
-    setIsRefreshing(true)
-    onRefresh().finally(() => setIsRefreshing(false))
   }
 
   return (
@@ -49,7 +44,7 @@ export default function MainTemplate({
           refreshControl={
             <RefreshControl
               refreshing={isRefreshing}
-              onRefresh={handlePageRefresh}
+              onRefresh={handleRefresh}
             />
           }
           stickyHeaderIndices={[0]}
