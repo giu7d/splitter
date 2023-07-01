@@ -12,6 +12,7 @@ import Animated, {
 
 import useDrawer from '@/hooks/useDrawer'
 
+import DrawerBackdrop from './DrawerBackdrop'
 import DrawerRoot from './DrawerRoot'
 
 const screen = Dimensions.get('screen')
@@ -25,20 +26,6 @@ export default function DrawerTemplate({ children, drawerComponent }: Props) {
   const drawer = useDrawer()
 
   const drawerAbsoluteY = useSharedValue(screen.height)
-
-  const animatedBackdropStyle = useAnimatedStyle(() => {
-    const isHidden = drawerAbsoluteY.value === screen.height
-
-    if (isHidden) {
-      return {
-        display: 'none'
-      }
-    }
-
-    return {
-      display: 'flex'
-    }
-  })
 
   const animatedDrawerStyles = useAnimatedStyle(() => {
     return {
@@ -81,17 +68,10 @@ export default function DrawerTemplate({ children, drawerComponent }: Props) {
   return (
     <>
       <View className="bg-black">
-        <DrawerRoot drawerRootHeightSharedValue={drawerAbsoluteY}>
+        <DrawerRoot controlledSharedValue={drawerAbsoluteY}>
           {children}
         </DrawerRoot>
-        <Animated.View
-          className="absolute h-full w-full bg-transparent"
-          style={animatedBackdropStyle}
-          onTouchEnd={() => {
-            drawerAbsoluteY.value = withTiming(screen.height)
-            handleCloseDrawer()
-          }}
-        />
+        <DrawerBackdrop controlledSharedValue={drawerAbsoluteY} />
         <PanGestureHandler onHandlerStateChange={_onPanHandlerStateChange}>
           <Animated.View
             className="absolute w-full bg-white bottom-0 rounded-t-3xl shadow-lg z-50"
