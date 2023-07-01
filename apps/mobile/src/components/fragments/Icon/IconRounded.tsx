@@ -8,7 +8,7 @@ type Props = ViewProps & {
   component?: ComponentType<any>
 }
 
-export default function RoundedIcons({
+export default function IconRounded({
   component = View,
   className = '',
   children,

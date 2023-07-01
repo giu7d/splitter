@@ -1,4 +1,4 @@
-import HeaderLarge from './Large'
+import HeaderLarge from './HeaderLarge/'
 
 const Header = {
   Large: HeaderLarge
