@@ -2,7 +2,7 @@ import { View } from 'react-native'
 
 import Animated from 'react-native-reanimated'
 
-import CashbackBadge from '@/components/fragments/Badges/Cashback'
+import Badge from '@/components/fragments/Badge'
 import {
   useTopAnimation,
   useVisibilityAnimation
@@ -24,11 +24,12 @@ export default function HeaderLargeCashback({
   const animatedCashbackLargeVisibility = useVisibilityAnimation(controlValue)
 
   const renderCashbackLargeText = () => (
-    <CashbackBadge
-      cashbackTotal={cashbackTotal}
+    <Badge.Cashback
       component={Animated.View}
       style={animatedCashbackLargeVisibility}
-    />
+    >
+      {cashbackTotal}
+    </Badge.Cashback>
   )
 
   return (
@@ -36,11 +37,12 @@ export default function HeaderLargeCashback({
       <View className="flex-row items-center justify-start">
         {children(renderCashbackLargeText)}
       </View>
-      <CashbackBadge
-        cashbackTotal={cashbackTotal}
+      <Badge.Cashback
         component={Animated.View}
         style={[animatedCashbackSmallTop, animatedCashbackSmallVisibility]}
-      />
+      >
+        {cashbackTotal}
+      </Badge.Cashback>
     </>
   )
 }
