@@ -3,7 +3,7 @@ import { TouchableOpacity, View } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
 
-import PrimaryButton from '@/components/fragments/Button/Primary'
+import Button from '@/components/fragments/Button'
 import Container from '@/components/fragments/Container'
 
 import { TABS } from './constants'
@@ -40,9 +40,9 @@ export default function BaseTab({
             </TouchableOpacity>
           )
         })}
-        <PrimaryButton onPress={onPressNew} className="h-12 flex-grow">
+        <Button.Primary className="h-12 flex-grow" onPress={onPressNew}>
           New
-        </PrimaryButton>
+        </Button.Primary>
       </View>
     </Container.LinearOpacity.Bottom>
   )
