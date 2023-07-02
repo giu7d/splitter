@@ -3,72 +3,42 @@ import { View } from 'react-native'
 import CreateBill from '@/components/container/Bills/CreateBill'
 import FilterBills from '@/components/container/Bills/FilterBills'
 import ListBills from '@/components/container/Bills/ListBills'
-import BaseTab from '@/components/container/Tab/Base'
-import Header from '@/components/fragments/Header'
 import BaseTemplate from '@/components/templates/Base'
 import DrawerTemplate from '@/components/templates/Drawer'
 import useDrawer from '@/hooks/useDrawer'
-import useScreenScroll from '@/hooks/useScreenScroll'
 import { trpc } from '@/services/api'
 
 export default function Bills() {
   const drawer = useDrawer()
-  const scroll = useScreenScroll()
-  const userQuery = trpc.users.find.useQuery({ id: 'my-id' })
-  const billsQuery = trpc.bills.list.useQuery()
+  const user = trpc.users.find.useQuery({ id: 'my-id' })
+  const bills = trpc.bills.list.useQuery()
 
   const handleRefetchBills = async () => {
     await new Promise((resolve) =>
-      setTimeout(() => billsQuery.refetch().finally(() => resolve('')), 1000)
+      setTimeout(() => bills.refetch().finally(() => resolve('')), 1000)
     )
   }
 
-  if (!userQuery.data) return <></>
+  if (!user.data) return <></>
 
   return (
     <View testID="bill-screen">
       <DrawerTemplate renderDrawer={<CreateBill />}>
-        <BaseTemplate
+        <BaseTemplate.Root
           onRefresh={handleRefetchBills}
           renderHeader={
-            <Header.Large.Root
-              renderExtension={
-                <View className="p-6 pt-4">
-                  <FilterBills />
-                </View>
-              }
-            >
-              <Header.Large.Cashback
-                cashbackTotal={userQuery.data.cashback.total}
-                controlValue={scroll.isScreenScrolled}
-              >
-                {(renderCashbackText) => (
-                  <>
-                    <Header.Large.ProfileImage
-                      uri={userQuery.data.photo}
-                      controlValue={scroll.isScreenScrolled}
-                    />
-                    <View className="gap-1">
-                      <View>
-                        <Header.Large.Callout
-                          controlValue={scroll.isScreenScrolled}
-                        >
-                          {userQuery.data.firstName} {userQuery.data.lastName}
-                        </Header.Large.Callout>
-                      </View>
-                      <View>{renderCashbackText()}</View>
-                    </View>
-                  </>
-                )}
-              </Header.Large.Cashback>
-            </Header.Large.Root>
+            <BaseTemplate.Header data={user.data}>
+              <View className="p-6 pt-4">
+                <FilterBills />
+              </View>
+            </BaseTemplate.Header>
           }
-          renderFooter={<BaseTab onPressNew={drawer.show} />}
+          renderFooter={<BaseTemplate.Navigation onPressNew={drawer.show} />}
         >
           <View className="flex-grow h-full pb-20">
             <ListBills />
           </View>
-        </BaseTemplate>
+        </BaseTemplate.Root>
       </DrawerTemplate>
     </View>
   )

@@ -4,16 +4,29 @@ import Button from '@/components/fragments/Button'
 import NavigationTab from '@/components/fragments/Navigation/NavigationTab'
 import useLayouts from '@/hooks/useLayouts'
 
-import { TABS } from './constants'
+export const TABS = [
+  {
+    name: 'home',
+    icon: 'inbox'
+  },
+  {
+    name: 'profile',
+    icon: 'user'
+  },
+  {
+    name: 'settings',
+    icon: 'settings'
+  }
+]
 
 type Props = {
-  onChangeTab?: (tab: string) => void
+  onChange?: (tab: string) => void
   onPressNew?: () => void
 }
 
-export default function BaseTab({
+export default function BaseTemplateNavigation({
   onPressNew = () => {},
-  onChangeTab = () => {}
+  onChange = () => {}
 }: Props) {
   const [tab, setTab] = useState('home')
   const layoutsControl = useLayouts()
@@ -21,7 +34,7 @@ export default function BaseTab({
   const handleChangeTap = (newTab: string) => {
     setTab(newTab)
     layoutsControl.moveTo(newTab)
-    onChangeTab(newTab)
+    onChange(newTab)
   }
 
   return (

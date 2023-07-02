@@ -1,6 +1,9 @@
 import { useState } from 'react'
 
 import Tab from '@/components/fragments/Tab'
+import useLayouts from '@/hooks/useLayouts'
+
+const DEFAULT_PADDING_LEFT = 4
 
 const FILTER_ITEMS = [
   { id: 'all', label: 'All' },
@@ -12,22 +15,33 @@ const FILTER_ITEMS = [
 export default function FilterBills() {
   const [selected, setSelected] = useState('all')
 
+  const layoutsControl = useLayouts({
+    defaultPaddingLeft: DEFAULT_PADDING_LEFT
+  })
+
+  const handleSelect = (id: string) => {
+    setSelected(id)
+    layoutsControl.moveTo(id)
+  }
+
   return (
     <Tab.Root
-      data={FILTER_ITEMS}
-      renderData={({ item, ...props }) => (
+      renderIndicator={
+        <Tab.SelectionIndicator
+          controlSharedValue={layoutsControl.currentLayoutPosition}
+        />
+      }
+    >
+      {FILTER_ITEMS.map((item) => (
         <Tab.Item
           key={`tab-item-${item.id}`}
           selected={item.id === selected}
-          {...props}
+          onPress={() => handleSelect(item.id)}
+          onLayout={layoutsControl.factoryLayoutHandler(item.id)}
         >
           {item.label}
         </Tab.Item>
-      )}
-      renderIndicator={(sharedValue) => (
-        <Tab.SelectionIndicator controlSharedValue={sharedValue} />
-      )}
-      onChange={({ id }) => setSelected(id)}
-    />
+      ))}
+    </Tab.Root>
   )
 }

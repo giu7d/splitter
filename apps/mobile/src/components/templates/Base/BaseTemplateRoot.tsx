@@ -14,7 +14,7 @@ type Props = {
   scrollViewProps?: ScrollViewProps
 }
 
-export default function BaseTemplate({
+export default function BaseTemplateRoot({
   children,
   renderHeader,
   renderFooter,
