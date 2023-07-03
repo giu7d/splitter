@@ -1,144 +1,54 @@
 import { useEffect } from 'react'
-import { Dimensions, ScrollView, View } from 'react-native'
+import { Dimensions, View } from 'react-native'
 
-import { PanGestureHandler } from 'react-native-gesture-handler'
-import Animated, {
-  useAnimatedGestureHandler,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-  withTiming
-} from 'react-native-reanimated'
+import { useSharedValue, withSpring, withTiming } from 'react-native-reanimated'
 
+import Drawer from '@/components/fragments/Drawer'
 import useDrawer from '@/hooks/useDrawer'
 
 const screen = Dimensions.get('screen')
 
+const DRAWER_SCREEN_POSITION = 0.8
+const DRAWER_DAMPING = 15
+
 type Props = {
   children: JSX.Element
-  drawerComponent: JSX.Element
+  renderDrawer: JSX.Element
 }
 
-export default function DrawerTemplate({ children, drawerComponent }: Props) {
+export default function DrawerTemplate({ children, renderDrawer }: Props) {
   const drawer = useDrawer()
-
   const drawerAbsoluteY = useSharedValue(screen.height)
-
-  const animatedRootStyles = useAnimatedStyle(() => {
-    const scale = drawerAbsoluteY.value / 800
-    const minScale = 0.92
-    const maxScale = 1
-
-    const isSmallerThanScale = scale <= minScale
-    const isBetweenScale = scale >= minScale && scale <= maxScale
-
-    if (isBetweenScale)
-      return {
-        top: withSpring(25),
-        transform: [
-          {
-            scale
-          }
-        ]
-      }
-
-    if (isSmallerThanScale)
-      return {
-        top: withSpring(25),
-        transform: [
-          {
-            scale: minScale
-          }
-        ]
-      }
-
-    return {
-      top: withSpring(0),
-      transform: [
-        {
-          scale: maxScale
-        }
-      ]
-    }
-  })
-
-  const animatedBackdropStyle = useAnimatedStyle(() => {
-    const isHidden = drawerAbsoluteY.value === screen.height
-
-    if (isHidden) {
-      return {
-        display: 'none'
-      }
-    }
-
-    return {
-      display: 'flex'
-    }
-  })
-
-  const animatedDrawerStyles = useAnimatedStyle(() => {
-    return {
-      height: screen.height - drawerAbsoluteY.value
-    }
-  })
-
-  const _onPanHandlerStateChange = useAnimatedGestureHandler({
-    onStart: (_, ctx: any) => {
-      ctx.startY = drawerAbsoluteY.value
-    },
-    onActive: (event: any, _ctx: any) => {
-      if (event.absoluteY >= 150) {
-        drawerAbsoluteY.value = withSpring(event.absoluteY)
-      }
-    },
-    onEnd: (event) => {
-      if (event.absoluteY >= screen.height - 300) {
-        drawerAbsoluteY.value = withTiming(screen.height)
-      }
-    }
-  })
-
-  const handleOpenDrawer = () => {
-    drawerAbsoluteY.value = withSpring(screen.height / 8, {
-      damping: 15
-    })
-  }
-
-  const handleCloseDrawer = () => {
-    const isHidden = drawerAbsoluteY.value === screen.height
-    if (isHidden) drawer.hide()
-  }
+  const isDrawerHidden = drawerAbsoluteY.value >= screen.height
 
   useEffect(() => {
-    if (drawer.state) handleOpenDrawer()
-    handleCloseDrawer()
+    if (isDrawerHidden) drawer.hide()
+    if (drawer.state) openDrawer()
   }, [drawer.state])
+
+  const openDrawer = () => {
+    const drawerPosition = screen.height / (DRAWER_SCREEN_POSITION * 10)
+    const config = { damping: DRAWER_DAMPING }
+
+    drawerAbsoluteY.value = withSpring(drawerPosition, config)
+  }
+
+  const closeDrawer = () => {
+    drawerAbsoluteY.value = withTiming(screen.height)
+  }
 
   return (
     <View className="bg-black">
-      <Animated.View
-        className="rounded-3xl overflow-hidden"
-        style={animatedRootStyles}
-      >
+      <Drawer.Root controlledSharedValue={drawerAbsoluteY}>
         {children}
-      </Animated.View>
-      <Animated.View
-        className="absolute h-full w-full bg-transparent"
-        style={animatedBackdropStyle}
-        onTouchEnd={() => {
-          drawerAbsoluteY.value = withTiming(screen.height)
-          handleCloseDrawer()
-        }}
+      </Drawer.Root>
+      <Drawer.Backdrop
+        controlledSharedValue={drawerAbsoluteY}
+        onClose={closeDrawer}
       />
-      <PanGestureHandler onHandlerStateChange={_onPanHandlerStateChange}>
-        <Animated.View
-          className="absolute w-full bg-white bottom-0 rounded-t-3xl shadow-lg z-50"
-          style={animatedDrawerStyles}
-        >
-          <View className="h-1 w-8 my-4 rounded-full bg-black self-center opacity-10" />
-          <ScrollView className="flex-grow px-6">{drawerComponent}</ScrollView>
-        </Animated.View>
-      </PanGestureHandler>
+      <Drawer.Foreground controlledSharedValue={drawerAbsoluteY}>
+        {renderDrawer}
+      </Drawer.Foreground>
     </View>
   )
 }

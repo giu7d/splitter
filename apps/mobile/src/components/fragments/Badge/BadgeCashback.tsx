@@ -6,11 +6,11 @@ import { StyledComponent } from 'nativewind'
 import colors from 'tailwindcss/colors'
 
 type Props = ViewProps & {
-  cashbackTotal: string
+  children: string
   component?: ComponentType<any>
 }
 
-export default function CashbackBadge({ cashbackTotal, ...props }: Props) {
+export default function BadgeCashback({ children, ...props }: Props) {
   return (
     <StyledComponent
       className="flex-row gap-1 items-center"
@@ -18,9 +18,7 @@ export default function CashbackBadge({ cashbackTotal, ...props }: Props) {
       {...props}
     >
       <Feather name="refresh-cw" color={colors.green[500]} size={12} />
-      <Text className="text-green-500 font-semibold text-sm">
-        {cashbackTotal}
-      </Text>
+      <Text className="text-green-500 font-semibold text-sm">{children}</Text>
     </StyledComponent>
   )
 }

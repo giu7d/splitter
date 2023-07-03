@@ -15,7 +15,7 @@ const atomWithMMKV = <T>(key: string, initialValue: T) =>
     }))
   )
 
-export const isMainTemplateScrolledAtom = atom(false)
+export const isScreenScrolledAtom = atom(false)
 
 export const isDrawerVisibleAtom = atom(false)
 

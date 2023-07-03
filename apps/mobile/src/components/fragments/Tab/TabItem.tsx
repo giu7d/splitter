@@ -4,11 +4,14 @@ import colors from 'tailwindcss/colors'
 
 type Props = TouchableOpacityProps & {
   children: string
-  name: string
-  selected: string
+  selected?: boolean
 }
 
-export default function TabItem({ children, name, selected, ...props }: Props) {
+export default function TabItem({
+  children,
+  selected = false,
+  ...props
+}: Props) {
   return (
     <TouchableOpacity
       className="h-8 w-20 rounded-full justify-center items-center"
@@ -17,7 +20,7 @@ export default function TabItem({ children, name, selected, ...props }: Props) {
       <Text
         className="text-xs font-semibold"
         style={{
-          color: name === selected ? colors.white : colors.neutral[400]
+          color: selected ? colors.white : colors.neutral[400]
         }}
       >
         {children}

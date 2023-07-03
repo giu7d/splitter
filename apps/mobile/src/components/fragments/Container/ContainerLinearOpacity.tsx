@@ -5,7 +5,7 @@ import colors from 'tailwindcss/colors'
 
 type Props = Partial<LinearGradientProps>
 
-export function LinearOpacityTopContainer({ children, ...props }: Props) {
+export function ContainerLinearOpacityTop({ children, ...props }: Props) {
   return (
     <LinearGradient
       colors={[colors.white, 'rgba(255,255,255,0)']}
@@ -18,7 +18,7 @@ export function LinearOpacityTopContainer({ children, ...props }: Props) {
   )
 }
 
-export function LinearOpacityBottomContainer({ children, ...props }: Props) {
+export function ContainerLinearOpacityBottom({ children, ...props }: Props) {
   return (
     <LinearGradient
       colors={[colors.white, 'rgba(255,255,255,0)']}
