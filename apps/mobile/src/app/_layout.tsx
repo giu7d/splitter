@@ -2,7 +2,7 @@ import { Tabs } from 'expo-router'
 
 import Provider from '@/providers'
 
-export default function HomeLayout() {
+export default function AppLayout() {
   return (
     <Provider>
       <Tabs
