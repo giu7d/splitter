@@ -34,10 +34,10 @@ module.exports = {
         {
           ios: {
             flipper: true,
-            newArchEnabled: false
+            newArchEnabled: true
           },
           android: {
-            newArchEnabled: false
+            newArchEnabled: true
           }
         }
       ],
