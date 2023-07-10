@@ -233,8 +233,8 @@ importers:
         specifier: ^29.4.0
         version: 29.4.0
       '@types/react':
-        specifier: ~18.0.37
-        version: 18.0.37
+        specifier: ~18.2.14
+        version: 18.2.14
       '@types/react-native':
         specifier: ~0.70.6
         version: 0.70.6
@@ -3586,6 +3586,14 @@ packages:
 
   /@types/react@18.0.37:
     resolution: {integrity: sha512-4yaZZtkRN3ZIQD3KSEwkfcik8s0SWV+82dlJot1AbGYHCzJkWP3ENBY6wYeDRmKZ6HkrgoGAmR2HqdwYGp6OEw==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.3
+      csstype: 3.1.2
+    dev: true
+
+  /@types/react@18.2.14:
+    resolution: {integrity: sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
