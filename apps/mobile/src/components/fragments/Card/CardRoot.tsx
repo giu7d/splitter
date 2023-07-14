@@ -1,7 +1,6 @@
-import { Platform, View } from 'react-native'
+import { Platform, TouchableOpacity, View } from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { HoldItem } from 'react-native-hold-menu'
 import colors from 'tailwindcss/colors'
 
