@@ -1,13 +1,16 @@
-import 'react-native-gesture-handler'
-
-import { Slot } from 'expo-router'
+import { Tabs } from 'expo-router'
 
 import Provider from '@/providers'
 
-export default function HomeLayout() {
+export default function AppLayout() {
   return (
     <Provider>
-      <Slot />
+      <Tabs
+        screenOptions={{
+          header: () => null
+        }}
+        tabBar={() => null}
+      />
     </Provider>
   )
 }

@@ -1,10 +1,10 @@
 import render from '@config/render'
 
-import Bills from '@/components/screens/Bills'
+import CreateBill from '.'
 
-describe('<Bills />', () => {
+describe('<CreateBill />', () => {
   it('renders correctly', () => {
-    const component = render(<Bills />)
+    const component = render(<CreateBill />)
 
     expect(component.toJSON()).toMatchSnapshot()
   })

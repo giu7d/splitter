@@ -10,7 +10,7 @@ module.exports = {
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
     jsEngine: 'hermes',
-    runtimeVersion: 'exposdk:48.0.0',
+    runtimeVersion: 'exposdk:49.0.0',
     assetBundlePatterns: ['**/*'],
     splash: {
       image: './assets/splash.png',
@@ -40,7 +40,8 @@ module.exports = {
             newArchEnabled: false
           }
         }
-      ]
+      ],
+      'expo-router'
     ],
     ios: {
       supportsTablet: true,

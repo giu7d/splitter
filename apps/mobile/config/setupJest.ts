@@ -3,6 +3,8 @@ import SetupJestFetch from 'jest-fetch-mock'
 
 jest.setTimeout(30000)
 
+jest.mock('react-native-hold-menu')
+
 SetupJestFetch.enableMocks()
 
 // @ts-expect-error
