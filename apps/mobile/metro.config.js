@@ -23,6 +23,8 @@ config.resolver.nodeModulesPaths = [
   path.resolve(workspaceRoot, 'node_modules')
 ]
 
+config.resolver.sourceExts = ['jsx', 'js', 'ts', 'tsx', 'cjs', 'mjs', 'json']
+
 config.resolver.disableHierarchicalLookup = true
 
 module.exports = config

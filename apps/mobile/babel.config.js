@@ -1,5 +1,5 @@
 // eslint-disable-next-line n/no-path-concat
-process.env.EXPO_ROUTER_APP_ROOT = __dirname + '/src/app'
+// process.env.EXPO_ROUTER_APP_ROOT = __dirname + '/src/app'
 
 module.exports = function (api) {
   api.cache(true)
