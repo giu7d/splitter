@@ -6,8 +6,6 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
-      'module:react-native-dotenv',
-      'expo-router/babel',
       'nativewind/babel',
       '@babel/plugin-proposal-export-namespace-from',
       'react-native-reanimated/plugin',
@@ -20,7 +18,8 @@ module.exports = function (api) {
             '@config': './config'
           }
         }
-      ]
+      ],
+      'expo-router/babel'
     ]
   }
 }
