@@ -20,7 +20,7 @@ export default function App() {
     )
   }
 
-  if (!user.data) return <></>
+  if (!user.data) return <View testID="bill-screen"></View>
 
   return (
     <View testID="bill-screen">
