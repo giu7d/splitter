@@ -19,6 +19,7 @@
     },
     "development": {
       "channel": "development",
+      "developmentClient": true,
       "distribution": "internal",
       "node": "18.15.0",
       "android": {
