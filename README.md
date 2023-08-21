@@ -138,7 +138,8 @@ We are using **railway.app** to deploy the backend app, and **EAS** to build, up
 
 ## Screen Shots
 
-![Screen example](docs/images/animations-record.mp4)
+
+https://github.com/giu7d/splitter/assets/30274817/fd2df51b-852d-49ae-87c3-5d9c57cd3f3f
 
 ## Motivation
 
