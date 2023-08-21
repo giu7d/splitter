@@ -138,7 +138,7 @@ We are using **railway.app** to deploy the backend app, and **EAS** to build, up
 
 ## Screen Shots
 
-TODO:...
+![Screen example](docs/images/animations-record.mp4)
 
 ## Motivation
 
