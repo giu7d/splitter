@@ -1,4 +1,4 @@
-name: Build
+name: Publish - Native Release
 
 on:
   workflow_dispatch:
@@ -12,17 +12,9 @@ on:
           - all
           - android
           - ios
-      profile:
-        description: EAS build profile (development/production)
-        type: choice
-        required: true
-        default: development
-        options:
-          - development
-          - production
 
 jobs:
-  build-mobile:
+  native-release-mobile:
     runs-on: ubuntu-latest
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -41,4 +33,4 @@ jobs:
 
       - name: 🚀 Build for mobile
         working-directory: apps/mobile
-        run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=${{ github.event.inputs.profile }}
+        run: eas build --non-interactive --wait --platform=${{ github.event.inputs.platform }} --profile=development

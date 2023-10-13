@@ -1,4 +1,4 @@
-name: Preview
+name: Pull Request - OTA Preview
 
 on:
   pull_request:
