@@ -1,9 +1,6 @@
-name: Test
+name: Pull Request - Test
 
 on:
-  push:
-    branches:
-      - 'main'
   pull_request:
     types: [opened, synchronize]
 
@@ -12,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  test-unit:
     runs-on: ubuntu-latest
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -37,7 +34,7 @@ jobs:
       - name: 🧪 Test repo
         run: pnpm run test
 
-  e2e:
+  test-e2e:
     runs-on: macos-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode.app
