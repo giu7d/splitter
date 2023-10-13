@@ -3,47 +3,44 @@
     "promptToConfigurePushNotifications": false
   },
   "build": {
-    "test": {
-      "channel": "test",
+    "base": {
       "node": "18.15.0",
+      "android": {
+        "image": "ubuntu-22.04-jdk-11-ndk-r21e"
+      },
+      "ios": {
+        "resourceClass": "m1-medium"
+      },
+      "env": {
+        "API_URL": "https://splitter-production.up.railway.app"
+      }
+    },
+    "test": {
+      "extends": "base",
+      "channel": "test",
       "android": {
         "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release",
         "withoutCredentials": true
       },
       "ios": {
         "simulator": true
-      },
-      "env": {
-        "API_URL": "https://splitter-production.up.railway.app"
       }
     },
     "development": {
+      "extends": "base",
       "channel": "development",
       "developmentClient": true,
       "distribution": "internal",
-      "node": "18.15.0",
       "android": {
         "buildType": "apk"
-      },
-      "ios": {
-        "resourceClass": "m1-medium"
-      },
-      "env": {
-        "API_URL": "https://splitter-production.up.railway.app"
       }
     },
     "production": {
+      "extends": "base",
       "channel": "production",
       "distribution": "store",
-      "node": "18.15.0",
       "android": {
         "buildType": "app-bundle"
-      },
-      "ios": {
-        "resourceClass": "m1-medium"
-      },
-      "env": {
-        "API_URL": "https://splitter-production.up.railway.app"
       }
     }
   }
