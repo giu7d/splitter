@@ -1,10 +1,4 @@
 /** @type {import('expo/config').ExpoConfig} */
-
-const path = require('path')
-
-const projectRoot = __dirname
-const workspaceRoot = path.resolve(projectRoot, '../..')
-
 module.exports = {
   expo: {
     name: 'splitter',
@@ -52,10 +46,7 @@ module.exports = {
         'react-native-widget-extension',
         {
           frequentUpdates: true,
-          widgetsFolder: path.resolve(
-            workspaceRoot,
-            '/packages/targets/SampleWidgetExtension'
-          )
+          widgetsFolder: './widgets/SampleWidgetExtension'
         }
       ]
     ],
