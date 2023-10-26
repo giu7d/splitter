@@ -51,14 +51,14 @@ export default function App() {
             {!randomId && (
               <Button.Primary
                 className="m-4"
-                onPress={() =>
-                  SplitLiveActivity.start({
+                onPress={async () => {
+                  await SplitLiveActivity.start({
                     title: 'Churras',
                     subtitle: 'Aguardando a galera...',
                     icon: '🍖',
                     progress
                   })
-                }
+                }}
               >
                 Create Activity
               </Button.Primary>
@@ -80,12 +80,12 @@ export default function App() {
             {randomId && (
               <Button.Primary
                 className="m-4"
-                onPress={() => {
+                onPress={async () => {
                   setProgress(1)
 
                   console.log({ randomId, progress })
 
-                  SplitLiveActivity.update(randomId, {
+                  await SplitLiveActivity.update(randomId, {
                     title: 'Churras',
                     subtitle: 'Aguardando a galera...',
                     icon: '🍖',
@@ -99,8 +99,8 @@ export default function App() {
             {randomId && (
               <Button.Primary
                 className="m-4"
-                onPress={() => {
-                  SplitLiveActivity.end(randomId)
+                onPress={async () => {
+                  await SplitLiveActivity.end(randomId)
                   setRandomId('')
                   setProgress(0)
                 }}
