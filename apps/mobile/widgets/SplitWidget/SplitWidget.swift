@@ -1,8 +1,8 @@
 //
-//  SampleWidgetExtension.swift
-//  SampleWidgetExtension
+//  SplitWidget.swift
+//  SplitWidget
 //
-//  Created by William Shepherd on 5/22/23.
+//  Created by Giuseppe Davanzo on 26/10/23.
 //
 
 import WidgetKit
@@ -40,7 +40,7 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
 }
 
-struct SampleWidgetExtensionEntryView : View {
+struct SplitWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
@@ -48,21 +48,21 @@ struct SampleWidgetExtensionEntryView : View {
     }
 }
 
-struct SampleWidgetExtension: Widget {
-    let kind: String = "SampleWidgetExtension"
+struct SplitWidget: Widget {
+    let kind: String = "SplitWidget"
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            SampleWidgetExtensionEntryView(entry: entry)
+            SplitWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
     }
 }
 
-struct SampleWidgetExtension_Previews: PreviewProvider {
+struct SplitWidget_Previews: PreviewProvider {
     static var previews: some View {
-        SampleWidgetExtensionEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        SplitWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
