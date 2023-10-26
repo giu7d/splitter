@@ -3,6 +3,7 @@
 const path = require('path')
 
 const projectRoot = __dirname
+const workspaceRoot = path.resolve(projectRoot, '../..')
 
 module.exports = {
   expo: {
@@ -52,7 +53,7 @@ module.exports = {
         {
           frequentUpdates: true,
           widgetsFolder: path.resolve(
-            projectRoot,
+            workspaceRoot,
             '/packages/targets/SampleWidgetExtension'
           )
         }
