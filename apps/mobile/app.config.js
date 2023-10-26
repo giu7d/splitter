@@ -1,4 +1,9 @@
 /** @type {import('expo/config').ExpoConfig} */
+
+const path = require('path')
+
+const projectRoot = __dirname
+
 module.exports = {
   expo: {
     name: 'splitter',
@@ -41,7 +46,17 @@ module.exports = {
           }
         }
       ],
-      'expo-router'
+      'expo-router',
+      [
+        'react-native-widget-extension',
+        {
+          frequentUpdates: true,
+          widgetsFolder: path.resolve(
+            projectRoot,
+            '/packages/targets/SampleWidgetExtension'
+          )
+        }
+      ]
     ],
     ios: {
       supportsTablet: true,
