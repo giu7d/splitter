@@ -46,7 +46,7 @@ module.exports = {
         'react-native-widget-extension',
         {
           frequentUpdates: true,
-          widgetsFolder: './widgets/SampleWidgetExtension'
+          widgetsFolder: './widgets/SplitWidget'
         }
       ]
     ],
