@@ -7,7 +7,6 @@
 
 import ExpoModulesCore
 import ActivityKit
-import Foundation
 
 internal class MissingCurrentWindowSceneException: Exception {
     override var reason: String {
@@ -24,7 +23,7 @@ public class ReactNativeWidgetExtensionModule: Module {
             let logger = Logger()
             logger.info("areActivitiesEnabled()")
 
-            if #available(iOS 16.1, *) {
+            if #available(iOS 16.2, *) {
                 return ActivityAuthorizationInfo().areActivitiesEnabled
             } else {
                 return false
@@ -35,7 +34,7 @@ public class ReactNativeWidgetExtensionModule: Module {
             let logger = Logger()
             logger.info("startActivity()")
 
-            if #available(iOS 16.1, *) {
+            if #available(iOS 16.2, *) {
                 let attributes = SplitWidgetAttributes()
                 let contentState = SplitWidgetAttributes.ContentState(title: title, icon: icon, progress: progress, subtitle: subtitle)
                 let activityContent = ActivityContent(state: contentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
@@ -49,13 +48,15 @@ public class ReactNativeWidgetExtensionModule: Module {
             }
         }
 
-        Function("listAllActivities") { (resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void in
-            if #available(iOS 16.1, *) {
+        Function("listAllActivities") { () -> Any in
+            if #available(iOS 16.2, *) {
                 var activities = Activity<SplitWidgetAttributes>.activities
 
                 activities.sort { $0.id > $1.id }
 
-                return resolve(activities.map{["id": $0.id, "data": $0.contentState.data ]})
+                return activities.map{["id": $0.id ]}
+            } else {
+                return false
             }
         }
 
@@ -63,7 +64,7 @@ public class ReactNativeWidgetExtensionModule: Module {
             let logger = Logger()
             logger.info("updateActivity()")
 
-            if #available(iOS 16.1, *) {
+            if #available(iOS 16.2, *) {
                 Task {
                     let updatedState = SplitWidgetAttributes.ContentState(title: title, icon: icon, progress: progress, subtitle: subtitle)
                     let activities = Activity<SplitWidgetAttributes>.activities
@@ -79,7 +80,7 @@ public class ReactNativeWidgetExtensionModule: Module {
             let logger = Logger()
             logger.info("endActivity()")
 
-            if #available(iOS 16.1, *) {
+            if #available(iOS 16.2, *) {
                 Task {
                     await Activity<SplitWidgetAttributes>.activities.filter {$0.id == id}.first?.end(dismissalPolicy: .immediate)
                     logger.info("Ended the Live Activity: \(id)")
