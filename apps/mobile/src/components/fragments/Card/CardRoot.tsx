@@ -37,7 +37,7 @@ export default function CardRoot({
   renderFooter
 }: Props) {
   return (
-    <HoldItem items={MENU_ITEMS} hapticFeedback="Medium">
+    <HoldItem hapticFeedback="Medium" items={MENU_ITEMS}>
       <TouchableOpacity
         className="bg-white rounded-3xl shadow-md opacity-90 w-52"
         style={
