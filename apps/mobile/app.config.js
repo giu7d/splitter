@@ -37,7 +37,8 @@ module.exports = {
             newArchEnabled: false
           },
           android: {
-            newArchEnabled: false
+            newArchEnabled: false,
+            kotlinVersion: '1.8.0'
           }
         }
       ],
