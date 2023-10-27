@@ -12,5 +12,6 @@
       "@config/*": ["./config/*"]
     }
   },
-  "references": [{ "path": "../api" }]
+  "references": [{ "path": "../api" }],
+  "exclude": ["coverage", ".turbo"]
 }
