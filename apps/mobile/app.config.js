@@ -41,7 +41,14 @@ module.exports = {
           }
         }
       ],
-      'expo-router'
+      'expo-router',
+      [
+        'react-native-widget-extension',
+        {
+          frequentUpdates: true,
+          widgetsFolder: './widgets/SplitWidget'
+        }
+      ]
     ],
     ios: {
       supportsTablet: true,

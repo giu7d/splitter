@@ -69,6 +69,10 @@ jobs:
           brew tap wix/brew
           brew install applesimutils
 
+      - name: 📦 Pre-build ios
+        working-directory: apps/mobile
+        run: pnpx expo prebuild
+
       - name: 📦 Install dependencies
         working-directory: apps/mobile/ios
         run: pod install --no-repo-update
