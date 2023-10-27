@@ -1,4 +1,4 @@
-import render from '@config/render'
+import render from '@/services/utils/tests/render'
 
 import CreateBill from '.'
 
