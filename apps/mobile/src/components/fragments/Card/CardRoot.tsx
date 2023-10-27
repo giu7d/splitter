@@ -1,4 +1,9 @@
-import { Platform, TouchableOpacity, View } from 'react-native'
+import {
+  GestureResponderEvent,
+  Platform,
+  TouchableOpacity,
+  View
+} from 'react-native'
 
 import { Feather } from '@expo/vector-icons'
 import { HoldItem } from 'react-native-hold-menu'
@@ -8,6 +13,7 @@ type Props = {
   children: JSX.Element
   renderHeader?: JSX.Element
   renderFooter?: JSX.Element
+  onPress?: (e: GestureResponderEvent) => void
 }
 
 const MENU_ITEMS = [
@@ -34,11 +40,13 @@ const MENU_ITEMS = [
 export default function CardRoot({
   children,
   renderHeader,
-  renderFooter
+  renderFooter,
+  onPress = () => {}
 }: Props) {
   return (
     <HoldItem hapticFeedback="Medium" items={MENU_ITEMS}>
       <TouchableOpacity
+        onPress={onPress}
         className="bg-white rounded-3xl shadow-md opacity-90 w-52"
         style={
           Platform.OS === 'android' && {
