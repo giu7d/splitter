@@ -5,6 +5,8 @@ export default class ListBills {
     return await new Promise((resolve) =>
       resolve([
         {
+          id: '0',
+          icon: '🍖',
           name: 'Churras',
           status: 'pending',
           participants: [],
@@ -13,6 +15,8 @@ export default class ListBills {
           totalValue: '240.00'
         },
         {
+          id: '1',
+          icon: '📺',
           name: 'TV',
           status: 'payed',
           participants: [],
@@ -21,6 +25,8 @@ export default class ListBills {
           totalValue: '2802.00'
         },
         {
+          id: '2',
+          icon: '⚽️',
           name: 'Futebas',
           status: 'payed',
           participants: [],
@@ -29,8 +35,10 @@ export default class ListBills {
           totalValue: '200.00'
         },
         {
+          id: '3',
+          icon: '🔗',
           name: 'Internet',
-          status: 'payed',
+          status: 'cancelled',
           participants: [],
           currency: 'BRL',
           splitValue: '100.00',
