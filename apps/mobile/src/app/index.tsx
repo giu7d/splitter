@@ -5,6 +5,7 @@ import { router } from 'expo-router'
 import CreateBill from '@/components/container/Bills/CreateBill'
 import FilterBills from '@/components/container/Bills/FilterBills'
 import ListBills from '@/components/container/Bills/ListBills'
+import ListSplits from '@/components/container/Splits/ListSplits'
 import BaseTemplate from '@/components/templates/Base'
 import DrawerTemplate from '@/components/templates/Drawer'
 import useDrawer from '@/hooks/useDrawer'
@@ -22,7 +23,7 @@ export default function App() {
     )
   }
 
-  if (!user.data) return <View testID="bill-screen"></View>
+  if (!user.data || !bills.data) return <View testID="bill-screen"></View>
 
   return (
     <View testID="bill-screen">
@@ -41,8 +42,9 @@ export default function App() {
           }
         >
           <View className="flex-grow h-full pb-20">
+            <ListSplits />
             <ListBills
-              onOpenBill={(bill) => router.push(`/bills/${bill.name}`)}
+              onOpenBill={(bill) => router.push(`/bills/${bill.id}`)}
             />
           </View>
         </BaseTemplate.Root>

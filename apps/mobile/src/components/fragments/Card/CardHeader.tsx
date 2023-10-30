@@ -11,14 +11,14 @@ type Props = {
 export default function CardHeader({
   children,
   icon,
-  iconClassName = 'border-red-50 bg-red-100'
+  iconClassName = 'bg-red-100'
 }: Props) {
   return (
     <View className="pt-6">
       <View className="gap-2">
         <View
           className={classnames(
-            'h-16 w-16 border rounded-full items-center justify-center',
+            'h-16 w-16 rounded-full items-center justify-center',
             iconClassName
           )}
         >

@@ -47,7 +47,7 @@ export default function CardRoot({
     <HoldItem hapticFeedback="Medium" items={MENU_ITEMS}>
       <TouchableOpacity
         onPress={onPress}
-        className="bg-white rounded-3xl shadow-md opacity-90 w-52"
+        className="bg-white rounded-3xl opacity-90 w-52 shadow-md"
         style={
           Platform.OS === 'android' && {
             shadowColor: colors.neutral[400]

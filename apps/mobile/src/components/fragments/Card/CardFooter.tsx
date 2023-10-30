@@ -1,22 +1,14 @@
-import React from 'react'
-import { Text, View } from 'react-native'
-
-import classNames from 'classnames'
+import { View } from 'react-native'
 
 type Props = {
-  children: string
+  children: JSX.Element
   statusClassName?: string
 }
-export default function CardFooter({
-  children,
-  statusClassName = 'bg-orange-500'
-}: Props) {
+
+export default function CardFooter({ children }: Props) {
   return (
     <View className="border-t border-neutral-200 h-10 items-center justify-center flex-row">
-      <View
-        className={classNames('h-2 w-2 rounded-full mr-2', statusClassName)}
-      />
-      <Text className="text-xs">{children}</Text>
+      {children}
     </View>
   )
 }
