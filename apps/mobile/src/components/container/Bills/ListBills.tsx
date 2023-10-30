@@ -4,9 +4,11 @@ import { FlashList } from '@shopify/flash-list'
 import { Bill } from 'splitter-api/src/entities/bill'
 
 import Badge from '@/components/fragments/Badge'
-import { status } from '@/components/fragments/Badge/BadgeSplitStatus'
 import Card from '@/components/fragments/Card'
+import Image from '@/components/fragments/Image'
+import Text from '@/components/fragments/Text'
 import { trpc } from '@/services/api'
+import { BILL_STATUS } from '@/services/constants'
 
 type Props = {
   onOpenBill?: (data: Bill) => void
@@ -36,15 +38,21 @@ export default function ListBills({ onOpenBill = () => {} }: Props) {
           renderFooter={
             <Card.Footer>
               <Badge.SplitStatus
-                statusClassName={status[item.status].statusClassName}
+                statusClassName={BILL_STATUS[item.status].statusClassName}
               >
-                {status[item.status].statusContent}
+                {BILL_STATUS[item.status].statusContent}
               </Badge.SplitStatus>
             </Card.Footer>
           }
           onPress={() => onOpenBill(item)}
         >
-          <Card.Content>{item.splitValue}</Card.Content>
+          <Card.Content>
+            <Text.Default className="text-neutral-800 text-sm opacity-50 font-semibold">
+              Your split
+            </Text.Default>
+            <Text.Price>{item.splitValue}</Text.Price>
+            <Image.SmallProfileGroup />
+          </Card.Content>
         </Card.Root>
       )}
     />

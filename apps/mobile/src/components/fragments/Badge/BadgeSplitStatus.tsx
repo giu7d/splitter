@@ -3,21 +3,6 @@ import { Text, View, ViewProps } from 'react-native'
 
 import classNames from 'classnames'
 
-export const status = {
-  payed: {
-    statusClassName: 'bg-green-500',
-    statusContent: 'Your split is paid'
-  },
-  pending: {
-    statusClassName: 'bg-orange-500',
-    statusContent: 'Your split is unpaid'
-  },
-  cancelled: {
-    statusClassName: 'bg-neutral-300',
-    statusContent: 'Split cancelled'
-  }
-}
-
 type Props = ViewProps & {
   children: string
   statusClassName?: string
