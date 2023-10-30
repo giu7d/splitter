@@ -23,10 +23,10 @@ export default function App() {
     )
   }
 
-  if (!user.data || !bills.data) return <View testID="bill-screen"></View>
+  if (!user.data || !bills.data) return <View testID="home-screen"></View>
 
   return (
-    <View testID="bill-screen">
+    <View testID="home-screen">
       <DrawerTemplate renderDrawer={<CreateBill />}>
         <BaseTemplate.Root
           onRefresh={handleRefetchBills}

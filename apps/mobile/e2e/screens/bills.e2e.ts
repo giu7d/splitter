@@ -10,6 +10,6 @@ describe('Bills Screen', () => {
   })
 
   it('loads app', async () => {
-    await expect(element(by.id('bill-screen'))).toExist()
+    await expect(element(by.id('home-screen'))).toExist()
   })
 })
