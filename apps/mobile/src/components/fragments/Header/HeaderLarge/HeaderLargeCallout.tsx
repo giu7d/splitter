@@ -28,7 +28,7 @@ export default function HeaderLargeCallout({
         Hello
       </Animated.Text>
       <Animated.Text
-        className="text-lg capitalize text-black opacity-90 font-semibold"
+        className="text-lg capitalize text-neutral-900 opacity-90 font-semibold"
         style={animatedFullNameFontSize}
       >
         {children}

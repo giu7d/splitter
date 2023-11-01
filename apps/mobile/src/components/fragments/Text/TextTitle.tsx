@@ -8,7 +8,7 @@ export default function TextTitle({ children, className, ...props }: Props) {
   return (
     <Text
       className={classNames(
-        'text-center font-semibold text-lg text-black opacity-90',
+        'text-center font-semibold text-lg text-neutral-900 opacity-90',
         className
       )}
       {...props}
