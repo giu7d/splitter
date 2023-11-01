@@ -31,7 +31,7 @@ export default function ListBills({ onOpenBill = () => {} }: Props) {
         <Card.Root
           key={`bill-${item.id}`}
           renderHeader={
-            <Card.Header icon={item.icon} iconClassName="bg-neutral-50">
+            <Card.Header icon={item.icon} iconClassName="bg-neutral-100">
               {item.name}
             </Card.Header>
           }
@@ -47,9 +47,7 @@ export default function ListBills({ onOpenBill = () => {} }: Props) {
           onPress={() => onOpenBill(item)}
         >
           <Card.Content>
-            <Text.Default className="text-neutral-800 text-sm opacity-50 font-semibold">
-              Your split
-            </Text.Default>
+            <Text.Subtitle>Your split</Text.Subtitle>
             <Text.Price>{item.splitValue}</Text.Price>
             <Avatar.SmallProfileGroup />
           </Card.Content>

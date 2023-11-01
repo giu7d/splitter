@@ -8,10 +8,10 @@ type Props = {
 
 export default function TextPrice({ children, className, ...props }: Props) {
   return (
-    <View className="flex-row items-end gap-1">
+    <View className="flex-row items-end gap-0.5">
       <Text
         className={classNames(
-          'text-neutral-800 text-sm font-semibold pb-1',
+          'text-black opacity-90 text-base font-semibold pb-1',
           className
         )}
         {...props}
@@ -20,7 +20,7 @@ export default function TextPrice({ children, className, ...props }: Props) {
       </Text>
       <Text
         className={classNames(
-          'text-neutral-800 text-2xl font-semibold',
+          'text-black opacity-90 text-2xl font-semibold',
           className
         )}
         {...props}

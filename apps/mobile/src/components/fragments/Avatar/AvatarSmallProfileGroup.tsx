@@ -13,7 +13,7 @@ type Props = {
   imageProps?: Omit<ImageProps, 'source'>
 }
 
-export default function ImageSmallProfileGroup({
+export default function AvatarSmallProfileGroup({
   sources = [
     { uri: 'https://avatars.githubusercontent.com/u/30274817?v=4' },
     { uri: 'https://avatars.githubusercontent.com/u/30274817?v=4' },
