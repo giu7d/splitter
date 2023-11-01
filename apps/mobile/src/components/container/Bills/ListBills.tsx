@@ -3,9 +3,9 @@ import { View } from 'react-native'
 import { FlashList } from '@shopify/flash-list'
 import { Bill } from 'splitter-api/src/entities/bill'
 
+import Avatar from '@/components/fragments/Avatar'
 import Badge from '@/components/fragments/Badge'
 import Card from '@/components/fragments/Card'
-import Image from '@/components/fragments/Image'
 import Text from '@/components/fragments/Text'
 import { trpc } from '@/services/api'
 import { BILL_STATUS } from '@/services/constants'
@@ -51,7 +51,7 @@ export default function ListBills({ onOpenBill = () => {} }: Props) {
               Your split
             </Text.Default>
             <Text.Price>{item.splitValue}</Text.Price>
-            <Image.SmallProfileGroup />
+            <Avatar.SmallProfileGroup />
           </Card.Content>
         </Card.Root>
       )}

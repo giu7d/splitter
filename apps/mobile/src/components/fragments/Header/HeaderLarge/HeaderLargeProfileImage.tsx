@@ -5,7 +5,7 @@ import {
   useSizeAnimation
 } from '@/hooks/utils/useAnimation'
 
-import Image from '../../Image'
+import Avatar from '../../Avatar'
 
 type Props = {
   uri?: string
@@ -23,7 +23,7 @@ export default function HeaderLargeProfileImage({
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <Image.Profile
+      <Avatar.Profile
         source={{ uri }}
         style={[animatedImageSize, animatedImageMargin]}
       />
