@@ -20,16 +20,23 @@ export const TABS = [
 ]
 
 type Props = {
+  tabProps: any
+  tabs?: string[]
   onChange?: (tab: string) => void
   onPressNew?: () => void
 }
 
-export default function BaseTemplateNavigation({
+export default function TabBarTemplate({
+  tabProps,
+  tabs = ['home', 'settings'],
   onPressNew = () => {},
   onChange = () => {}
 }: Props) {
   const [tab, setTab] = useState('home')
   const layoutsControl = useLayouts()
+
+  console.log({ tabProps })
+  console.log(tabs)
 
   const handleChangeTap = (newTab: string) => {
     setTab(newTab)
