@@ -8,7 +8,7 @@ export default function TabsLayout() {
       screenOptions={{
         header: () => null
       }}
-      tabBar={() => <TabBarTemplate />}
+      tabBar={(props: any) => <TabBarTemplate {...props} />}
     />
   )
 }

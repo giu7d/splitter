@@ -1,47 +1,46 @@
-import { useState } from 'react'
-
 import Button from '@/components/fragments/Button'
 import NavigationTab from '@/components/fragments/Navigation/NavigationTab'
 import useLayouts from '@/hooks/useLayouts'
 
-export const TABS = [
-  {
-    name: 'home',
-    icon: 'inbox'
-  },
-  {
-    name: 'profile',
-    icon: 'user'
-  },
-  {
-    name: 'settings',
-    icon: 'settings'
-  }
-]
+export const PAGE_ICONS = {
+  home: 'inbox',
+  profile: 'user',
+  settings: 'settings'
+}
+
+type PageIconKeys = keyof typeof PAGE_ICONS
+
+type TabStateRoute = { key: string; name: PageIconKeys; params: any }
+
+type TabState = {
+  index: number
+  routes: TabStateRoute[]
+}
+
+type TabNavigation = {
+  emit: (...params: any) => any
+  navigate: (...params: any) => any
+}
 
 type Props = {
-  tabProps: any
-  tabs?: string[]
-  onChange?: (tab: string) => void
+  state: TabState
+  navigation: TabNavigation
   onPressNew?: () => void
 }
 
 export default function TabBarTemplate({
-  tabProps,
-  tabs = ['home', 'settings'],
-  onPressNew = () => {},
-  onChange = () => {}
+  state,
+  navigation,
+  onPressNew = () => {}
 }: Props) {
-  const [tab, setTab] = useState('home')
   const layoutsControl = useLayouts()
 
-  console.log({ tabProps })
-  console.log(tabs)
+  const handleChangeTab = (route: TabStateRoute, isSelected: boolean) => {
+    if (isSelected) return
 
-  const handleChangeTap = (newTab: string) => {
-    setTab(newTab)
-    layoutsControl.moveTo(newTab)
-    onChange(newTab)
+    layoutsControl.moveTo(route.name)
+
+    navigation.navigate(route.name, route.params)
   }
 
   return (
@@ -52,15 +51,19 @@ export default function TabBarTemplate({
         />
       }
     >
-      {TABS.map((item) => (
-        <NavigationTab.Item
-          key={`nav-tab-${item.name}`}
-          icon={item.icon}
-          selected={item.name === tab}
-          onLayout={layoutsControl.factoryLayoutHandler(item.name)}
-          onPress={() => handleChangeTap(item.name)}
-        />
-      ))}
+      {state.routes.map((route, index) => {
+        const isSelected = state.index === index
+
+        return (
+          <NavigationTab.Item
+            key={`nav-tab-${route.name}`}
+            icon={PAGE_ICONS[route.name]}
+            selected={isSelected}
+            onLayout={layoutsControl.factoryLayoutHandler(route.name)}
+            onPress={() => handleChangeTab(route, isSelected)}
+          />
+        )
+      })}
       <Button.Primary className="h-12 flex-grow" onPress={onPressNew}>
         New
       </Button.Primary>
