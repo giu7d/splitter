@@ -1,11 +1,20 @@
 import { View } from 'react-native'
 
 import { FlashList } from '@shopify/flash-list'
+import { Bill } from 'splitter-api/src/entities/bill'
 
+import Avatar from '@/components/fragments/Avatar'
+import Badge from '@/components/fragments/Badge'
 import Card from '@/components/fragments/Card'
+import Text from '@/components/fragments/Text'
 import { trpc } from '@/services/api'
+import { BILL_STATUS } from '@/services/constants'
 
-export default function ListBills() {
+type Props = {
+  onOpenBill?: (data: Bill) => void
+}
+
+export default function ListBills({ onOpenBill = () => {} }: Props) {
   const { data } = trpc.bills.list.useQuery()
 
   if (!data) return <></>
@@ -20,11 +29,28 @@ export default function ListBills() {
       ItemSeparatorComponent={() => <View className="w-4" />}
       renderItem={({ item }) => (
         <Card.Root
-          key={`bill-${item.name}`}
-          renderHeader={<Card.Header icon="🍖">{item.name}</Card.Header>}
-          renderFooter={<Card.Footer />}
+          key={`bill-${item.id}`}
+          renderHeader={
+            <Card.Header icon={item.icon} iconClassName="bg-neutral-100">
+              {item.name}
+            </Card.Header>
+          }
+          renderFooter={
+            <Card.Footer>
+              <Badge.SplitStatus
+                statusClassName={BILL_STATUS[item.status].statusClassName}
+              >
+                {BILL_STATUS[item.status].statusContent}
+              </Badge.SplitStatus>
+            </Card.Footer>
+          }
+          onPress={() => onOpenBill(item)}
         >
-          <Card.Content>{item.splitValue}</Card.Content>
+          <Card.Content>
+            <Text.Subtitle>Your split</Text.Subtitle>
+            <Text.Price>{item.splitValue}</Text.Price>
+            <Avatar.SmallProfileGroup />
+          </Card.Content>
         </Card.Root>
       )}
     />

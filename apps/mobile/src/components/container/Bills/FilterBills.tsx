@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { View } from 'react-native'
 
 import Tab from '@/components/fragments/Tab'
 import useLayouts from '@/hooks/useLayouts'
@@ -25,23 +26,25 @@ export default function FilterBills() {
   }
 
   return (
-    <Tab.Root
-      renderIndicator={
-        <Tab.SelectionIndicator
-          controlSharedValue={layoutsControl.currentLayoutPosition}
-        />
-      }
-    >
-      {FILTER_ITEMS.map((item) => (
-        <Tab.Item
-          key={`tab-item-${item.id}`}
-          selected={item.id === selected}
-          onPress={() => handleSelect(item.id)}
-          onLayout={layoutsControl.factoryLayoutHandler(item.id)}
-        >
-          {item.label}
-        </Tab.Item>
-      ))}
-    </Tab.Root>
+    <View className="p-6 pb-4">
+      <Tab.Root
+        renderIndicator={
+          <Tab.SelectionIndicator
+            controlSharedValue={layoutsControl.currentLayoutPosition}
+          />
+        }
+      >
+        {FILTER_ITEMS.map((item) => (
+          <Tab.Item
+            key={`tab-item-${item.id}`}
+            selected={item.id === selected}
+            onPress={() => handleSelect(item.id)}
+            onLayout={layoutsControl.factoryLayoutHandler(item.id)}
+          >
+            {item.label}
+          </Tab.Item>
+        ))}
+      </Tab.Root>
+    </View>
   )
 }

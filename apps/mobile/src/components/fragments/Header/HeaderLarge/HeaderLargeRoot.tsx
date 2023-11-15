@@ -1,19 +1,21 @@
-import { View } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 
 import Container from '@/components/fragments/Container'
 
 type Props = {
   children?: JSX.Element
-  renderExtension?: JSX.Element
+  renderAfter?: JSX.Element
 }
 
-export default function HeaderLargeRoot({ children, renderExtension }: Props) {
+export default function HeaderLargeRoot({ children, renderAfter }: Props) {
   return (
     <Container.LinearOpacity.Top>
-      <View className="flex-row items-center p-6 py-4 justify-between">
-        {children}
-      </View>
-      {renderExtension}
+      <SafeAreaView>
+        <View className="flex-row items-center p-6 py-4 justify-between">
+          {children}
+        </View>
+        {renderAfter}
+      </SafeAreaView>
     </Container.LinearOpacity.Top>
   )
 }

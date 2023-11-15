@@ -22,13 +22,6 @@ module.exports = {
       url: 'https://u.expo.dev/916828f4-940a-42fa-a42d-a662c47baf27'
     },
     plugins: [
-      '@config-plugins/detox',
-      [
-        'expo-updates',
-        {
-          username: 'giu7d'
-        }
-      ],
       [
         'expo-build-properties',
         {
@@ -38,8 +31,16 @@ module.exports = {
           },
           android: {
             newArchEnabled: false,
-            kotlinVersion: '1.8.0'
+            usesCleartextTraffic: true,
+            kotlinVersion: '1.8.10'
           }
+        }
+      ],
+      '@config-plugins/detox',
+      [
+        'expo-updates',
+        {
+          username: 'giu7d'
         }
       ],
       'expo-router',

@@ -1,16 +1,24 @@
-import { Tabs } from 'expo-router'
+import { Stack } from 'expo-router'
 
 import Provider from '@/providers'
 
 export default function AppLayout() {
   return (
     <Provider>
-      <Tabs
+      <Stack
         screenOptions={{
           header: () => null
         }}
-        tabBar={() => null}
-      />
+      >
+        {/* Setup Stack as Modal */}
+        <Stack.Screen
+          name="bills/create"
+          options={{
+            presentation: 'modal',
+            gestureEnabled: true
+          }}
+        />
+      </Stack>
     </Provider>
   )
 }

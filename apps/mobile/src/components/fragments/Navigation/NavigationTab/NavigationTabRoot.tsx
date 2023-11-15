@@ -12,7 +12,7 @@ export default function NavigationTabRoot({
   renderIndicator
 }: Props) {
   return (
-    <Container.LinearOpacity.Bottom className="absolute w-full p-6 px-4 bottom-0">
+    <Container.LinearOpacity.Bottom className="absolute w-full py-8 px-6 bottom-0">
       {renderIndicator}
       <View className="items-center justify-between flex-row">{children}</View>
     </Container.LinearOpacity.Bottom>
