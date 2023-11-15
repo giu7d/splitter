@@ -1,5 +1,5 @@
 import Button from '@/components/fragments/Button'
-import NavigationTab from '@/components/fragments/Navigation/NavigationTab'
+import Navigation from '@/components/fragments/Navigation'
 import useLayouts from '@/hooks/useLayouts'
 
 export const PAGE_ICONS = {
@@ -44,9 +44,9 @@ export default function TabBarTemplate({
   }
 
   return (
-    <NavigationTab.Root
+    <Navigation.Tab.Root
       renderIndicator={
-        <NavigationTab.Indicator
+        <Navigation.Tab.Indicator
           controlSharedValue={layoutsControl.currentLayoutPosition}
         />
       }
@@ -55,7 +55,7 @@ export default function TabBarTemplate({
         const isSelected = state.index === index
 
         return (
-          <NavigationTab.Item
+          <Navigation.Tab.Item
             key={`nav-tab-${route.name}`}
             icon={PAGE_ICONS[route.name]}
             selected={isSelected}
@@ -67,6 +67,6 @@ export default function TabBarTemplate({
       <Button.Primary className="h-12 flex-grow" onPress={onPressNew}>
         New
       </Button.Primary>
-    </NavigationTab.Root>
+    </Navigation.Tab.Root>
   )
 }
