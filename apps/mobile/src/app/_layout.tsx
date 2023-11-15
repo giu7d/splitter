@@ -9,7 +9,16 @@ export default function AppLayout() {
         screenOptions={{
           header: () => null
         }}
-      />
+      >
+        {/* Setup Stack as Modal */}
+        <Stack.Screen
+          name="bills/create"
+          options={{
+            presentation: 'modal',
+            gestureEnabled: true
+          }}
+        />
+      </Stack>
     </Provider>
   )
 }

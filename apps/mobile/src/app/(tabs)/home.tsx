@@ -1,17 +1,15 @@
 import { View } from 'react-native'
 
-import { router } from 'expo-router'
+import { useRouter } from 'expo-router'
 
-import CreateBill from '@/components/container/Bills/CreateBill'
 import FilterBills from '@/components/container/Bills/FilterBills'
 import ListBills from '@/components/container/Bills/ListBills'
 import ListSplits from '@/components/container/Splits/ListSplits'
-import BaseTemplate from '@/components/templates/Base'
-import DrawerTemplate from '@/components/templates/Drawer'
+import Template from '@/components/templates'
 import { trpc } from '@/services/api'
 
 export default function Home() {
-  const user = trpc.users.find.useQuery({ id: 'my-id' })
+  const router = useRouter()
   const bills = trpc.bills.list.useQuery()
 
   const handleRefetchBills = async () => {
@@ -20,29 +18,16 @@ export default function Home() {
     )
   }
 
-  if (!user.data || !bills.data) return <View testID="home-screen"></View>
-
   return (
     <View testID="home-screen">
-      <DrawerTemplate renderDrawer={<CreateBill />}>
-        <BaseTemplate.Root
-          onRefresh={handleRefetchBills}
-          renderHeader={
-            <BaseTemplate.Header data={user.data}>
-              <View className="p-6 pt-4">
-                <FilterBills />
-              </View>
-            </BaseTemplate.Header>
-          }
-        >
-          <View className="flex-grow h-full pb-20">
-            <ListSplits />
-            <ListBills
-              onOpenBill={(bill) => router.push(`/bills/${bill.id}`)}
-            />
-          </View>
-        </BaseTemplate.Root>
-      </DrawerTemplate>
+      <Template.Page.Root
+        onRefresh={handleRefetchBills}
+        renderBefore={<Template.Page.LargeAppBar />}
+      >
+        <FilterBills />
+        <ListSplits />
+        <ListBills onOpenBill={(bill) => router.push(`/bills/${bill.id}`)} />
+      </Template.Page.Root>
     </View>
   )
 }

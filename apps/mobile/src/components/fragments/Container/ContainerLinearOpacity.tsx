@@ -20,7 +20,7 @@ export function ContainerLinearOpacityBottom({ children, ...props }: Props) {
   return (
     <LinearGradient
       colors={[colors.white, 'rgba(255,255,255,0)']}
-      start={{ y: 0.5, x: 0 }}
+      start={{ y: 0.3, x: 0 }}
       end={{ y: 0, x: 0 }}
       {...props}
     >

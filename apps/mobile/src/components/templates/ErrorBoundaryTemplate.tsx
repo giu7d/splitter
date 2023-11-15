@@ -2,7 +2,7 @@ import { Text, View } from 'react-native'
 
 import { ErrorBoundaryProps } from 'expo-router'
 
-export function ErrorBoundary(props: ErrorBoundaryProps) {
+export default function ErrorBoundaryTemplate(props: ErrorBoundaryProps) {
   return (
     <View style={{ flex: 1, backgroundColor: 'red' }}>
       <Text>{props.error.message}</Text>
