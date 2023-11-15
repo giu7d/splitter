@@ -6,7 +6,7 @@ type Props = TouchableOpacityProps
 
 export default function MiniBannerRoot({ children, ...props }: Props) {
   return (
-    <TouchableOpacity className="h-36 shadow-md" {...props}>
+    <TouchableOpacity className="h-36 shadow-md bg-white" {...props}>
       <LinearGradient
         className="flex-1 flex-col rounded-xl"
         colors={['rgba(255, 210, 210, 0.5)', 'rgba(255, 210, 210, 1)']}
