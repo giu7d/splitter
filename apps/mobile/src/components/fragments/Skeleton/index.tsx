@@ -1,61 +1,65 @@
 import { useEffect } from 'react'
-import { Dimensions, StyleSheet, View, ViewProps } from 'react-native'
+import { Dimensions, View, ViewProps } from 'react-native'
 
+import classNames from 'classnames'
 import { LinearGradient } from 'expo-linear-gradient'
 import Animated, {
-  Easing,
-  Extrapolate,
-  interpolate,
   useAnimatedStyle,
-  useSharedValue,
-  withRepeat,
-  withTiming
+  useSharedValue
 } from 'react-native-reanimated'
+import colors from 'tailwindcss/colors'
+
+import {
+  withAnimatedTransformTranslateX,
+  withAnimation,
+  withInfinityRepeat,
+  withLinearInterpolation
+} from '@/services/utils/animation'
+
+const width = Dimensions.get('screen').width
+
+const POSITION_THRESHOLD_RANGE = [0, 1]
+const SHIMMER_POSITION_RANGE = [-width * 2, width * 2]
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient)
 
-export default function Skeleton({ children, ...props }: ViewProps) {
-  const width = Dimensions.get('screen').width
-  const shimmerXPosition = useSharedValue(0)
+export default function Skeleton({ children, className, ...props }: ViewProps) {
+  const shimmerPosition = useSharedValue(0)
 
   const linearGradientStyle = useAnimatedStyle(() => {
-    const translateX = interpolate(
-      shimmerXPosition.value,
-      [0, 1],
-      [-width * 2, width * 2],
-      Extrapolate.CLAMP
+    return withAnimation(
+      withAnimatedTransformTranslateX(
+        withLinearInterpolation(
+          shimmerPosition.value,
+          POSITION_THRESHOLD_RANGE,
+          SHIMMER_POSITION_RANGE
+        )
+      )
     )
-
-    return {
-      transform: [{ translateX }]
-    }
   })
 
   useEffect(() => {
-    shimmerXPosition.value = withRepeat(
-      withTiming(1, { duration: 1000, easing: Easing.linear }),
-      -1,
-      false,
-      () => (shimmerXPosition.value = 0)
-    )
+    const config = { duration: 1000 }
+    shimmerPosition.value = withInfinityRepeat(shimmerPosition, 0, 1, config)
   }, [])
 
   return (
     <View
       {...props}
-      style={[
-        {
-          backgroundColor: '#f0f0f0',
-          overflow: 'hidden'
-        },
-        props.style
-      ]}
+      className={classNames(className, 'overflow-hidden bg-neutral-100')}
     >
       <AnimatedLinearGradient
-        colors={['#f0f0f0', '#e5e5e5', '#e0e0e0', '#f0f0f0']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={[StyleSheet.absoluteFill, linearGradientStyle]}
+        className="absolute w-full h-full"
+        colors={[
+          colors.neutral[100],
+          colors.neutral[200],
+          colors.neutral[300],
+          colors.neutral[200],
+          colors.neutral[100]
+        ]}
+        start={{ x: 0, y: 0.5 }}
+        end={{ x: 1, y: 0.5 }}
+        style={linearGradientStyle}
       />
       {children}
     </View>
