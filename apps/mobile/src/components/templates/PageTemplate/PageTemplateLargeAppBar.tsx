@@ -1,19 +1,21 @@
-import { View } from 'react-native'
+import { NativeScrollPoint, View } from 'react-native'
 
 import { StatusBar } from 'expo-status-bar'
+import { SharedValue } from 'react-native-reanimated'
 
 import Header from '@/components/fragments/Header'
-import useScreenScroll from '@/hooks/useScreenScroll'
 import { trpc } from '@/services/api'
 
 type Props = {
   children?: JSX.Element
+  sharedOffsetValue?: SharedValue<NativeScrollPoint>
 }
 
-export default function PageTemplateLargeAppBar({ children }: Props) {
+export default function PageTemplateLargeAppBar({
+  children,
+  sharedOffsetValue
+}: Props) {
   const user = trpc.users.find.useQuery({ id: 'my-id' })
-
-  const scroll = useScreenScroll()
 
   if (!user.data) return <></>
 
@@ -23,17 +25,17 @@ export default function PageTemplateLargeAppBar({ children }: Props) {
       <Header.Large.Root renderAfter={children}>
         <Header.Large.Cashback
           cashbackTotal={user.data.cashback.total}
-          controlValue={scroll.isScreenScrolled}
+          sharedOffsetValue={sharedOffsetValue}
         >
           {(renderCashbackText) => (
             <>
               <Header.Large.ProfileImage
                 uri={user.data.photo}
-                controlValue={scroll.isScreenScrolled}
+                sharedOffsetValue={sharedOffsetValue}
               />
               <View className="gap-1">
                 <View>
-                  <Header.Large.Callout controlValue={scroll.isScreenScrolled}>
+                  <Header.Large.Callout sharedOffsetValue={sharedOffsetValue}>
                     {user.data.firstName} {user.data.lastName}
                   </Header.Large.Callout>
                 </View>

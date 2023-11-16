@@ -1,35 +1,58 @@
-import { View } from 'react-native'
+import { NativeScrollPoint, View } from 'react-native'
 
-import Animated from 'react-native-reanimated'
+import Animated, {
+  SharedValue,
+  useAnimatedStyle
+} from 'react-native-reanimated'
 
-import {
-  useFontSizeAnimation,
-  useVisibilityAnimation
-} from '@/hooks/utils/useAnimation'
+import { linearInterpolation } from '@/services/utils/animation'
+
+const OFFSET_THRESHOLD = [0, 200]
+const OPACITY_RANGE = [1, 0]
+const FONT_RANGE = [18, 14]
 
 type Props = {
   children?: string | string[]
-  controlValue?: boolean
+  sharedOffsetValue?: SharedValue<NativeScrollPoint>
 }
 
 export default function HeaderLargeCallout({
   children,
-  controlValue = false
+  sharedOffsetValue
 }: Props) {
-  const animatedFullNameFontSize = useFontSizeAnimation(controlValue)
-  const animatedWelcomeVisibility = useVisibilityAnimation(controlValue)
+  const animatedWelcomeStyle = useAnimatedStyle(() => {
+    const offsetY = sharedOffsetValue?.value.y ?? 0
+    const opacity = linearInterpolation(
+      offsetY,
+      OFFSET_THRESHOLD,
+      OPACITY_RANGE
+    )
+
+    return {
+      opacity
+    }
+  })
+
+  const animatedFullNameStyle = useAnimatedStyle(() => {
+    const offsetY = sharedOffsetValue?.value.y ?? 0
+    const fontSize = linearInterpolation(offsetY, OFFSET_THRESHOLD, FONT_RANGE)
+
+    return {
+      fontSize
+    }
+  })
 
   return (
     <View>
       <Animated.Text
         className="text-sm text-neutral-500"
-        style={animatedWelcomeVisibility}
+        style={animatedWelcomeStyle}
       >
         Hello
       </Animated.Text>
       <Animated.Text
         className="text-lg capitalize text-neutral-900 opacity-90 font-semibold"
-        style={animatedFullNameFontSize}
+        style={animatedFullNameStyle}
       >
         {children}
       </Animated.Text>

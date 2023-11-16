@@ -1,32 +1,61 @@
-import { View } from 'react-native'
+import { NativeScrollPoint, View } from 'react-native'
 
-import Animated from 'react-native-reanimated'
+import Animated, {
+  SharedValue,
+  useAnimatedStyle
+} from 'react-native-reanimated'
 
 import Badge from '@/components/fragments/Badge'
-import {
-  useTopAnimation,
-  useVisibilityAnimation
-} from '@/hooks/utils/useAnimation'
+import { linearInterpolation } from '@/services/utils/animation'
+
+const OFFSET_THRESHOLD = [0, 200]
+const OPACITY_RANGE = [1, 0]
+const OPACITY_INVERTED_RANGE = [0, 1]
+const POSITION_RANGE = [-50, 0]
 
 type Props = {
   children: (renderCashbackText: () => JSX.Element) => JSX.Element
   cashbackTotal: string
-  controlValue?: boolean
+  sharedOffsetValue?: SharedValue<NativeScrollPoint>
 }
 
 export default function HeaderLargeCashback({
   children,
   cashbackTotal,
-  controlValue = false
+  sharedOffsetValue
 }: Props) {
-  const animatedCashbackSmallTop = useTopAnimation(!controlValue)
-  const animatedCashbackSmallVisibility = useVisibilityAnimation(!controlValue)
-  const animatedCashbackLargeVisibility = useVisibilityAnimation(controlValue)
+  const animatedCashbackLargeStyle = useAnimatedStyle(() => {
+    const offsetY = sharedOffsetValue?.value.y ?? 0
+    const opacity = linearInterpolation(
+      offsetY,
+      OFFSET_THRESHOLD,
+      OPACITY_RANGE
+    )
+
+    return {
+      opacity
+    }
+  })
+
+  const animatedCashbackSmallStyle = useAnimatedStyle(() => {
+    const offsetY = sharedOffsetValue?.value.y ?? 0
+    const top = linearInterpolation(offsetY, OFFSET_THRESHOLD, POSITION_RANGE)
+    const opacity = linearInterpolation(
+      offsetY,
+      OFFSET_THRESHOLD,
+      OPACITY_INVERTED_RANGE
+    )
+
+    return {
+      top,
+      opacity
+    }
+  })
 
   const renderCashbackLargeText = () => (
     <Badge.Cashback
       component={Animated.View}
-      style={animatedCashbackLargeVisibility}
+      style={animatedCashbackLargeStyle}
     >
       {cashbackTotal}
     </Badge.Cashback>
@@ -39,7 +68,7 @@ export default function HeaderLargeCashback({
       </View>
       <Badge.Cashback
         component={Animated.View}
-        style={[animatedCashbackSmallTop, animatedCashbackSmallVisibility]}
+        style={animatedCashbackSmallStyle}
       >
         {cashbackTotal}
       </Badge.Cashback>
