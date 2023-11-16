@@ -1,32 +1,43 @@
-import { TouchableOpacity } from 'react-native'
+import { NativeScrollPoint, TouchableOpacity } from 'react-native'
+
+import { SharedValue, useAnimatedStyle } from 'react-native-reanimated'
 
 import {
-  useMarginRightAnimation,
-  useSizeAnimation
-} from '@/hooks/utils/useAnimation'
+  SCROLL_OFFSET_THRESHOLD_RANGE,
+  withAnimatedMarginRight,
+  withAnimatedSquareSize,
+  withAnimation,
+  withLinearInterpolation
+} from '@/services/utils/animation'
 
 import Avatar from '../../Avatar'
 
 type Props = {
   uri?: string
-  controlValue?: boolean
+  sharedOffsetValue?: SharedValue<NativeScrollPoint>
   onPress?: () => void
 }
 
 export default function HeaderLargeProfileImage({
   uri,
-  controlValue = false,
+  sharedOffsetValue,
   onPress = () => {}
 }: Props) {
-  const animatedImageSize = useSizeAnimation(controlValue)
-  const animatedImageMargin = useMarginRightAnimation(controlValue)
+  const animatedImageStyle = useAnimatedStyle(() => {
+    const y = sharedOffsetValue?.value.y ?? 0
+    return withAnimation(
+      withAnimatedSquareSize(
+        withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [64, 42])
+      ),
+      withAnimatedMarginRight(
+        withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [24, 8])
+      )
+    )
+  })
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <Avatar.Profile
-        source={{ uri }}
-        style={[animatedImageSize, animatedImageMargin]}
-      />
+      <Avatar.Profile source={{ uri }} style={animatedImageStyle} />
     </TouchableOpacity>
   )
 }

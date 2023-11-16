@@ -1,32 +1,53 @@
-import { View } from 'react-native'
+import { NativeScrollPoint, View } from 'react-native'
 
-import Animated from 'react-native-reanimated'
+import Animated, {
+  SharedValue,
+  useAnimatedStyle
+} from 'react-native-reanimated'
 
 import Badge from '@/components/fragments/Badge'
 import {
-  useTopAnimation,
-  useVisibilityAnimation
-} from '@/hooks/utils/useAnimation'
+  SCROLL_OFFSET_THRESHOLD_RANGE,
+  withAnimatedTop,
+  withAnimatedVisibility,
+  withAnimation,
+  withLinearInterpolation
+} from '@/services/utils/animation'
 
 type Props = {
   children: (renderCashbackText: () => JSX.Element) => JSX.Element
   cashbackTotal: string
-  controlValue?: boolean
+  sharedOffsetValue?: SharedValue<NativeScrollPoint>
 }
 
 export default function HeaderLargeCashback({
   children,
   cashbackTotal,
-  controlValue = false
+  sharedOffsetValue
 }: Props) {
-  const animatedCashbackSmallTop = useTopAnimation(!controlValue)
-  const animatedCashbackSmallVisibility = useVisibilityAnimation(!controlValue)
-  const animatedCashbackLargeVisibility = useVisibilityAnimation(controlValue)
+  const animatedCashbackLargeStyle = useAnimatedStyle(() => {
+    const y = sharedOffsetValue?.value.y ?? 0
+    return withAnimatedVisibility(
+      withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [1, 0])
+    )
+  })
+
+  const animatedCashbackSmallStyle = useAnimatedStyle(() => {
+    const y = sharedOffsetValue?.value.y ?? 0
+    return withAnimation(
+      withAnimatedVisibility(
+        withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [0, 1])
+      ),
+      withAnimatedTop(
+        withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [-50, 0])
+      )
+    )
+  })
 
   const renderCashbackLargeText = () => (
     <Badge.Cashback
       component={Animated.View}
-      style={animatedCashbackLargeVisibility}
+      style={animatedCashbackLargeStyle}
     >
       {cashbackTotal}
     </Badge.Cashback>
@@ -39,7 +60,7 @@ export default function HeaderLargeCashback({
       </View>
       <Badge.Cashback
         component={Animated.View}
-        style={[animatedCashbackSmallTop, animatedCashbackSmallVisibility]}
+        style={animatedCashbackSmallStyle}
       >
         {cashbackTotal}
       </Badge.Cashback>
