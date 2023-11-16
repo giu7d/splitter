@@ -5,11 +5,12 @@ import Animated, {
   useAnimatedStyle
 } from 'react-native-reanimated'
 
-import { linearInterpolation } from '@/services/utils/animation'
-
-const OFFSET_THRESHOLD = [0, 200]
-const OPACITY_RANGE = [1, 0]
-const FONT_RANGE = [18, 14]
+import {
+  SCROLL_OFFSET_THRESHOLD_RANGE,
+  withAnimatedFontSize,
+  withAnimatedVisibility,
+  withLinearInterpolation
+} from '@/services/utils/animation'
 
 type Props = {
   children?: string | string[]
@@ -21,25 +22,17 @@ export default function HeaderLargeCallout({
   sharedOffsetValue
 }: Props) {
   const animatedWelcomeStyle = useAnimatedStyle(() => {
-    const offsetY = sharedOffsetValue?.value.y ?? 0
-    const opacity = linearInterpolation(
-      offsetY,
-      OFFSET_THRESHOLD,
-      OPACITY_RANGE
+    const y = sharedOffsetValue?.value.y ?? 0
+    return withAnimatedVisibility(
+      withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [1, 0])
     )
-
-    return {
-      opacity
-    }
   })
 
   const animatedFullNameStyle = useAnimatedStyle(() => {
-    const offsetY = sharedOffsetValue?.value.y ?? 0
-    const fontSize = linearInterpolation(offsetY, OFFSET_THRESHOLD, FONT_RANGE)
-
-    return {
-      fontSize
-    }
+    const y = sharedOffsetValue?.value.y ?? 0
+    return withAnimatedFontSize(
+      withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [18, 14])
+    )
   })
 
   return (

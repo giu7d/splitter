@@ -6,12 +6,13 @@ import Animated, {
 } from 'react-native-reanimated'
 
 import Badge from '@/components/fragments/Badge'
-import { linearInterpolation } from '@/services/utils/animation'
-
-const OFFSET_THRESHOLD = [0, 200]
-const OPACITY_RANGE = [1, 0]
-const OPACITY_INVERTED_RANGE = [0, 1]
-const POSITION_RANGE = [-50, 0]
+import {
+  SCROLL_OFFSET_THRESHOLD_RANGE,
+  withAnimatedTop,
+  withAnimatedVisibility,
+  withAnimation,
+  withLinearInterpolation
+} from '@/services/utils/animation'
 
 type Props = {
   children: (renderCashbackText: () => JSX.Element) => JSX.Element
@@ -25,31 +26,22 @@ export default function HeaderLargeCashback({
   sharedOffsetValue
 }: Props) {
   const animatedCashbackLargeStyle = useAnimatedStyle(() => {
-    const offsetY = sharedOffsetValue?.value.y ?? 0
-    const opacity = linearInterpolation(
-      offsetY,
-      OFFSET_THRESHOLD,
-      OPACITY_RANGE
+    const y = sharedOffsetValue?.value.y ?? 0
+    return withAnimatedVisibility(
+      withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [1, 0])
     )
-
-    return {
-      opacity
-    }
   })
 
   const animatedCashbackSmallStyle = useAnimatedStyle(() => {
-    const offsetY = sharedOffsetValue?.value.y ?? 0
-    const top = linearInterpolation(offsetY, OFFSET_THRESHOLD, POSITION_RANGE)
-    const opacity = linearInterpolation(
-      offsetY,
-      OFFSET_THRESHOLD,
-      OPACITY_INVERTED_RANGE
+    const y = sharedOffsetValue?.value.y ?? 0
+    return withAnimation(
+      withAnimatedVisibility(
+        withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [0, 1])
+      ),
+      withAnimatedTop(
+        withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [-50, 0])
+      )
     )
-
-    return {
-      top,
-      opacity
-    }
   })
 
   const renderCashbackLargeText = () => (

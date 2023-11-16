@@ -2,13 +2,15 @@ import { NativeScrollPoint, TouchableOpacity } from 'react-native'
 
 import { SharedValue, useAnimatedStyle } from 'react-native-reanimated'
 
-import { linearInterpolation } from '@/services/utils/animation'
+import {
+  SCROLL_OFFSET_THRESHOLD_RANGE,
+  withAnimatedMarginRight,
+  withAnimatedSquareSize,
+  withAnimation,
+  withLinearInterpolation
+} from '@/services/utils/animation'
 
 import Avatar from '../../Avatar'
-
-const OFFSET_THRESHOLD = [0, 200]
-const SIZE_RANGE = [64, 42]
-const MARGIN_RANGE = [24, 8]
 
 type Props = {
   uri?: string
@@ -22,15 +24,15 @@ export default function HeaderLargeProfileImage({
   onPress = () => {}
 }: Props) {
   const animatedImageStyle = useAnimatedStyle(() => {
-    const offsetY = sharedOffsetValue?.value.y ?? 0
-    const size = linearInterpolation(offsetY, OFFSET_THRESHOLD, SIZE_RANGE)
-    const margin = linearInterpolation(offsetY, OFFSET_THRESHOLD, MARGIN_RANGE)
-
-    return {
-      marginRight: margin,
-      height: size,
-      width: size
-    }
+    const y = sharedOffsetValue?.value.y ?? 0
+    return withAnimation(
+      withAnimatedSquareSize(
+        withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [64, 42])
+      ),
+      withAnimatedMarginRight(
+        withLinearInterpolation(y, SCROLL_OFFSET_THRESHOLD_RANGE, [24, 8])
+      )
+    )
   })
 
   return (
