@@ -19,6 +19,8 @@ export default function ListSplits({ onOpenSplit = () => {} }: Props) {
   const bills = trpc.bills.list.useQuery()
   const width = Dimensions.get('screen').width
 
+  if (bills.isError) return <></>
+
   if (!bills.data)
     return (
       <View className="p-6">

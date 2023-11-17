@@ -10,7 +10,7 @@ export default function CreateBill() {
   console.log(navigation.getState())
 
   return (
-    <View>
+    <View testID="create-bill-screen">
       <CreateBillContainer />
     </View>
   )

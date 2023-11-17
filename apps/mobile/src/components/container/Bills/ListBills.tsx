@@ -18,6 +18,8 @@ type Props = {
 export default function ListBills({ onOpenBill = () => {} }: Props) {
   const bills = trpc.bills.list.useQuery()
 
+  if (bills.isError) return <></>
+
   if (!bills.data)
     return (
       <View className="flex-row p-6 gap-4">

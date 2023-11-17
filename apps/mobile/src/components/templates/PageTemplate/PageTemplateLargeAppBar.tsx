@@ -18,6 +18,8 @@ export default function PageTemplateLargeAppBar({
 }: Props) {
   const user = trpc.users.find.useQuery({ id: 'my-id' })
 
+  if (user.isError) return <></>
+
   if (!user.data)
     return (
       <>

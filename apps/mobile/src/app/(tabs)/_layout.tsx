@@ -21,6 +21,7 @@ export default function TabsLayout() {
             {...props}
             renderAfter={
               <Button.Primary
+                testID="bills-create-button"
                 className="h-12 flex-grow"
                 onPress={() => router.push('/bills/create')}
               >
