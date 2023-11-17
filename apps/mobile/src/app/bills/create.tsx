@@ -1,6 +1,8 @@
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import { useNavigation } from 'expo-router'
+
+import CreateBillContainer from '@/components/container/Bills/CreateBill'
 
 export default function CreateBill() {
   const navigation = useNavigation()
@@ -8,8 +10,8 @@ export default function CreateBill() {
   console.log(navigation.getState())
 
   return (
-    <View className="flex-grow items-center justify-center">
-      <Text>create</Text>
+    <View>
+      <CreateBillContainer />
     </View>
   )
 }
