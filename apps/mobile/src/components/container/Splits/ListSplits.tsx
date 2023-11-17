@@ -33,6 +33,9 @@ export default function ListSplits({ onOpenSplit = () => {} }: Props) {
       horizontal
       data={bills.data}
       estimatedItemSize={8}
+      decelerationRate={0}
+      snapToAlignment="center"
+      snapToInterval={width - 24}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ padding: 24 }}
       ItemSeparatorComponent={() => <View className="w-4" />}
