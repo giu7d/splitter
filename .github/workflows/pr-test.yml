@@ -68,11 +68,15 @@ jobs:
           path: apps/mobile/ios/Pods
           key: cache-pod-${{ hashFiles('**/Podfile.lock') }}
 
-      - name: 📦 Start API
-        working-directory: apps/api
-        run: |
-          pnpm build
-          pnpm start
+      - uses: JarvusInnovations/background-action@v1
+        name: 📦 Start API
+        with:
+          working-directory: apps/api
+          wait-on: |
+            ${{ env.API_URL }}
+          run: |
+            pnpm build
+            pnpm start
 
       - name: 🏗 Setup cocoapods, xcode, and homebrew
         run: |
