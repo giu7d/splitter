@@ -45,6 +45,7 @@ export default function TabTemplateNavigation({
 
         return (
           <Navigation.Tab.Item
+            testID={`${route.name}-tab`}
             key={`nav-tab-${route.name}`}
             icon={TAB_ICONS[route.name]}
             selected={isSelected}

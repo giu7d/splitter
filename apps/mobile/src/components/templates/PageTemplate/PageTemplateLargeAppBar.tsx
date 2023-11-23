@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar'
 import { SharedValue } from 'react-native-reanimated'
 
 import Header from '@/components/fragments/Header'
+import Skeleton from '@/components/fragments/Skeleton'
 import { trpc } from '@/services/api'
 
 type Props = {
@@ -17,7 +18,23 @@ export default function PageTemplateLargeAppBar({
 }: Props) {
   const user = trpc.users.find.useQuery({ id: 'my-id' })
 
-  if (!user.data) return <></>
+  if (user.isError) return <></>
+
+  if (!user.data)
+    return (
+      <>
+        <StatusBar />
+        <Header.Large.Root renderAfter={children}>
+          <View className="flex-row gap-6 items-center">
+            <Skeleton className="w-16 h-16 rounded-full" />
+            <View className="gap-1">
+              <Skeleton className="w-[70] h-4 rounded-lg" />
+              <Skeleton className="w-[200] h-6 rounded-lg" />
+            </View>
+          </View>
+        </Header.Large.Root>
+      </>
+    )
 
   return (
     <>

@@ -6,6 +6,7 @@ import { Bill } from 'splitter-api/src/entities/bill'
 import Avatar from '@/components/fragments/Avatar'
 import Badge from '@/components/fragments/Badge'
 import Card from '@/components/fragments/Card'
+import Skeleton from '@/components/fragments/Skeleton'
 import Text from '@/components/fragments/Text'
 import { trpc } from '@/services/api'
 import { BILL_STATUS } from '@/services/constants'
@@ -15,15 +16,25 @@ type Props = {
 }
 
 export default function ListBills({ onOpenBill = () => {} }: Props) {
-  const { data } = trpc.bills.list.useQuery()
+  const bills = trpc.bills.list.useQuery()
 
-  if (!data) return <></>
+  if (bills.isError) return <></>
+
+  if (!bills.data)
+    return (
+      <View className="flex-row p-6 gap-4">
+        <Skeleton className="w-52 h-64 rounded-3xl" />
+        <Skeleton className="w-52 h-64 rounded-3xl" />
+      </View>
+    )
+
+  if (!bills.data.length) return <></>
 
   return (
     <FlashList
       horizontal
-      data={data}
-      estimatedItemSize={25}
+      data={bills.data}
+      estimatedItemSize={8}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ padding: 24 }}
       ItemSeparatorComponent={() => <View className="w-4" />}

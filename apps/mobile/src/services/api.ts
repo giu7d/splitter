@@ -8,6 +8,8 @@ export const API_TRPC_URL = `${API_URL}/trpc`
 
 export const trpc = createTRPCReact<Routes>()
 
+export const TRPCProvider = trpc.Provider
+
 export const createTRPCClient = () =>
   trpc.createClient({
     links: [

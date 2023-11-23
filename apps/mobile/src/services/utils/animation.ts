@@ -1,19 +1,15 @@
-import { Extrapolation, interpolate } from 'react-native-reanimated'
-
-export function linearInterpolation(
-  pivot: number,
-  threshold: number[],
-  variation: number[]
-) {
-  'worklet'
-  return interpolate(pivot, threshold, variation, Extrapolation.CLAMP)
-}
+import {
+  Easing,
+  Extrapolation,
+  SharedValue,
+  WithTimingConfig,
+  interpolate,
+  withRepeat,
+  withTiming
+} from 'react-native-reanimated'
 
 export const SCROLL_OFFSET_THRESHOLD_RANGE = [0, 200]
 
-//
-// Utils
-//
 export function withLinearInterpolation(
   pivot: number,
   threshold: number[],
@@ -28,50 +24,78 @@ export function withAnimation(...args: Object[]) {
   return Object.assign({}, ...args)
 }
 
+export function withInfinityRepeat(
+  sharedValue: SharedValue<number>,
+  initialValue: number,
+  finalValue: number,
+  config: WithTimingConfig
+) {
+  'worklet'
+  return withRepeat(
+    withTiming(finalValue, {
+      easing: Easing.linear,
+      ...config
+    }),
+    -1,
+    false,
+    () => (sharedValue.value = initialValue)
+  )
+}
+
 //
 // Animation
 //
 export function withAnimatedVisibility(
-  opacity: number,
+  value: number,
   effect = (e: number) => e
 ) {
   'worklet'
   return {
-    opacity: effect(opacity)
+    opacity: effect(value)
   }
 }
 
 export function withAnimatedMarginRight(
-  size: number,
+  value: number,
   effect = (e: number) => e
 ) {
   'worklet'
   return {
-    marginRight: effect(size)
+    marginRight: effect(value)
   }
 }
 
 export function withAnimatedSquareSize(
-  size: number,
+  value: number,
   effect = (e: number) => e
 ) {
   'worklet'
   return {
-    height: effect(size),
-    width: effect(size)
+    height: effect(value),
+    width: effect(value)
   }
 }
 
-export function withAnimatedFontSize(size: number, effect = (e: number) => e) {
+export function withAnimatedFontSize(value: number, effect = (e: number) => e) {
   'worklet'
   return {
-    fontSize: effect(size)
+    fontSize: effect(value)
   }
 }
 
-export function withAnimatedTop(top: number, effect = (e: number) => e) {
+export function withAnimatedTop(value: number, effect = (e: number) => e) {
   'worklet'
   return {
-    top: effect(top)
+    top: effect(value)
+  }
+}
+
+export function withAnimatedTransformTranslateX(
+  value: number,
+  effect = (e: number) => e
+) {
+  'worklet'
+  return {
+    transform: [{ translateX: effect(value) }]
   }
 }

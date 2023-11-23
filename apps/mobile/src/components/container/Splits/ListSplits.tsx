@@ -6,6 +6,7 @@ import { Bill } from 'splitter-api/src/entities/bill'
 import Avatar from '@/components/fragments/Avatar'
 import Badge from '@/components/fragments/Badge'
 import MiniBanner from '@/components/fragments/MiniBanner'
+import Skeleton from '@/components/fragments/Skeleton'
 import Text from '@/components/fragments/Text'
 import { trpc } from '@/services/api'
 import { SPLIT_STATUS } from '@/services/constants'
@@ -18,7 +19,14 @@ export default function ListSplits({ onOpenSplit = () => {} }: Props) {
   const bills = trpc.bills.list.useQuery()
   const width = Dimensions.get('screen').width
 
-  if (!bills.data) return <></>
+  if (bills.isError) return <></>
+
+  if (!bills.data)
+    return (
+      <View className="p-6">
+        <Skeleton className="w-full h-36 rounded-xl" />
+      </View>
+    )
 
   if (!bills.data.length) return <></>
 
@@ -26,7 +34,10 @@ export default function ListSplits({ onOpenSplit = () => {} }: Props) {
     <FlashList
       horizontal
       data={bills.data}
-      estimatedItemSize={25}
+      estimatedItemSize={8}
+      decelerationRate={0}
+      snapToAlignment="center"
+      snapToInterval={width - 24}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{ padding: 24 }}
       ItemSeparatorComponent={() => <View className="w-4" />}

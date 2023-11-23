@@ -14,6 +14,7 @@ jobs:
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
@@ -40,6 +41,10 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode.app
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      HOST: '0.0.0.0'
+      PORT: '4000'
+      API_URL: 'http://localhost:4000'
+
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
@@ -62,6 +67,16 @@ jobs:
         with:
           path: apps/mobile/ios/Pods
           key: cache-pod-${{ hashFiles('**/Podfile.lock') }}
+
+      - uses: JarvusInnovations/background-action@v1
+        name: 📦 Start API
+        with:
+          working-directory: apps/api
+          wait-on: |
+            ${{ env.API_URL }}
+          run: |
+            pnpm build
+            pnpm start
 
       - name: 🏗 Setup cocoapods, xcode, and homebrew
         run: |
